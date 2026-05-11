@@ -1,0 +1,72 @@
+aid: 7shifts
+name: 7shifts
+description: >-
+  7shifts is a restaurant employee scheduling, time-tracking, and team
+  management platform that helps restaurant operators forecast labor, build
+  schedules, manage shift trades, run payroll integrations, and communicate
+  with hourly staff. The platform integrates with major POS systems for sales
+  data and labor forecasting and supports multi-location operations across
+  quick-service, full-service, and franchise concepts. The 7shifts API v2 is a
+  REST API authenticated via long-lived access tokens (Bearer) for internal use
+  or OAuth 2.0 client credentials for technology partners, exposing employees,
+  schedules, shifts, time punches, departments, locations, and wages.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Restaurant
+  - Scheduling
+  - Workforce Management
+  - Employee Scheduling
+  - Time Tracking
+  - HRIS
+  - Labor
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: 7shifts:rest-api
+    name: 7shifts REST API v2
+    description: >-
+      REST API v2 for managing companies, locations, departments, roles,
+      employees, schedules, shifts, time punches, wages, and time-off requests
+      in 7shifts. Authentication uses Bearer access tokens for internal access
+      or OAuth 2.0 client credentials for partner integrations.
+    humanURL: https://developers.7shifts.com/reference/introduction
+    baseURL: https://api.7shifts.com/v2
+    tags:
+      - Employees
+      - Schedules
+      - Shifts
+      - Time Tracking
+      - Locations
+      - Wages
+    properties:
+      - type: Documentation
+        url: https://developers.7shifts.com/reference/introduction
+      - type: Authentication
+        url: https://developers.7shifts.com/reference/authentication
+      - type: OAuth Authentication
+        url: https://developers.7shifts.com/docs/oauth-authentication
+      - type: Getting Started
+        url: https://developers.7shifts.com/docs/getting-started
+
+common:
+  - type: Website
+    url: https://www.7shifts.com
+  - type: Documentation
+    url: https://developers.7shifts.com/
+  - type: API Reference
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Pricing
+    url: https://www.7shifts.com/pricing
+  - type: Sign Up
+    url: https://app.7shifts.com/signup
+  - type: Login
+    url: https://app.7shifts.com/login
+  - type: Support
+    url: https://support.7shifts.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
