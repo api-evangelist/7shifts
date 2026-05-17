@@ -49,7 +49,7 @@ apis:
         url: https://developers.7shifts.com/reference/authentication
       - type: OAuth Authentication
         url: https://developers.7shifts.com/docs/oauth-authentication
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developers.7shifts.com/docs/getting-started
 
 common:
@@ -57,11 +57,11 @@ common:
     url: https://www.7shifts.com
   - type: Documentation
     url: https://developers.7shifts.com/
-  - type: API Reference
+  - type: APIReference
     url: https://developers.7shifts.com/reference/introduction
   - type: Pricing
     url: https://www.7shifts.com/pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://app.7shifts.com/signup
   - type: Login
     url: https://app.7shifts.com/login
