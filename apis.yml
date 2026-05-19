@@ -53,6 +53,10 @@ apis:
         url: https://developers.7shifts.com/docs/getting-started
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/7shifts
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/7shifts
   - type: Website
     url: https://www.7shifts.com
   - type: Documentation
