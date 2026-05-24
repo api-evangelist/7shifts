@@ -71,6 +71,8 @@ common:
     url: https://app.7shifts.com/login
   - type: Support
     url: https://support.7shifts.com/
+  - type: LLMsTxt
+    url: https://developers.7shifts.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
