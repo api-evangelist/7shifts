@@ -1,0 +1,95 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: 7shifts
+providerId: 7shifts
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Restaurant
+  - Scheduling
+  - Workforce Management
+description: >-
+  FOCUS-aligned FinOps for 7shifts: per-location monthly subscription tiers with
+  headcount-driven plan selection; the REST API is included with paid plans
+  rather than separately metered.
+sources:
+  - https://www.7shifts.com/pricing
+  - https://developers.7shifts.com/reference/introduction
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: 7shifts Inc.
+serviceCategory: Workforce Management
+billingModel:
+  pricingCategory: Tiered Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+focusColumns:
+  ServiceName: 7shifts
+  ServiceCategory: Workforce Management
+  ServiceSubcategory: Restaurant Scheduling
+  ProviderName: 7shifts
+  PublisherName: 7shifts Inc.
+  InvoiceIssuerName: 7shifts Inc.
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+meters:
+  - name: location_subscription
+    unit: month
+    aggregation: sum
+    dimensions:
+      - plan_tier
+      - location_id
+      - billing_cycle
+  - name: active_locations
+    unit: instance-hour
+    aggregation: max
+    dimensions:
+      - plan_tier
+  - name: employee_seats
+    unit: seat
+    aggregation: max
+    dimensions:
+      - location_id
+      - plan_tier
+  - name: add_on_modules
+    unit: month
+    aggregation: sum
+    dimensions:
+      - module
+      - location_id
+principles:
+  - name: Visibility
+    description: >-
+      Track per-location subscription charges and seat counts via the 7shifts
+      billing area; use the Companies and Locations API and reporting endpoints
+      (daily sales and labor, worked hours and wages) to attribute labor cost
+      against scheduled hours.
+  - name: Allocation
+    description: >-
+      Attribute subscription spend by location_id and plan tier; multi-location
+      operators can roll up cost per concept or franchise group using the
+      location and department hierarchy exposed by the API.
+  - name: Optimization
+    description: >-
+      Choose the lowest plan tier that meets headcount and feature needs per
+      location, prefer annual billing for its discount, and deactivate unused
+      locations. Use labor forecasting and the reporting endpoints to keep labor
+      cost aligned to projected sales.
+  - name: Accountability
+    description: >-
+      Assign plan-tier and location budget ownership to regional or operations
+      managers; review per-location subscription and labor cost against the
+      daily sales and labor report on a recurring cadence.

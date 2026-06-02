@@ -1,0 +1,90 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "sevenshifts": "https://developers.7shifts.com/vocab#",
+    "id": "@id",
+    "type": "@type",
+
+    "Company": "schema:Organization",
+    "Location": "schema:FoodEstablishment",
+    "Department": "sevenshifts:Department",
+    "Role": "schema:OccupationalCategory",
+    "User": "schema:Person",
+    "Wage": "schema:MonetaryAmount",
+    "Shift": "schema:WorkBasedProgram",
+    "TimePunch": "sevenshifts:TimePunch",
+    "TimeOff": "sevenshifts:TimeOff",
+    "Availability": "sevenshifts:Availability",
+    "Receipt": "schema:Invoice",
+    "Webhook": "sevenshifts:Webhook",
+
+    "name": "schema:name",
+    "first_name": "schema:givenName",
+    "last_name": "schema:familyName",
+    "email": "schema:email",
+    "mobile_number": "schema:telephone",
+    "address": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "country": "schema:addressCountry",
+    "zip": "schema:postalCode",
+    "timezone": "schema:timezone",
+    "active": "sevenshifts:active",
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:DateTime"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "schema:DateTime"
+    },
+    "start": {
+      "@id": "schema:startDate",
+      "@type": "schema:DateTime"
+    },
+    "end": {
+      "@id": "schema:endDate",
+      "@type": "schema:DateTime"
+    },
+    "clocked_in": {
+      "@id": "sevenshifts:clockedIn",
+      "@type": "schema:DateTime"
+    },
+    "clocked_out": {
+      "@id": "sevenshifts:clockedOut",
+      "@type": "schema:DateTime"
+    },
+    "hourly_wage": "schema:baseSalary",
+    "wage_cents": "schema:value",
+    "tips": "sevenshifts:tips",
+    "from_date": "schema:startDate",
+    "to_date": "schema:endDate",
+    "status": "sevenshifts:status",
+    "company_id": {
+      "@id": "sevenshifts:company",
+      "@type": "@id"
+    },
+    "location_id": {
+      "@id": "sevenshifts:location",
+      "@type": "@id"
+    },
+    "department_id": {
+      "@id": "sevenshifts:department",
+      "@type": "@id"
+    },
+    "role_id": {
+      "@id": "sevenshifts:role",
+      "@type": "@id"
+    },
+    "user_id": {
+      "@id": "sevenshifts:user",
+      "@type": "@id"
+    },
+    "webhook_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "event_type": "sevenshifts:eventType"
+  }
+}

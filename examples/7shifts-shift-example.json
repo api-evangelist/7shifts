@@ -1,0 +1,17 @@
+{
+  "id": 12345,
+  "user_id": 12345,
+  "location_id": 12345,
+  "department_id": 12345,
+  "role_id": 12345,
+  "start": "2026-06-02T14:30:00Z",
+  "end": "2026-06-02T14:30:00Z",
+  "hourly_wage": 12345,
+  "draft": true,
+  "open": true,
+  "station": "example",
+  "attendance_status": "none",
+  "breaks": [],
+  "created": "2026-06-02T14:30:00Z",
+  "modified": "2026-06-02T14:30:00Z"
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-schema/7shifts-user-schema.json",
+  "title": "User",
+  "type": "object",
+  "description": "7shifts User resource.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "first_name": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "last_name": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 155
+    },
+    "mobile_number": {
+      "type": "string",
+      "description": "Phone number for notifications."
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Login permission status."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "employee",
+        "asst_manager",
+        "manager",
+        "employer"
+      ]
+    },
+    "invite_status": {
+      "type": "string",
+      "enum": [
+        "accepted",
+        "pending",
+        "required",
+        "missing_contact_info"
+      ]
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Company-assigned employee identifier."
+    },
+    "hourly_wage": {
+      "type": "integer",
+      "description": "Wage in cents."
+    },
+    "skill_level": {
+      "type": "integer"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": 12345,
+  "first_name": "example",
+  "last_name": "example",
+  "email": "jane.doe@example.com",
+  "mobile_number": "example",
+  "active": true,
+  "type": "employee",
+  "invite_status": "accepted",
+  "employee_id": "example",
+  "hourly_wage": 12345,
+  "skill_level": 12345,
+  "created": "2026-06-02T14:30:00Z",
+  "modified": "2026-06-02T14:30:00Z"
+}

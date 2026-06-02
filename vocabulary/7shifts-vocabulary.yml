@@ -1,0 +1,259 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "7shifts"
+  description: >-
+    Unified vocabulary for the 7shifts restaurant team-management platform,
+    mapping the operational dimension (7shifts API v2 OpenAPI) to the
+    capability dimension (Naftiko capabilities) across scheduling, time
+    tracking, labor, and team management.
+  created: "2026-06-02"
+  modified: "2026-06-02"
+
+operational:
+  apis:
+    - name: "7shifts REST API v2"
+      namespace: "7shifts"
+      version: "2.0"
+      baseUrl: "https://api.7shifts.com"
+      status: active
+  resources:
+    - name: companies
+      api: "7shifts"
+      actions: [list, retrieve]
+    - name: locations
+      api: "7shifts"
+      actions: [list, create, retrieve]
+    - name: departments
+      api: "7shifts"
+      actions: [list, create]
+    - name: roles
+      api: "7shifts"
+      actions: [list, create]
+    - name: users
+      api: "7shifts"
+      actions: [list, create, retrieve, update]
+    - name: wages
+      api: "7shifts"
+      actions: [list, create]
+    - name: shifts
+      api: "7shifts"
+      actions: [list, create, retrieve, delete]
+    - name: time_punches
+      api: "7shifts"
+      actions: [list, create, retrieve]
+    - name: time_off
+      api: "7shifts"
+      actions: [list, create, approve]
+    - name: availability
+      api: "7shifts"
+      actions: [list]
+    - name: receipts
+      api: "7shifts"
+      actions: [list, create]
+    - name: reports
+      api: "7shifts"
+      actions: [retrieve]
+    - name: webhooks
+      api: "7shifts"
+      actions: [list, create]
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: query
+    - name: retrieve
+      httpMethod: GET
+      pattern: read
+    - name: create
+      httpMethod: POST
+      pattern: write
+    - name: update
+      httpMethod: PUT
+      pattern: write
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+    - name: approve
+      httpMethod: POST
+      pattern: write
+  schemas:
+    core:
+      - Company
+      - Location
+      - Department
+      - Role
+      - User
+    scheduling:
+      - Shift
+      - Break
+      - Availability
+    time:
+      - TimePunch
+      - TimeOff
+    labor:
+      - Wage
+    sales:
+      - Receipt
+    events:
+      - Webhook
+  parameters:
+    pagination:
+      - cursor
+      - limit
+    identifiers:
+      - company_id
+      - location_id
+      - department_id
+      - role_id
+      - user_id
+      - identifier
+    filters:
+      - modified_since
+      - status
+      - approved
+      - open
+      - include_draft
+      - start[gte]
+      - start[lte]
+      - clocked_in[gte]
+      - clocked_in[lte]
+    headers:
+      - x-api-version
+      - x-company-guid
+  enums:
+    user_types:
+      - employee
+      - asst_manager
+      - manager
+      - employer
+    invite_statuses:
+      - accepted
+      - pending
+      - required
+      - missing_contact_info
+    time_off_statuses:
+      - pending
+      - approved
+      - declined
+    wage_types:
+      - hourly
+      - weekly_salary
+      - annual_salary
+    attendance_statuses:
+      - none
+      - sick
+      - no_show
+      - late
+    oauth_grant_types:
+      - client_credentials
+      - password
+      - authorization_code
+      - refresh_token
+  authentication:
+    schemes:
+      - name: bearerAuth
+        type: http
+        scheme: bearer
+        usedBy: ["7shifts"]
+      - name: oauth2
+        type: oauth2
+        flow: clientCredentials
+        usedBy: ["7shifts"]
+
+capability:
+  workflows:
+    - name: "7shifts — Users"
+      file: capabilities/7shifts-users.yaml
+      description: "Employee directory management."
+      apis: ["7shifts"]
+      toolCount: 4
+      personas: [Operator, HRIS Integrator]
+      domains: [Team Management]
+    - name: "7shifts — Shifts"
+      file: capabilities/7shifts-shifts.yaml
+      description: "Schedule and shift management."
+      apis: ["7shifts"]
+      toolCount: 4
+      personas: [Manager, Scheduler]
+      domains: [Scheduling]
+    - name: "7shifts — Time Punches"
+      file: capabilities/7shifts-time-punches.yaml
+      description: "Clock-in/out time tracking."
+      apis: ["7shifts"]
+      toolCount: 3
+      personas: [Manager, Payroll Integrator]
+      domains: [Time Tracking]
+    - name: "7shifts — Time Off"
+      file: capabilities/7shifts-time-off.yaml
+      description: "Time off requests and approvals."
+      apis: ["7shifts"]
+      toolCount: 3
+      personas: [Manager, Employee]
+      domains: [Team Management]
+    - name: "7shifts — Sales"
+      file: capabilities/7shifts-sales.yaml
+      description: "POS sales receipts ingestion."
+      apis: ["7shifts"]
+      toolCount: 2
+      personas: [POS Integrator]
+      domains: [Sales]
+  personas:
+    - id: operator
+      name: Restaurant Operator
+      description: Owns the account and locations.
+      workflows: [capabilities/7shifts-companies.yaml, capabilities/7shifts-locations.yaml]
+    - id: manager
+      name: Location Manager
+      description: Schedules staff and manages time.
+      workflows: [capabilities/7shifts-shifts.yaml, capabilities/7shifts-time-punches.yaml, capabilities/7shifts-time-off.yaml]
+    - id: hris-integrator
+      name: HRIS / Payroll Integrator
+      description: Syncs employees, wages, and worked hours to payroll.
+      workflows: [capabilities/7shifts-users.yaml, capabilities/7shifts-wages.yaml, capabilities/7shifts-time-punches.yaml]
+    - id: pos-integrator
+      name: POS Integrator
+      description: Pushes sales data for labor forecasting.
+      workflows: [capabilities/7shifts-sales.yaml]
+  domains:
+    - name: Team Management
+      resources: [users, time_off, wages]
+    - name: Scheduling
+      resources: [shifts, availability, roles, departments]
+    - name: Time Tracking
+      resources: [time_punches]
+    - name: Sales
+      resources: [receipts]
+    - name: Reporting
+      resources: [reports]
+  namespaces:
+    - consumed: "7shifts-users"
+      rest: "7shifts-users-rest"
+      mcp: "7shifts-users-mcp"
+      restPort: 8080
+      mcpPort: 9090
+  binds:
+    - key: SEVENSHIFTS_ACCESS_TOKEN
+      description: 7shifts API v2 Bearer access token.
+      workflows: all
+
+crossReference:
+  - resource: users
+    operations: [listUsers, createUser, retrieveUser, updateUser]
+    workflows: [capabilities/7shifts-users.yaml]
+    personas: [operator, hris-integrator]
+  - resource: shifts
+    operations: [listShifts, createShift, retrieveShift, deleteShift]
+    workflows: [capabilities/7shifts-shifts.yaml]
+    personas: [manager]
+  - resource: time_punches
+    operations: [listTimePunches, createTimePunch, retrieveTimePunch]
+    workflows: [capabilities/7shifts-time-punches.yaml]
+    personas: [manager, hris-integrator]
+  - resource: time_off
+    operations: [listTimeOff, createTimeOff, approveTimeOff]
+    workflows: [capabilities/7shifts-time-off.yaml]
+    personas: [manager]
+  - resource: receipts
+    operations: [listReceipts, createReceipt]
+    workflows: [capabilities/7shifts-sales.yaml]
+    personas: [pos-integrator]

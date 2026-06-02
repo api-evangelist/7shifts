@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-schema/7shifts-role-schema.json",
+  "title": "Role",
+  "type": "object",
+  "description": "7shifts Role resource.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "department_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

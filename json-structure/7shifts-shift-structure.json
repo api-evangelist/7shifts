@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-shift-structure.json",
+  "name": "Shift",
+  "type": "object",
+  "description": "7shifts Shift structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "user_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "location_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "department_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "role_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "start": {
+      "type": "datetime",
+      "description": "Start datetime of the shift. UTC in ISO8601 format."
+    },
+    "end": {
+      "type": "datetime",
+      "description": "End datetime of the shift. UTC in ISO8601 format."
+    },
+    "hourly_wage": {
+      "type": "int64",
+      "description": "The hourly wage for this shift, in cents."
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Publication status indicator."
+    },
+    "open": {
+      "type": "boolean",
+      "description": "Indicates an unassigned shift available for requests."
+    },
+    "station": {
+      "type": "string",
+      "description": ""
+    },
+    "attendance_status": {
+      "type": "string",
+      "description": ""
+    },
+    "breaks": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "object"
+      }
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

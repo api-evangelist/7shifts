@@ -1,0 +1,10 @@
+{
+  "id": 12345,
+  "location_id": 12345,
+  "external_id": "example",
+  "receipt_date": "2026-06-02T14:30:00Z",
+  "total": 12345,
+  "revenue_center": "example",
+  "created": "2026-06-02T14:30:00Z",
+  "modified": "2026-06-02T14:30:00Z"
+}

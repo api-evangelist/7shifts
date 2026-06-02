@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-wage-structure.json",
+  "name": "Wage",
+  "type": "object",
+  "description": "7shifts Wage structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "user_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "role_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "wage_type": {
+      "type": "string",
+      "description": ""
+    },
+    "wage_cents": {
+      "type": "int64",
+      "description": "Wage amount in cents."
+    },
+    "effective_date": {
+      "type": "date",
+      "description": ""
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

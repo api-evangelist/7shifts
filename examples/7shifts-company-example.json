@@ -1,0 +1,9 @@
+{
+  "id": 12345,
+  "name": "example",
+  "country_code": "example",
+  "timezone": "example",
+  "active": true,
+  "created": "2026-06-02T14:30:00Z",
+  "modified": "2026-06-02T14:30:00Z"
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-webhook-structure.json",
+  "name": "Webhook",
+  "type": "object",
+  "description": "7shifts Webhook structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "webhook_url": {
+      "type": "string",
+      "description": ""
+    },
+    "event_type": {
+      "type": "string",
+      "description": "The event that triggers this webhook."
+    },
+    "active": {
+      "type": "boolean",
+      "description": ""
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

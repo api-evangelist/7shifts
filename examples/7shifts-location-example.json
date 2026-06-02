@@ -1,0 +1,13 @@
+{
+  "id": 12345,
+  "company_id": 12345,
+  "name": "example",
+  "address": "example",
+  "city": "example",
+  "state": "example",
+  "country": "example",
+  "zip": "example",
+  "timezone": "example",
+  "created": "2026-06-02T14:30:00Z",
+  "modified": "2026-06-02T14:30:00Z"
+}

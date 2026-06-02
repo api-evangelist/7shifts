@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "7shifts API \u2014 Time Punches"
+  description: 'Time Punches surface of the 7shifts API. 3 operations. Lead operation: List Time Punches.
+    Self-contained Naftiko capability covering one 7shifts business surface.'
+  tags:
+  - 7shifts
+  - Time Punches
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    SEVENSHIFTS_ACCESS_TOKEN: SEVENSHIFTS_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: 7shifts-time-punches
+    baseUri: https://api.7shifts.com
+    description: "7shifts API \u2014 Time Punches business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.SEVENSHIFTS_ACCESS_TOKEN}}'
+    resources:
+    - name: v2-company-company-id-time-punches
+      path: /v2/company/{company_id}/time_punches
+      operations:
+      - name: listTimePunches
+        method: GET
+        description: List Time Punches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: location_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by location.
+        - name: department_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by department.
+        - name: user_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by user.
+        - name: approved
+          in: query
+          type: boolean
+          required: false
+          description: Filter by approval status.
+        - name: clocked_in[gte]
+          in: query
+          type: string
+          required: false
+          description: Filter by clock-in time greater than or equal to (ISO8601).
+        - name: clocked_in[lte]
+          in: query
+          type: string
+          required: false
+          description: Filter by clock-in time less than or equal to (ISO8601).
+        - name: modified_since
+          in: query
+          type: string
+          required: false
+          description: Return time punches modified after the specified datetime.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor for the next or previous page.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Results per page (1-500, default 100; 20 for some collections).
+      - name: createTimePunch
+        method: POST
+        description: Create Time Punch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request payload.
+    - name: v2-company-company-id-time-punches-time-punch-id
+      path: /v2/company/{company_id}/time_punches/{time_punch_id}
+      operations:
+      - name: retrieveTimePunch
+        method: GET
+        description: Retrieve Time Punch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: time_punch_id
+          in: path
+          type: integer
+          required: true
+          description: Time punch identifier.
+  exposes:
+  - type: rest
+    namespace: 7shifts-time-punches-rest
+    port: 8080
+    description: "REST adapter for 7shifts API \u2014 Time Punches. One Spectral-compliant resource per\
+      \ consumed operation, prefixed with /v1."
+    resources:
+    - path: /v1/company-company-id-time-punches
+      name: v2-company-company-id-time-punches
+      description: REST surface for v2-company-company-id-time-punches.
+      operations:
+      - method: GET
+        name: listTimePunches
+        description: List Time Punches
+        call: 7shifts-time-punches.listTimePunches
+        with:
+          company_id: rest.company_id
+          location_id: rest.location_id
+          department_id: rest.department_id
+          user_id: rest.user_id
+          approved: rest.approved
+          clocked_in[gte]: rest.clocked_in[gte]
+          clocked_in[lte]: rest.clocked_in[lte]
+          modified_since: rest.modified_since
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-time-punches
+      name: v2-company-company-id-time-punches
+      description: REST surface for v2-company-company-id-time-punches.
+      operations:
+      - method: POST
+        name: createTimePunch
+        description: Create Time Punch
+        call: 7shifts-time-punches.createTimePunch
+        with:
+          company_id: rest.company_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-time-punches-time-punch-id
+      name: v2-company-company-id-time-punches-time-punch-id
+      description: REST surface for v2-company-company-id-time-punches-time-punch-id.
+      operations:
+      - method: GET
+        name: retrieveTimePunch
+        description: Retrieve Time Punch
+        call: 7shifts-time-punches.retrieveTimePunch
+        with:
+          company_id: rest.company_id
+          time_punch_id: rest.time_punch_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: 7shifts-time-punches-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for 7shifts API \u2014 Time Punches. One tool per consumed operation, routed\
+      \ inline through this capability's consumes block."
+    tools:
+    - name: list-time-punches
+      description: List Time Punches
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-time-punches.listTimePunches
+      with:
+        company_id: tools.company_id
+        location_id: tools.location_id
+        department_id: tools.department_id
+        user_id: tools.user_id
+        approved: tools.approved
+        clocked_in[gte]: tools.clocked_in[gte]
+        clocked_in[lte]: tools.clocked_in[lte]
+        modified_since: tools.modified_since
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-time-punch
+      description: Create Time Punch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: 7shifts-time-punches.createTimePunch
+      with:
+        company_id: tools.company_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-time-punch
+      description: Retrieve Time Punch
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-time-punches.retrieveTimePunch
+      with:
+        company_id: tools.company_id
+        time_punch_id: tools.time_punch_id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,196 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "7shifts API \u2014 Locations"
+  description: 'Locations surface of the 7shifts API. 3 operations. Lead operation: List Locations. Self-contained
+    Naftiko capability covering one 7shifts business surface.'
+  tags:
+  - 7shifts
+  - Locations
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    SEVENSHIFTS_ACCESS_TOKEN: SEVENSHIFTS_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: 7shifts-locations
+    baseUri: https://api.7shifts.com
+    description: "7shifts API \u2014 Locations business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.SEVENSHIFTS_ACCESS_TOKEN}}'
+    resources:
+    - name: v2-company-company-id-locations
+      path: /v2/company/{company_id}/locations
+      operations:
+      - name: listLocations
+        method: GET
+        description: List Locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor for the next or previous page.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Results per page (1-500, default 100; 20 for some collections).
+        - name: x-api-version
+          in: header
+          type: string
+          required: false
+          description: 7shifts API version (YYYY-MM-DD).
+      - name: createLocation
+        method: POST
+        description: Create Location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request payload.
+    - name: v2-company-company-id-locations-location-id
+      path: /v2/company/{company_id}/locations/{location_id}
+      operations:
+      - name: retrieveLocation
+        method: GET
+        description: Retrieve Location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: location_id
+          in: path
+          type: integer
+          required: true
+          description: Location identifier.
+  exposes:
+  - type: rest
+    namespace: 7shifts-locations-rest
+    port: 8080
+    description: "REST adapter for 7shifts API \u2014 Locations. One Spectral-compliant resource per consumed\
+      \ operation, prefixed with /v1."
+    resources:
+    - path: /v1/company-company-id-locations
+      name: v2-company-company-id-locations
+      description: REST surface for v2-company-company-id-locations.
+      operations:
+      - method: GET
+        name: listLocations
+        description: List Locations
+        call: 7shifts-locations.listLocations
+        with:
+          company_id: rest.company_id
+          cursor: rest.cursor
+          limit: rest.limit
+          x-api-version: rest.x-api-version
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-locations
+      name: v2-company-company-id-locations
+      description: REST surface for v2-company-company-id-locations.
+      operations:
+      - method: POST
+        name: createLocation
+        description: Create Location
+        call: 7shifts-locations.createLocation
+        with:
+          company_id: rest.company_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-locations-location-id
+      name: v2-company-company-id-locations-location-id
+      description: REST surface for v2-company-company-id-locations-location-id.
+      operations:
+      - method: GET
+        name: retrieveLocation
+        description: Retrieve Location
+        call: 7shifts-locations.retrieveLocation
+        with:
+          company_id: rest.company_id
+          location_id: rest.location_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: 7shifts-locations-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for 7shifts API \u2014 Locations. One tool per consumed operation, routed\
+      \ inline through this capability's consumes block."
+    tools:
+    - name: list-locations
+      description: List Locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-locations.listLocations
+      with:
+        company_id: tools.company_id
+        cursor: tools.cursor
+        limit: tools.limit
+        x-api-version: tools.x-api-version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-location
+      description: Create Location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: 7shifts-locations.createLocation
+      with:
+        company_id: tools.company_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-location
+      description: Retrieve Location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-locations.retrieveLocation
+      with:
+        company_id: tools.company_id
+        location_id: tools.location_id
+      outputParameters:
+      - type: object
+        mapping: $.

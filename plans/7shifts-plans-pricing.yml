@@ -1,0 +1,138 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: 7shifts
+providerId: 7shifts
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: false
+tags:
+  - Restaurant
+  - Scheduling
+  - Workforce Management
+  - Time Tracking
+  - Subscription
+description: >-
+  7shifts prices its restaurant team-management platform as per-location
+  monthly subscription tiers, billed per location with the headcount and
+  feature set growing by tier. A free Comp tier covers a single location with a
+  small team; paid Entrée, The Works, and Gourmet tiers add unlimited
+  employees, advanced scheduling, labor compliance, integrations, and the API.
+  Annual billing is discounted relative to monthly. Pricing reflects publicly
+  reported figures from third-party software directories and 7shifts marketing
+  and should be reconciled against the live pricing page
+  (https://www.7shifts.com/pricing) before use, as prices vary by billing cycle
+  and region. The 7shifts API is available to customers and technology partners
+  rather than sold as a separately metered product.
+sources:
+  - https://www.7shifts.com/pricing
+  - https://costbench.com/software/employee-scheduling/7shifts/
+plans:
+  - id: 7shifts-comp
+    name: Comp
+    type: freemium
+    description: Free tier for a single location and a small team.
+    entries:
+      - label: Monthly subscription
+        name: monthly_subscription
+        type: flat
+        metric: location
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: '1'
+        price: '$0'
+        userMultiplied: false
+      - label: Employees
+        name: employees
+        type: quota
+        metric: seat
+        limit: 20
+        timeFrame: month
+        geo: global
+        unit: '1'
+        price: '$0'
+        userMultiplied: false
+    elements:
+      - name: Single location
+        description: Supports one restaurant location.
+      - name: Up to 20 employees
+        description: Headcount cap for the free tier.
+      - name: Basic scheduling
+        description: Drag-and-drop scheduling and shift management.
+      - name: Mobile apps
+        description: Employee and manager mobile applications.
+  - id: 7shifts-entree
+    name: Entrée
+    type: subscription
+    description: Entry paid tier for small operations.
+    entries:
+      - label: Per-location monthly subscription
+        name: per_location_subscription
+        type: subscription
+        metric: location
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: '1'
+        price: '$34.99 per location/month (monthly); lower billed annually'
+        userMultiplied: false
+    elements:
+      - name: Up to 30 employees
+        description: Headcount cap for the Entrée tier.
+      - name: Time tracking and attendance
+        description: Time clock and attendance tracking.
+      - name: Availability and time off
+        description: Employee availability and time-off requests.
+      - name: POS integrations
+        description: Connect supported POS systems for sales data.
+  - id: 7shifts-the-works
+    name: The Works
+    type: subscription
+    description: Mid tier for growing operations with unlimited employees.
+    entries:
+      - label: Per-location monthly subscription
+        name: per_location_subscription
+        type: subscription
+        metric: location
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: '1'
+        price: '$76.99 per location/month (monthly); lower billed annually'
+        userMultiplied: false
+    elements:
+      - name: Unlimited employees
+        description: No headcount cap.
+      - name: Labor compliance
+        description: Break and overtime compliance tooling.
+      - name: Advanced scheduling
+        description: Auto-scheduling and labor forecasting.
+      - name: API access
+        description: Access to the 7shifts REST API v2.
+  - id: 7shifts-gourmet
+    name: Gourmet
+    type: enterprise
+    description: Top tier for multi-location and enterprise operators.
+    entries:
+      - label: Per-location monthly subscription
+        name: per_location_subscription
+        type: subscription
+        metric: location
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: '1'
+        price: '$150 per location/month'
+        userMultiplied: false
+    elements:
+      - name: Unlimited employees
+        description: No headcount cap.
+      - name: Advanced reporting
+        description: Sales, labor, and engagement analytics.
+      - name: Manager log book and tasks
+        description: Operational task management and log book.
+      - name: Priority support
+        description: Enhanced support for enterprise customers.
+      - name: Full API and webhooks
+        description: REST API v2 and company-level webhooks.

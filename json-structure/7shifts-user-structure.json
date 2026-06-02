@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-user-structure.json",
+  "name": "User",
+  "type": "object",
+  "description": "7shifts User structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "first_name": {
+      "type": "string",
+      "description": ""
+    },
+    "last_name": {
+      "type": "string",
+      "description": ""
+    },
+    "email": {
+      "type": "string",
+      "description": ""
+    },
+    "mobile_number": {
+      "type": "string",
+      "description": "Phone number for notifications."
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Login permission status."
+    },
+    "type": {
+      "type": "string",
+      "description": ""
+    },
+    "invite_status": {
+      "type": "string",
+      "description": ""
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Company-assigned employee identifier."
+    },
+    "hourly_wage": {
+      "type": "int64",
+      "description": "Wage in cents."
+    },
+    "skill_level": {
+      "type": "int64",
+      "description": ""
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

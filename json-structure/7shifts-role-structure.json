@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-role-structure.json",
+  "name": "Role",
+  "type": "object",
+  "description": "7shifts Role structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "department_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "location_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "name": {
+      "type": "string",
+      "description": ""
+    },
+    "color": {
+      "type": "string",
+      "description": ""
+    },
+    "sort": {
+      "type": "int64",
+      "description": ""
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

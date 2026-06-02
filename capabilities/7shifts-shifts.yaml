@@ -1,0 +1,298 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "7shifts API \u2014 Shifts"
+  description: 'Shifts surface of the 7shifts API. 4 operations. Lead operation: List Shifts. Self-contained
+    Naftiko capability covering one 7shifts business surface.'
+  tags:
+  - 7shifts
+  - Shifts
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    SEVENSHIFTS_ACCESS_TOKEN: SEVENSHIFTS_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: 7shifts-shifts
+    baseUri: https://api.7shifts.com
+    description: "7shifts API \u2014 Shifts business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.SEVENSHIFTS_ACCESS_TOKEN}}'
+    resources:
+    - name: v2-company-company-id-shifts
+      path: /v2/company/{company_id}/shifts
+      operations:
+      - name: listShifts
+        method: GET
+        description: List Shifts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: location_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by location.
+        - name: department_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by department.
+        - name: role_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by role.
+        - name: user_id
+          in: query
+          type: integer
+          required: false
+          description: Filter by assigned user.
+        - name: start[gte]
+          in: query
+          type: string
+          required: false
+          description: Filter by shift start time greater than or equal to (ISO8601).
+        - name: start[lte]
+          in: query
+          type: string
+          required: false
+          description: Filter by shift start time less than or equal to (ISO8601).
+        - name: modified_since
+          in: query
+          type: string
+          required: false
+          description: Return shifts modified after the specified datetime.
+        - name: open
+          in: query
+          type: boolean
+          required: false
+          description: Filter for unassigned (open) shifts.
+        - name: include_draft
+          in: query
+          type: boolean
+          required: false
+          description: Include draft shifts.
+        - name: cursor
+          in: query
+          type: string
+          required: false
+          description: Pagination cursor for the next or previous page.
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Results per page (1-500, default 100; 20 for some collections).
+      - name: createShift
+        method: POST
+        description: Create Shift
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request payload.
+    - name: v2-company-company-id-shifts-shift-id
+      path: /v2/company/{company_id}/shifts/{shift_id}
+      operations:
+      - name: retrieveShift
+        method: GET
+        description: Retrieve Shift
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: shift_id
+          in: path
+          type: integer
+          required: true
+          description: Shift identifier.
+      - name: deleteShift
+        method: DELETE
+        description: Delete Shift
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: company_id
+          in: path
+          type: integer
+          required: true
+          description: Company identifier.
+        - name: shift_id
+          in: path
+          type: integer
+          required: true
+          description: Shift identifier.
+  exposes:
+  - type: rest
+    namespace: 7shifts-shifts-rest
+    port: 8080
+    description: "REST adapter for 7shifts API \u2014 Shifts. One Spectral-compliant resource per consumed\
+      \ operation, prefixed with /v1."
+    resources:
+    - path: /v1/company-company-id-shifts
+      name: v2-company-company-id-shifts
+      description: REST surface for v2-company-company-id-shifts.
+      operations:
+      - method: GET
+        name: listShifts
+        description: List Shifts
+        call: 7shifts-shifts.listShifts
+        with:
+          company_id: rest.company_id
+          location_id: rest.location_id
+          department_id: rest.department_id
+          role_id: rest.role_id
+          user_id: rest.user_id
+          start[gte]: rest.start[gte]
+          start[lte]: rest.start[lte]
+          modified_since: rest.modified_since
+          open: rest.open
+          include_draft: rest.include_draft
+          cursor: rest.cursor
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-shifts
+      name: v2-company-company-id-shifts
+      description: REST surface for v2-company-company-id-shifts.
+      operations:
+      - method: POST
+        name: createShift
+        description: Create Shift
+        call: 7shifts-shifts.createShift
+        with:
+          company_id: rest.company_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-shifts-shift-id
+      name: v2-company-company-id-shifts-shift-id
+      description: REST surface for v2-company-company-id-shifts-shift-id.
+      operations:
+      - method: GET
+        name: retrieveShift
+        description: Retrieve Shift
+        call: 7shifts-shifts.retrieveShift
+        with:
+          company_id: rest.company_id
+          shift_id: rest.shift_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/company-company-id-shifts-shift-id
+      name: v2-company-company-id-shifts-shift-id
+      description: REST surface for v2-company-company-id-shifts-shift-id.
+      operations:
+      - method: DELETE
+        name: deleteShift
+        description: Delete Shift
+        call: 7shifts-shifts.deleteShift
+        with:
+          company_id: rest.company_id
+          shift_id: rest.shift_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: 7shifts-shifts-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for 7shifts API \u2014 Shifts. One tool per consumed operation, routed inline\
+      \ through this capability's consumes block."
+    tools:
+    - name: list-shifts
+      description: List Shifts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-shifts.listShifts
+      with:
+        company_id: tools.company_id
+        location_id: tools.location_id
+        department_id: tools.department_id
+        role_id: tools.role_id
+        user_id: tools.user_id
+        start[gte]: tools.start[gte]
+        start[lte]: tools.start[lte]
+        modified_since: tools.modified_since
+        open: tools.open
+        include_draft: tools.include_draft
+        cursor: tools.cursor
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-shift
+      description: Create Shift
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: 7shifts-shifts.createShift
+      with:
+        company_id: tools.company_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-shift
+      description: Retrieve Shift
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: 7shifts-shifts.retrieveShift
+      with:
+        company_id: tools.company_id
+        shift_id: tools.shift_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-shift
+      description: Delete Shift
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: 7shifts-shifts.deleteShift
+      with:
+        company_id: tools.company_id
+        shift_id: tools.shift_id
+      outputParameters:
+      - type: object
+        mapping: $.

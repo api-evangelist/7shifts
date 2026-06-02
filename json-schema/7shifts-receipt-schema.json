@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-schema/7shifts-receipt-schema.json",
+  "title": "Receipt",
+  "type": "object",
+  "description": "7shifts Receipt resource.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "external_id": {
+      "type": "string",
+      "description": "POS external identifier."
+    },
+    "receipt_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total in cents."
+    },
+    "revenue_center": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

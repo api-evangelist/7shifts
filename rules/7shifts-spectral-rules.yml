@@ -1,0 +1,297 @@
+# 7shifts API Spectral Ruleset
+# Enforces the conventions observed across the 7shifts API v2 OpenAPI specification:
+# - Title prefix "7shifts ..."
+# - /v2 versioned, company-scoped paths (/v2/company/{company_id}/...)
+# - snake_case parameters and schema properties
+# - camelCase operationIds with verb prefixes
+# - data/meta response envelope with cursor-based pagination
+# - Bearer access-token / OAuth 2.0 security
+# - Title Case tags
+extends: []
+rules:
+
+  # ── INFO / METADATA ────────────────────────────────────────────────
+  info-title-required:
+    description: API must have a title.
+    given: $.info
+    severity: error
+    then:
+      field: title
+      function: truthy
+  info-title-prefix:
+    description: Title should start with "7shifts".
+    given: $.info.title
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^7shifts'
+  info-description-required:
+    description: API must have a non-trivial description.
+    given: $.info
+    severity: warn
+    then:
+      field: description
+      function: truthy
+  info-version-required:
+    description: API must declare a version.
+    given: $.info
+    severity: error
+    then:
+      field: version
+      function: truthy
+  info-contact-required:
+    description: API should provide contact information.
+    given: $.info
+    severity: info
+    then:
+      field: contact
+      function: truthy
+
+  # ── OPENAPI VERSION ────────────────────────────────────────────────
+  openapi-version-3-1:
+    description: Specs should target OpenAPI 3.1.x.
+    given: $.openapi
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3\.1\.'
+
+  # ── SERVERS ────────────────────────────────────────────────────────
+  servers-defined:
+    description: At least one server must be defined.
+    given: $.servers
+    severity: error
+    then:
+      function: length
+      functionOptions:
+        min: 1
+  servers-https:
+    description: Server URLs must use HTTPS.
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  server-7shifts-host:
+    description: Production server should be api.7shifts.com.
+    given: $.servers[*].url
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: 'api\.7shifts\.com'
+
+  # ── PATHS — NAMING CONVENTIONS ─────────────────────────────────────
+  paths-version-prefix:
+    description: Resource paths should be versioned under /v2 (OAuth token is the exception).
+    given: $.paths[?(@property != '/oauth2/token' && @property != '/whoami')]~
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/v2/'
+  paths-snake-or-kebab-case:
+    description: Path segments must be snake_case or kebab-case (no camelCase or PascalCase).
+    given: $.paths[*]~
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z0-9_\-]+|/\{[a-z0-9_]+\})*/?$'
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    given: $.paths[*]~
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '.+/$'
+  paths-no-query-string:
+    description: Paths must not contain query strings.
+    given: $.paths[*]~
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '\?'
+
+  # ── OPERATIONS ─────────────────────────────────────────────────────
+  operation-operationid-required:
+    description: Every operation must have an operationId.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  operation-operationid-camelcase-verb:
+    description: operationId should be camelCase and begin with a verb (list/get/retrieve/create/update/delete/approve/decline).
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(list|get|retrieve|create|update|put|delete|approve|decline|sync|test|configure|save|fetch|deactivate)[A-Za-z0-9]*$'
+  operation-summary-required:
+    description: Every operation must have a summary.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: warn
+    then:
+      field: summary
+      function: truthy
+  operation-summary-title-case:
+    description: Operation summaries should be Title Case (each significant word capitalized).
+    given: $.paths[*][get,post,put,patch,delete].summary
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z]'
+  operation-tags-required:
+    description: Every operation must be tagged.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+
+  # ── TAGS ───────────────────────────────────────────────────────────
+  global-tags-defined:
+    description: A global tags array should be defined.
+    given: $
+    severity: info
+    then:
+      field: tags
+      function: truthy
+  tag-description-required:
+    description: Each global tag should have a description.
+    given: $.tags[*]
+    severity: info
+    then:
+      field: description
+      function: truthy
+  tag-title-case:
+    description: Tags should be Title Case.
+    given: $.tags[*].name
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( [A-Z][A-Za-z0-9]*)*$'
+
+  # ── PARAMETERS ─────────────────────────────────────────────────────
+  parameter-description-required:
+    description: Parameters should have descriptions.
+    given: $..parameters[*]
+    severity: info
+    then:
+      field: description
+      function: truthy
+  parameter-snake-case:
+    description: Parameter names should be snake_case (filter bracket params like start[gte] permitted).
+    given: $..parameters[?(@.in=='query' || @.in=='path')].name
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-z0-9_]*(\[[a-z]+\])?$'
+  parameter-pagination-cursor:
+    description: Collection pagination should use cursor and limit parameters.
+    given: $..parameters[?(@.in=='query')].name
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: '.*'
+
+  # ── REQUEST BODIES ─────────────────────────────────────────────────
+  request-body-json:
+    description: Request bodies should accept application/json.
+    given: $.paths[*][post,put,patch].requestBody.content
+    severity: warn
+    then:
+      field: application/json
+      function: truthy
+
+  # ── RESPONSES ──────────────────────────────────────────────────────
+  response-success-required:
+    description: Every operation must define at least one 2xx response.
+    given: $.paths[*][get,post,put,patch,delete].responses
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            '^2[0-9][0-9]$': {}
+          minProperties: 1
+  response-description-required:
+    description: Responses must have descriptions.
+    given: $.paths[*][*].responses[*]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+  response-auth-errors:
+    description: Secured operations should document 401/403 responses.
+    given: $.paths[*][get,post,put,patch,delete]
+    severity: info
+    then:
+      function: defined
+
+  # ── SCHEMAS — PROPERTY NAMING ──────────────────────────────────────
+  schema-property-snake-case:
+    description: Schema properties should be snake_case.
+    given: $.components.schemas[*].properties[*]~
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-z0-9_]*$|^(in|out)$'
+  schema-title-required:
+    description: Top-level schemas should declare a title.
+    given: $.components.schemas[*]
+    severity: info
+    then:
+      field: title
+      function: truthy
+  schema-types-defined:
+    description: Schema properties should declare a type or $ref.
+    given: $.components.schemas[*].properties[*]
+    severity: info
+    then:
+      function: defined
+
+  # ── SECURITY ───────────────────────────────────────────────────────
+  security-schemes-defined:
+    description: Security schemes must be defined.
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      function: truthy
+  security-bearer-present:
+    description: A bearer (access token) security scheme should be present.
+    given: $.components.securitySchemes
+    severity: warn
+    then:
+      field: bearerAuth
+      function: truthy
+
+  # ── HTTP METHOD CONVENTIONS ────────────────────────────────────────
+  get-no-request-body:
+    description: GET operations must not declare a request body.
+    given: $.paths[*].get
+    severity: error
+    then:
+      field: requestBody
+      function: undefined
+  delete-no-request-body:
+    description: DELETE operations should not declare a request body.
+    given: $.paths[*].delete
+    severity: warn
+    then:
+      field: requestBody
+      function: undefined

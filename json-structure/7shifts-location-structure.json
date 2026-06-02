@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-location-structure.json",
+  "name": "Location",
+  "type": "object",
+  "description": "7shifts Location structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "company_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "name": {
+      "type": "string",
+      "description": ""
+    },
+    "address": {
+      "type": "string",
+      "description": ""
+    },
+    "city": {
+      "type": "string",
+      "description": ""
+    },
+    "state": {
+      "type": "string",
+      "description": ""
+    },
+    "country": {
+      "type": "string",
+      "description": ""
+    },
+    "zip": {
+      "type": "string",
+      "description": ""
+    },
+    "timezone": {
+      "type": "string",
+      "description": ""
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

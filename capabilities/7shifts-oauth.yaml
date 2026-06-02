@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: "7shifts API \u2014 OAuth"
+  description: 'OAuth surface of the 7shifts API. 1 operations. Lead operation: Create OAuth Token. Self-contained
+    Naftiko capability covering one 7shifts business surface.'
+  tags:
+  - 7shifts
+  - OAuth
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    SEVENSHIFTS_ACCESS_TOKEN: SEVENSHIFTS_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: 7shifts-oauth
+    baseUri: https://api.7shifts.com
+    description: "7shifts API \u2014 OAuth business capability. Self-contained, no shared references."
+    authentication:
+      type: bearer
+      token: '{{env.SEVENSHIFTS_ACCESS_TOKEN}}'
+    resources:
+    - name: oauth2-token
+      path: /oauth2/token
+      operations:
+      - name: createOAuthToken
+        method: POST
+        description: Create OAuth Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request payload.
+  exposes:
+  - type: rest
+    namespace: 7shifts-oauth-rest
+    port: 8080
+    description: "REST adapter for 7shifts API \u2014 OAuth. One Spectral-compliant resource per consumed\
+      \ operation, prefixed with /v1."
+    resources:
+    - path: /v1/oauth2-token
+      name: oauth2-token
+      description: REST surface for oauth2-token.
+      operations:
+      - method: POST
+        name: createOAuthToken
+        description: Create OAuth Token
+        call: 7shifts-oauth.createOAuthToken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: 7shifts-oauth-mcp
+    port: 9090
+    transport: http
+    description: "MCP adapter for 7shifts API \u2014 OAuth. One tool per consumed operation, routed inline\
+      \ through this capability's consumes block."
+    tools:
+    - name: create-oauth-token
+      description: Create OAuth Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: 7shifts-oauth.createOAuthToken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

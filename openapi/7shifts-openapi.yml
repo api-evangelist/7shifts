@@ -3,64 +3,136 @@ info:
   title: 7shifts API
   version: '2.0'
   description: >-
-    7shifts employee scheduling and team management REST API. Only endpoints whose
-    paths, methods, and parameters were explicitly confirmed from the 7shifts
-    developer reference are listed below.
+    7shifts is a restaurant employee scheduling, time-tracking, and team
+    management platform. The 7shifts API v2 is a REST API for managing
+    companies, locations, departments, roles, users (employees), schedules,
+    shifts, time punches, wages, time off, availability, sales receipts,
+    forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer
+    access tokens for internal access or OAuth 2.0 client credentials for
+    partner integrations. Endpoints documented here were confirmed from the
+    7shifts developer reference (developers.7shifts.com) and its llms.txt
+    index. Most resources are scoped to a company via the
+    /v2/company/{company_id} path prefix. Collection endpoints use cursor-based
+    pagination via the cursor and limit query parameters. Date-based API
+    versions are selected with the x-api-version header (YYYY-MM-DD).
   contact:
     name: 7shifts Developer Portal
     url: https://developers.7shifts.com/reference/introduction
+  license:
+    name: 7shifts API Terms
+    url: https://www.7shifts.com/legal/terms-of-service
 servers:
   - url: https://api.7shifts.com
     description: 7shifts API production base URL
 tags:
   - name: OAuth
     description: Token issuance for Partner OAuth applications.
+  - name: Identity
+    description: Identity introspection for the authenticated token.
   - name: Companies
     description: Company resources for 7shifts accounts.
+  - name: Locations
+    description: Physical restaurant locations within a company.
+  - name: Departments
+    description: Departments within a location.
+  - name: Roles
+    description: Job roles within a department.
   - name: Users
-    description: User (employee) resources scoped to a company.
+    description: Users (employees) scoped to a company.
+  - name: Wages
+    description: Hourly and salary wage records for users.
+  - name: Shifts
+    description: Scheduled shifts assigned to users.
+  - name: Time Punches
+    description: Clock-in and clock-out time tracking records.
+  - name: Time Off
+    description: Time off requests and approvals.
+  - name: Availability
+    description: Employee availability records.
+  - name: Sales
+    description: Sales receipts and POS-integrated sales data.
+  - name: Forecasting
+    description: Projected sales and labor forecast overrides.
+  - name: Tasks
+    description: Task lists and task management.
+  - name: Tip Pool
+    description: Tip pool settings, entries, and reports.
+  - name: Webhooks
+    description: Company-level webhook subscriptions.
+  - name: Reporting
+    description: Sales, labor, and worked-hours reporting.
 paths:
   /oauth2/token:
     post:
       tags:
         - OAuth
-      summary: Issue an OAuth 2.0 access token
+      operationId: createOAuthToken
+      summary: Create OAuth Token
       description: >-
         Issues an access token using one of the supported OAuth 2.0 grant types
         (client_credentials, password, authorization_code, refresh_token).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthTokenRequest'
       responses:
         '200':
           description: Token created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthTokenResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Invalid client credentials
         '500':
           description: Unexpected error
+  /whoami:
+    get:
+      tags:
+        - Identity
+      operationId: retrieveIdentity
+      summary: Retrieve Identity
+      description: Returns the identity associated with the authenticated access token.
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
   /v2/companies:
     get:
       tags:
         - Companies
-      summary: List companies
+      operationId: listCompanies
+      summary: List Companies
       parameters:
         - name: modified_since
           in: query
           required: false
-          description: Return companies that have been modified since the specified date (YYYY-MM-DD).
+          description: Return companies modified since the specified date (YYYY-MM-DD).
           schema:
             type: string
-        - name: x-api-version
-          in: header
-          required: false
-          description: 7shifts API version.
-          schema:
-            type: string
-        - name: x-company-guid
-          in: header
-          required: false
-          description: Company GUID.
-          schema:
-            type: string
-            format: uuid
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CompanyGuidHeader'
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Company'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
         '401':
           description: Unauthorized
         '403':
@@ -69,19 +141,315 @@ paths:
           description: Server error
       security:
         - bearerAuth: []
+  /v2/companies/{company_id}:
+    get:
+      tags:
+        - Companies
+      operationId: retrieveCompany
+      summary: Retrieve Company
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Company'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/locations:
+    get:
+      tags:
+        - Locations
+      operationId: listLocations
+      summary: List Locations
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+        '403':
+          description: Forbidden
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Locations
+      operationId: createLocation
+      summary: Create Location
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/locations/{location_id}:
+    get:
+      tags:
+        - Locations
+      operationId: retrieveLocation
+      summary: Retrieve Location
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - $ref: '#/components/parameters/LocationIdPath'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Location'
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/departments:
+    get:
+      tags:
+        - Departments
+      operationId: listDepartments
+      summary: List Departments
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: location_id
+          in: query
+          required: false
+          description: Filter departments by location.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Department'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Departments
+      operationId: createDepartment
+      summary: Create Department
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/roles:
+    get:
+      tags:
+        - Roles
+      operationId: listRoles
+      summary: List Roles
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: department_id
+          in: query
+          required: false
+          description: Filter roles by department.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Roles
+      operationId: createRole
+      summary: Create Role
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+      responses:
+        '201':
+          description: Created
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/users:
+    get:
+      tags:
+        - Users
+      operationId: listUsers
+      summary: List Users
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: modified_since
+          in: query
+          required: false
+          description: Filter by modification date (YYYY-MM-DD).
+          schema:
+            type: string
+        - name: location_id
+          in: query
+          required: false
+          description: Filter by location (mutually exclusive with department_id and role_id).
+          schema:
+            type: integer
+            format: int64
+        - name: department_id
+          in: query
+          required: false
+          description: Filter by department (mutually exclusive with location_id and role_id).
+          schema:
+            type: integer
+            format: int64
+        - name: role_id
+          in: query
+          required: false
+          description: Filter by role (mutually exclusive with location_id and department_id).
+          schema:
+            type: integer
+            format: int64
+        - name: status
+          in: query
+          required: false
+          description: User status filter.
+          schema:
+            type: string
+            enum:
+              - active
+              - inactive
+        - name: name
+          in: query
+          required: false
+          description: Partial or full employee name filter.
+          schema:
+            type: string
+        - name: sort_by
+          in: query
+          required: false
+          description: 'Sort field and direction (e.g. firstname.asc,lastname.desc).'
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CompanyGuidHeader'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+        '403':
+          description: Forbidden
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Users
+      operationId: createUser
+      summary: Create User
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+      security:
+        - bearerAuth: []
   /v2/company/{company_id}/users/{identifier}:
     get:
       tags:
         - Users
-      summary: Retrieve a user
+      operationId: retrieveUser
+      summary: Retrieve User
       parameters:
-        - name: company_id
-          in: path
-          required: true
-          description: Company ID.
-          schema:
-            type: integer
-            format: int64
+        - $ref: '#/components/parameters/CompanyIdPath'
         - name: identifier
           in: path
           required: true
@@ -96,28 +464,613 @@ paths:
           description: Include inactive users in the response.
           schema:
             type: boolean
-        - name: x-api-version
-          in: header
-          required: false
-          description: 7shifts API version.
-          schema:
-            type: string
-        - name: x-company-guid
-          in: header
-          required: false
-          description: Company GUID.
-          schema:
-            type: string
-            format: uuid
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CompanyGuidHeader'
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/User'
         '400':
           description: Bad request
         '403':
           description: Forbidden
         '404':
           description: Not found
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - Users
+      operationId: updateUser
+      summary: Update User
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: identifier
+          in: path
+          required: true
+          description: User identifier.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Updated
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/users/{user_id}/wages:
+    get:
+      tags:
+        - Wages
+      operationId: listUserWages
+      summary: List User Wages
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - $ref: '#/components/parameters/UserIdPath'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Wage'
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Wages
+      operationId: createUserWage
+      summary: Create User Wage
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - $ref: '#/components/parameters/UserIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wage'
+      responses:
+        '201':
+          description: Created
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/shifts:
+    get:
+      tags:
+        - Shifts
+      operationId: listShifts
+      summary: List Shifts
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: location_id
+          in: query
+          required: false
+          description: Filter by location.
+          schema:
+            type: integer
+            format: int64
+        - name: department_id
+          in: query
+          required: false
+          description: Filter by department.
+          schema:
+            type: integer
+            format: int64
+        - name: role_id
+          in: query
+          required: false
+          description: Filter by role.
+          schema:
+            type: integer
+            format: int64
+        - name: user_id
+          in: query
+          required: false
+          description: Filter by assigned user.
+          schema:
+            type: integer
+            format: int64
+        - name: start[gte]
+          in: query
+          required: false
+          description: Filter by shift start time greater than or equal to (ISO8601).
+          schema:
+            type: string
+            format: date-time
+        - name: start[lte]
+          in: query
+          required: false
+          description: Filter by shift start time less than or equal to (ISO8601).
+          schema:
+            type: string
+            format: date-time
+        - name: modified_since
+          in: query
+          required: false
+          description: Return shifts modified after the specified datetime.
+          schema:
+            type: string
+            format: date-time
+        - name: open
+          in: query
+          required: false
+          description: Filter for unassigned (open) shifts.
+          schema:
+            type: boolean
+        - name: include_draft
+          in: query
+          required: false
+          description: Include draft shifts.
+          schema:
+            type: boolean
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Shift'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Shifts
+      operationId: createShift
+      summary: Create Shift
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shift'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/shifts/{shift_id}:
+    get:
+      tags:
+        - Shifts
+      operationId: retrieveShift
+      summary: Retrieve Shift
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: shift_id
+          in: path
+          required: true
+          description: Shift identifier.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Shift'
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - Shifts
+      operationId: deleteShift
+      summary: Delete Shift
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: shift_id
+          in: path
+          required: true
+          description: Shift identifier.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/time_punches:
+    get:
+      tags:
+        - Time Punches
+      operationId: listTimePunches
+      summary: List Time Punches
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: location_id
+          in: query
+          required: false
+          description: Filter by location.
+          schema:
+            type: integer
+            format: int64
+        - name: department_id
+          in: query
+          required: false
+          description: Filter by department.
+          schema:
+            type: integer
+            format: int64
+        - name: user_id
+          in: query
+          required: false
+          description: Filter by user.
+          schema:
+            type: integer
+            format: int64
+        - name: approved
+          in: query
+          required: false
+          description: Filter by approval status.
+          schema:
+            type: boolean
+        - name: clocked_in[gte]
+          in: query
+          required: false
+          description: Filter by clock-in time greater than or equal to (ISO8601).
+          schema:
+            type: string
+            format: date-time
+        - name: clocked_in[lte]
+          in: query
+          required: false
+          description: Filter by clock-in time less than or equal to (ISO8601).
+          schema:
+            type: string
+            format: date-time
+        - name: modified_since
+          in: query
+          required: false
+          description: Return time punches modified after the specified datetime.
+          schema:
+            type: string
+            format: date-time
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimePunch'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Time Punches
+      operationId: createTimePunch
+      summary: Create Time Punch
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimePunch'
+      responses:
+        '201':
+          description: Created
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/time_punches/{time_punch_id}:
+    get:
+      tags:
+        - Time Punches
+      operationId: retrieveTimePunch
+      summary: Retrieve Time Punch
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: time_punch_id
+          in: path
+          required: true
+          description: Time punch identifier.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TimePunch'
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/time_off:
+    get:
+      tags:
+        - Time Off
+      operationId: listTimeOff
+      summary: List Time Off
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: user_id
+          in: query
+          required: false
+          description: Filter by user.
+          schema:
+            type: integer
+            format: int64
+        - name: status
+          in: query
+          required: false
+          description: Filter by request status.
+          schema:
+            type: string
+            enum:
+              - pending
+              - approved
+              - declined
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimeOff'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Time Off
+      operationId: createTimeOff
+      summary: Create Time Off
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeOff'
+      responses:
+        '201':
+          description: Created
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/time_off/{time_off_id}/approve:
+    post:
+      tags:
+        - Time Off
+      operationId: approveTimeOff
+      summary: Approve Time Off Request
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: time_off_id
+          in: path
+          required: true
+          description: Time off request identifier.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Approved
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/availability:
+    get:
+      tags:
+        - Availability
+      operationId: listAvailabilities
+      summary: List Availabilities
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: user_id
+          in: query
+          required: false
+          description: Filter by user.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Availability'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/receipts:
+    get:
+      tags:
+        - Sales
+      operationId: listReceipts
+      summary: List Receipts
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: location_id
+          in: query
+          required: false
+          description: Filter by location.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/Cursor'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Receipt'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Sales
+      operationId: createReceipt
+      summary: Create Receipt
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Receipt'
+      responses:
+        '201':
+          description: Created
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/reports/daily_sales_and_labor:
+    get:
+      tags:
+        - Reporting
+      operationId: retrieveDailySalesAndLabor
+      summary: Retrieve Daily Sales And Labor
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+        - name: location_id
+          in: query
+          required: false
+          description: Filter by location.
+          schema:
+            type: integer
+            format: int64
+        - name: start_date
+          in: query
+          required: false
+          description: Start date (YYYY-MM-DD).
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          required: false
+          description: End date (YYYY-MM-DD).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+      security:
+        - bearerAuth: []
+  /v2/company/{company_id}/webhooks:
+    get:
+      tags:
+        - Webhooks
+      operationId: listWebhooks
+      summary: List Webhooks
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Webhooks
+      operationId: createWebhook
+      summary: Create Webhook
+      parameters:
+        - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '201':
+          description: Created
       security:
         - bearerAuth: []
 components:
@@ -128,8 +1081,525 @@ components:
       description: Access token obtained from /oauth2/token passed as a Bearer token.
     oauth2:
       type: oauth2
-      description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token grant types.
+      description: >-
+        OAuth 2.0 with client_credentials, password, authorization_code, and
+        refresh_token grant types.
       flows:
         clientCredentials:
           tokenUrl: https://api.7shifts.com/oauth2/token
           scopes: {}
+  parameters:
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    LocationIdPath:
+      name: location_id
+      in: path
+      required: true
+      description: Location identifier.
+      schema:
+        type: integer
+        format: int64
+    UserIdPath:
+      name: user_id
+      in: path
+      required: true
+      description: User identifier.
+      schema:
+        type: integer
+        format: int64
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
+      schema:
+        type: string
+    CompanyGuidHeader:
+      name: x-company-guid
+      in: header
+      required: false
+      description: Company GUID.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
+    OAuthTokenRequest:
+      title: OAuth Token Request
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+            - client_credentials
+            - password
+            - authorization_code
+            - refresh_token
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        refresh_token:
+          type: string
+      required:
+        - grant_type
+    OAuthTokenResponse:
+      title: OAuth Token Response
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+    Company:
+      title: Company
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        country_code:
+          type: string
+        timezone:
+          type: string
+        active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Location:
+      title: Location
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        company_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zip:
+          type: string
+        timezone:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Department:
+      title: Department
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Role:
+      title: Role
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        department_id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        color:
+          type: string
+        sort:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        first_name:
+          type: string
+          maxLength: 80
+        last_name:
+          type: string
+          maxLength: 80
+        email:
+          type: string
+          format: email
+          maxLength: 155
+        mobile_number:
+          type: string
+          description: Phone number for notifications.
+        active:
+          type: boolean
+          description: Login permission status.
+        type:
+          type: string
+          enum:
+            - employee
+            - asst_manager
+            - manager
+            - employer
+        invite_status:
+          type: string
+          enum:
+            - accepted
+            - pending
+            - required
+            - missing_contact_info
+        employee_id:
+          type: string
+          description: Company-assigned employee identifier.
+        hourly_wage:
+          type: integer
+          description: Wage in cents.
+        skill_level:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Wage:
+      title: Wage
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        role_id:
+          type: integer
+          format: int64
+        wage_type:
+          type: string
+          enum:
+            - hourly
+            - weekly_salary
+            - annual_salary
+        wage_cents:
+          type: integer
+          description: Wage amount in cents.
+        effective_date:
+          type: string
+          format: date
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Shift:
+      title: Shift
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+          nullable: true
+        location_id:
+          type: integer
+          format: int64
+        department_id:
+          type: integer
+          format: int64
+        role_id:
+          type: integer
+          format: int64
+        start:
+          type: string
+          format: date-time
+          description: Start datetime of the shift. UTC in ISO8601 format.
+        end:
+          type: string
+          format: date-time
+          description: End datetime of the shift. UTC in ISO8601 format.
+        hourly_wage:
+          type: integer
+          description: The hourly wage for this shift, in cents.
+        draft:
+          type: boolean
+          description: Publication status indicator.
+        open:
+          type: boolean
+          description: Indicates an unassigned shift available for requests.
+        station:
+          type: string
+          nullable: true
+        attendance_status:
+          type: string
+          enum:
+            - none
+            - sick
+            - no_show
+            - late
+        breaks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Break'
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Break:
+      title: Break
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        in:
+          type: string
+          format: date-time
+        out:
+          type: string
+          format: date-time
+          nullable: true
+        paid:
+          type: boolean
+    TimePunch:
+      title: Time Punch
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        department_id:
+          type: integer
+          format: int64
+        role_id:
+          type: integer
+          format: int64
+        clocked_in:
+          type: string
+          format: date-time
+          description: Clock-in timestamp (UTC, ISO8601).
+        clocked_out:
+          type: string
+          format: date-time
+          nullable: true
+          description: Clock-out timestamp (UTC, ISO8601).
+        approved:
+          type: boolean
+        hourly_wage:
+          type: integer
+          description: Calculated wage in cents.
+        tips:
+          type: integer
+          description: Declared tips in cents.
+        auto_clocked_out:
+          type: boolean
+        deleted:
+          type: boolean
+        breaks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Break'
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    TimeOff:
+      title: Time Off
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+          enum:
+            - pending
+            - approved
+            - declined
+        from_date:
+          type: string
+          format: date
+        to_date:
+          type: string
+          format: date
+        partial:
+          type: boolean
+        category:
+          type: string
+        comments:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Availability:
+      title: Availability
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        week_type:
+          type: string
+          enum:
+            - all
+            - even
+            - odd
+        availability:
+          type: object
+          description: Per-weekday availability windows.
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Receipt:
+      title: Receipt
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        external_id:
+          type: string
+          description: POS external identifier.
+        receipt_date:
+          type: string
+          format: date-time
+        total:
+          type: integer
+          description: Total in cents.
+        revenue_center:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+    Webhook:
+      title: Webhook
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        webhook_url:
+          type: string
+          format: uri
+        event_type:
+          type: string
+          description: The event that triggers this webhook.
+        active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time

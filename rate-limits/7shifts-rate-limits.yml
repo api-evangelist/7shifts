@@ -1,0 +1,55 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: 7shifts
+providerId: 7shifts
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Restaurant
+  - Scheduling
+  - Workforce Management
+description: >-
+  The 7shifts API v2 throttles requests on a per-access-token basis. Public and
+  third-party developer references describe a limit on the order of 10 requests
+  per second per access token, after which the API returns HTTP 429 Too Many
+  Requests. Limits apply regardless of subscription plan. Developers should
+  implement retry with exponential backoff. These figures are drawn from
+  third-party developer documentation and should be reconciled against the
+  official 7shifts developer reference (developers.7shifts.com) before relying
+  on exact numbers.
+sources:
+  - https://developers.7shifts.com/reference/introduction
+  - https://developers.7shifts.com/reference/versioning
+  - https://zuplo.com/learning-center/7shifts-api
+responseCodes:
+  throttled: 429
+limits:
+  - name: Requests per access token
+    scope: key
+    metric: requests_per_second
+    limit: 10
+    timeFrame: second
+    notes: >-
+      Reported limit of approximately 10 requests/second per access token;
+      exceeding it returns HTTP 429. Confirm against official docs.
+policies:
+  - name: Exponential backoff
+    description: >-
+      On a 429 response, back off and retry with exponentially increasing
+      delays rather than retrying immediately.
+  - name: Per-token scoping
+    description: >-
+      Rate limits are bound to the access token, so distributing work across
+      multiple tokens (where allowed by partner agreements) increases aggregate
+      throughput.
+  - name: Cursor pagination
+    description: >-
+      Collection endpoints use cursor-based pagination (cursor + limit, limit up
+      to 500); page through results rather than requesting large unbounded sets.
+  - name: Incremental sync
+    description: >-
+      Use modified_since filters on companies, users, shifts, and time punches
+      to fetch only changed records and reduce request volume.

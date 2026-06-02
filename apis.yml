@@ -23,7 +23,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
   - aid: 7shifts:rest-api
@@ -42,7 +42,18 @@ apis:
       - Time Tracking
       - Locations
       - Wages
+      - Time Off
+      - Availability
+      - Sales
+      - Forecasting
+      - Tasks
+      - Tip Pool
+      - Webhooks
+      - Reporting
     properties:
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/openapi/7shifts-openapi.yml
       - type: Documentation
         url: https://developers.7shifts.com/reference/introduction
       - type: Authentication
@@ -51,6 +62,49 @@ apis:
         url: https://developers.7shifts.com/docs/oauth-authentication
       - type: GettingStarted
         url: https://developers.7shifts.com/docs/getting-started
+      - type: Versioning
+        url: https://developers.7shifts.com/reference/versioning
+      - type: Postman
+        url: https://developers.7shifts.com/reference/postman-collection
+      - type: Webhooks
+        url: https://developers.7shifts.com/reference/webhooks-introduction
+      - type: RateLimits
+        url: https://developers.7shifts.com/reference/versioning
+      - type: Changelog
+        url: https://developers.7shifts.com/changelog
+      - type: SDK
+        title: Embed SDK
+        url: https://developers.7shifts.com/docs/embed-sdk-configuration
+      - type: NaftikoCapability
+        url: capabilities/7shifts-oauth.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-identity.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-companies.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-locations.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-departments.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-roles.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-users.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-wages.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-shifts.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-time-punches.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-time-off.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-availability.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-sales.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-reporting.yaml
+      - type: NaftikoCapability
+        url: capabilities/7shifts-webhooks.yaml
 
 common:
   - type: GitHubOrganization
@@ -73,6 +127,18 @@ common:
     url: https://support.7shifts.com/
   - type: LLMsTxt
     url: https://developers.7shifts.com/llms.txt
+  - type: Rules
+    url: rules/7shifts-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/7shifts-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/7shifts-context.jsonld
+  - type: Plans
+    url: plans/7shifts-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/7shifts-rate-limits.yml
+  - type: FinOps
+    url: finops/7shifts-finops.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

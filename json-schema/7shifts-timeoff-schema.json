@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-schema/7shifts-timeoff-schema.json",
+  "title": "Time Off",
+  "type": "object",
+  "description": "7shifts TimeOff resource.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "user_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "declined"
+      ]
+    },
+    "from_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "to_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "partial": {
+      "type": "boolean"
+    },
+    "category": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

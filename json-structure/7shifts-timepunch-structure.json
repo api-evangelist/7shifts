@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-structure/7shifts-timepunch-structure.json",
+  "name": "TimePunch",
+  "type": "object",
+  "description": "7shifts TimePunch structure.",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "description": ""
+    },
+    "user_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "location_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "department_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "role_id": {
+      "type": "int64",
+      "description": ""
+    },
+    "clocked_in": {
+      "type": "datetime",
+      "description": "Clock-in timestamp (UTC, ISO8601)."
+    },
+    "clocked_out": {
+      "type": "datetime",
+      "description": "Clock-out timestamp (UTC, ISO8601)."
+    },
+    "approved": {
+      "type": "boolean",
+      "description": ""
+    },
+    "hourly_wage": {
+      "type": "int64",
+      "description": "Calculated wage in cents."
+    },
+    "tips": {
+      "type": "int64",
+      "description": "Declared tips in cents."
+    },
+    "auto_clocked_out": {
+      "type": "boolean",
+      "description": ""
+    },
+    "deleted": {
+      "type": "boolean",
+      "description": ""
+    },
+    "breaks": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "object"
+      }
+    },
+    "created": {
+      "type": "datetime",
+      "description": ""
+    },
+    "modified": {
+      "type": "datetime",
+      "description": ""
+    }
+  }
+}

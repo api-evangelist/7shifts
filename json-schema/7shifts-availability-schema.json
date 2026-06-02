@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/json-schema/7shifts-availability-schema.json",
+  "title": "Availability",
+  "type": "object",
+  "description": "7shifts Availability resource.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "user_id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "status": {
+      "type": "string"
+    },
+    "week_type": {
+      "type": "string",
+      "enum": [
+        "all",
+        "even",
+        "odd"
+      ]
+    },
+    "availability": {
+      "type": "object",
+      "description": "Per-weekday availability windows."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
