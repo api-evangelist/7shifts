@@ -1,15 +1,12 @@
 aid: 7shifts
 name: 7shifts
 description: >-
-  7shifts is a restaurant employee scheduling, time-tracking, and team
-  management platform that helps restaurant operators forecast labor, build
-  schedules, manage shift trades, run payroll integrations, and communicate
-  with hourly staff. The platform integrates with major POS systems for sales
-  data and labor forecasting and supports multi-location operations across
-  quick-service, full-service, and franchise concepts. The 7shifts API v2 is a
-  REST API authenticated via long-lived access tokens (Bearer) for internal use
-  or OAuth 2.0 client credentials for technology partners, exposing employees,
-  schedules, shifts, time punches, departments, locations, and wages.
+  7shifts is a restaurant employee scheduling, time-tracking, and team management platform that helps restaurant
+  operators forecast labor, build schedules, manage shift trades, run payroll integrations, and communicate with hourly
+  staff. The platform integrates with major POS systems for sales data and labor forecasting and supports multi-location
+  operations across quick-service, full-service, and franchise concepts. The 7shifts API v2 is a REST API authenticated
+  via long-lived access tokens (Bearer) for internal use or OAuth 2.0 client credentials for technology partners,
+  exposing employees, schedules, shifts, time punches, departments, locations, and wages.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -20,8 +17,7 @@ tags:
   - Time Tracking
   - HRIS
   - Labor
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-06-02'
 specificationVersion: '0.19'
@@ -29,10 +25,9 @@ apis:
   - aid: 7shifts:rest-api
     name: 7shifts REST API v2
     description: >-
-      REST API v2 for managing companies, locations, departments, roles,
-      employees, schedules, shifts, time punches, wages, and time-off requests
-      in 7shifts. Authentication uses Bearer access tokens for internal access
-      or OAuth 2.0 client credentials for partner integrations.
+      REST API v2 for managing companies, locations, departments, roles, employees, schedules, shifts, time punches,
+      wages, and time-off requests in 7shifts. Authentication uses Bearer access tokens for internal access or OAuth 2.0
+      client credentials for partner integrations.
     humanURL: https://developers.7shifts.com/reference/introduction
     baseURL: https://api.7shifts.com/v2
     tags:
@@ -52,8 +47,7 @@ apis:
       - Reporting
     properties:
       - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/openapi/7shifts-openapi.yml
+        url: https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/openapi/7shifts-openapi.yml
       - type: Documentation
         url: https://developers.7shifts.com/reference/introduction
       - type: Authentication
@@ -75,37 +69,6 @@ apis:
       - type: SDK
         title: Embed SDK
         url: https://developers.7shifts.com/docs/embed-sdk-configuration
-      - type: NaftikoCapability
-        url: capabilities/7shifts-oauth.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-identity.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-companies.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-locations.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-departments.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-roles.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-users.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-wages.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-shifts.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-time-punches.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-time-off.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-availability.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-sales.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-reporting.yaml
-      - type: NaftikoCapability
-        url: capabilities/7shifts-webhooks.yaml
-
 common:
   - type: GitHubOrganization
     url: https://github.com/7shifts
