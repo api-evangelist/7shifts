@@ -8,7 +8,7 @@ description: >-
   via long-lived access tokens (Bearer) for internal use or OAuth 2.0 client credentials for technology partners,
   exposing employees, schedules, shifts, time punches, departments, locations, and wages.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Restaurant
   - Scheduling
