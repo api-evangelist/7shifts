@@ -64,9 +64,9 @@ apis:
         url: https://developers.7shifts.com/reference/webhooks-introduction
       - type: RateLimits
         url: https://developers.7shifts.com/reference/versioning
-      - type: Changelog
+      - type: ChangeLog
         url: https://developers.7shifts.com/changelog
-      - type: SDK
+      - type: SDKs
         title: Embed SDK
         url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
@@ -82,13 +82,13 @@ common:
     url: https://developers.7shifts.com/reference/introduction
   - type: Pricing
     url: https://www.7shifts.com/pricing
-  - type: SignUp
+  - type: Signup
     url: https://app.7shifts.com/signup
   - type: Login
     url: https://app.7shifts.com/login
   - type: Support
     url: https://support.7shifts.com/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.7shifts.com/llms.txt
   - type: Rules
     url: rules/7shifts-spectral-rules.yml
