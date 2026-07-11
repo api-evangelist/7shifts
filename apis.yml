@@ -70,6 +70,12 @@ apis:
         title: Embed SDK
         url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - type: VulnerabilityDisclosure
+    url: security/7shifts-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/7shifts-domain-security.yml
+  - type: Authentication
+    url: authentication/7shifts-authentication.yml
   - type: OAuthScopes
     url: scopes/7shifts-scopes.yml
   - type: GitHubOrganization
