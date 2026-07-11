@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/7shifts-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Access token obtained from /oauth2/token passed as a Bearer token.
+  sources:
+  - openapi/7shifts-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.7shifts.com/oauth2/token
+    scopes: 0
+  description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token
+    grant types.
+  sources:
+  - openapi/7shifts-openapi.yml
