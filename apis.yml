@@ -70,6 +70,8 @@ apis:
         title: Embed SDK
         url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - type: OAuthScopes
+    url: scopes/7shifts-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/7shifts
   - type: LinkedIn

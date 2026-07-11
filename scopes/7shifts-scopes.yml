@@ -1,0 +1,85 @@
+generated: '2026-07-11'
+method: searched
+source: openapi/7shifts-openapi.yml
+docs: https://developers.7shifts.com/docs/oauth-authentication
+schemes:
+- name: oauth2
+  source: openapi/7shifts-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.7shifts.com/oauth2/token
+  description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token
+    grant types.
+scopes:
+- scope: companies:read
+  description: Reading or mutating company object.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: companies:write
+  description: Reading or mutating company object.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: departments:read
+  description: Reading or mutating departments.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: departments:write
+  description: Reading or mutating departments.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: locations:read
+  description: Reading or mutating locations.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: locations:write
+  description: Reading or mutating locations.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: roles:read
+  description: Reading or mutating roles.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: roles:write
+  description: Reading or mutating roles.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: users:read
+  description: Reading or mutating users.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: users:write
+  description: Reading or mutating users.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: sales:read
+  description: Reading or mutating sales.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: sales:write
+  description: Reading or mutating sales.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: shifts:read
+  description: Reading or mutating shifts and schedule publishing.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: shifts:write
+  description: Reading or mutating shifts and schedule publishing.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: time_punches:read
+  description: Reading or mutating time punches.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: time_punches:write
+  description: Reading or mutating time punches.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: events:read
+  description: Reading or mutating schedule events.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
+- scope: events:write
+  description: Reading or mutating schedule events.
+  sources:
+  - https://developers.7shifts.com/docs/oauth-authentication
