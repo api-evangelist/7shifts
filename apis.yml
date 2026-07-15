@@ -70,6 +70,8 @@ apis:
         title: Embed SDK
         url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - type: AgenticAccess
+    url: agentic-access/7shifts-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/7shifts-vulnerability-disclosure.yml
   - type: DomainSecurity
