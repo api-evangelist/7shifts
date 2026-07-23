@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: 7shifts Availability Sales API
+  version: '2.0'
+  description: 7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).
+  contact:
+    name: 7shifts Developer Portal
+    url: https://developers.7shifts.com/reference/introduction
+  license:
+    name: 7shifts API Terms
+    url: https://www.7shifts.com/legal/terms-of-service
+servers:
+- url: https://api.7shifts.com
+  description: 7shifts API production base URL
+tags:
+- name: Sales
+  description: Sales receipts and POS-integrated sales data.
+paths:
+  /v2/company/{company_id}/receipts:
+    get:
+      tags:
+      - Sales
+      operationId: listReceipts
+      summary: List Receipts
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      - name: location_id
+        in: query
+        required: false
+        description: Filter by location.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Receipt'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Sales
+      operationId: createReceipt
+      summary: Create Receipt
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Receipt'
+      responses:
+        '201':
+          description: Created
+      security:
+      - bearerAuth: []
+components:
+  parameters:
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+  schemas:
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
+    Receipt:
+      title: Receipt
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        external_id:
+          type: string
+          description: POS external identifier.
+        receipt_date:
+          type: string
+          format: date-time
+        total:
+          type: integer
+          description: Total in cents.
+        revenue_center:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token obtained from /oauth2/token passed as a Bearer token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token grant types.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.7shifts.com/oauth2/token
+          scopes: {}

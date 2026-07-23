@@ -1,0 +1,195 @@
+openapi: 3.1.0
+info:
+  title: 7shifts Availability Locations API
+  version: '2.0'
+  description: 7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).
+  contact:
+    name: 7shifts Developer Portal
+    url: https://developers.7shifts.com/reference/introduction
+  license:
+    name: 7shifts API Terms
+    url: https://www.7shifts.com/legal/terms-of-service
+servers:
+- url: https://api.7shifts.com
+  description: 7shifts API production base URL
+tags:
+- name: Locations
+  description: Physical restaurant locations within a company.
+paths:
+  /v2/company/{company_id}/locations:
+    get:
+      tags:
+      - Locations
+      operationId: listLocations
+      summary: List Locations
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+                  meta:
+                    $ref: '#/components/schemas/CursorMeta'
+        '403':
+          description: Forbidden
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Locations
+      operationId: createLocation
+      summary: Create Location
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+      security:
+      - bearerAuth: []
+  /v2/company/{company_id}/locations/{location_id}:
+    get:
+      tags:
+      - Locations
+      operationId: retrieveLocation
+      summary: Retrieve Location
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      - $ref: '#/components/parameters/LocationIdPath'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Location'
+        '404':
+          description: Not found
+      security:
+      - bearerAuth: []
+components:
+  parameters:
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+    LocationIdPath:
+      name: location_id
+      in: path
+      required: true
+      description: Location identifier.
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
+    Location:
+      title: Location
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        company_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        zip:
+          type: string
+        timezone:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token obtained from /oauth2/token passed as a Bearer token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token grant types.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.7shifts.com/oauth2/token
+          scopes: {}

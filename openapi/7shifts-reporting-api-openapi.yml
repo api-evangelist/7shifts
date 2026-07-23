@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: 7shifts Availability Reporting API
+  version: '2.0'
+  description: 7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).
+  contact:
+    name: 7shifts Developer Portal
+    url: https://developers.7shifts.com/reference/introduction
+  license:
+    name: 7shifts API Terms
+    url: https://www.7shifts.com/legal/terms-of-service
+servers:
+- url: https://api.7shifts.com
+  description: 7shifts API production base URL
+tags:
+- name: Reporting
+  description: Sales, labor, and worked-hours reporting.
+paths:
+  /v2/company/{company_id}/reports/daily_sales_and_labor:
+    get:
+      tags:
+      - Reporting
+      operationId: retrieveDailySalesAndLabor
+      summary: Retrieve Daily Sales And Labor
+      parameters:
+      - $ref: '#/components/parameters/CompanyIdPath'
+      - name: location_id
+        in: query
+        required: false
+        description: Filter by location.
+        schema:
+          type: integer
+          format: int64
+      - name: start_date
+        in: query
+        required: false
+        description: Start date (YYYY-MM-DD).
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: End date (YYYY-MM-DD).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      security:
+      - bearerAuth: []
+components:
+  parameters:
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token obtained from /oauth2/token passed as a Bearer token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token grant types.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.7shifts.com/oauth2/token
+          scopes: {}

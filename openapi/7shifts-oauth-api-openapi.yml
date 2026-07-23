@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: 7shifts Availability OAuth API
+  version: '2.0'
+  description: 7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).
+  contact:
+    name: 7shifts Developer Portal
+    url: https://developers.7shifts.com/reference/introduction
+  license:
+    name: 7shifts API Terms
+    url: https://www.7shifts.com/legal/terms-of-service
+servers:
+- url: https://api.7shifts.com
+  description: 7shifts API production base URL
+tags:
+- name: OAuth
+  description: Token issuance for Partner OAuth applications.
+paths:
+  /oauth2/token:
+    post:
+      tags:
+      - OAuth
+      operationId: createOAuthToken
+      summary: Create OAuth Token
+      description: Issues an access token using one of the supported OAuth 2.0 grant types (client_credentials, password, authorization_code, refresh_token).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthTokenRequest'
+      responses:
+        '200':
+          description: Token created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthTokenResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Invalid client credentials
+        '500':
+          description: Unexpected error
+components:
+  schemas:
+    OAuthTokenResponse:
+      title: OAuth Token Response
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+    OAuthTokenRequest:
+      title: OAuth Token Request
+      type: object
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - client_credentials
+          - password
+          - authorization_code
+          - refresh_token
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        refresh_token:
+          type: string
+      required:
+      - grant_type
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token obtained from /oauth2/token passed as a Bearer token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 with client_credentials, password, authorization_code, and refresh_token grant types.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.7shifts.com/oauth2/token
+          scopes: {}
