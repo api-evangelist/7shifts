@@ -8,7 +8,20 @@ description: >-
   via long-lived access tokens (Bearer) for internal use or OAuth 2.0 client credentials for technology partners,
   exposing employees, schedules, shifts, time punches, departments, locations, and wages.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/7shifts.png
 tags:
   - Restaurant
   - Scheduling
@@ -22,53 +35,456 @@ created: '2026-05-11'
 modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
-  - aid: 7shifts:rest-api
-    name: 7shifts REST API v2
-    description: >-
-      REST API v2 for managing companies, locations, departments, roles, employees, schedules, shifts, time punches,
-      wages, and time-off requests in 7shifts. Authentication uses Bearer access tokens for internal access or OAuth 2.0
-      client credentials for partner integrations.
-    humanURL: https://developers.7shifts.com/reference/introduction
-    baseURL: https://api.7shifts.com/v2
-    tags:
-      - Employees
-      - Schedules
-      - Shifts
-      - Time Tracking
-      - Locations
-      - Wages
-      - Time Off
-      - Availability
-      - Sales
-      - Forecasting
-      - Tasks
-      - Tip Pool
-      - Webhooks
-      - Reporting
-    properties:
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/openapi/7shifts-openapi.yml
-      - type: Documentation
-        url: https://developers.7shifts.com/reference/introduction
-      - type: Authentication
-        url: https://developers.7shifts.com/reference/authentication
-      - type: OAuth Authentication
-        url: https://developers.7shifts.com/docs/oauth-authentication
-      - type: GettingStarted
-        url: https://developers.7shifts.com/docs/getting-started
-      - type: Versioning
-        url: https://developers.7shifts.com/reference/versioning
-      - type: Postman
-        url: https://developers.7shifts.com/reference/postman-collection
-      - type: Webhooks
-        url: https://developers.7shifts.com/reference/webhooks-introduction
-      - type: RateLimits
-        url: https://developers.7shifts.com/reference/versioning
-      - type: ChangeLog
-        url: https://developers.7shifts.com/changelog
-      - type: SDKs
-        title: Embed SDK
-        url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-availability-api
+  name: 7shifts Availability API
+  description: Employee availability records.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-availability-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-companies-api
+  name: 7shifts Companies API
+  description: Company resources for 7shifts accounts.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-companies-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-departments-api
+  name: 7shifts Departments API
+  description: Departments within a location.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Departments
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-departments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-identity-api
+  name: 7shifts Identity API
+  description: Identity introspection for the authenticated token.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-identity-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-locations-api
+  name: 7shifts Locations API
+  description: Physical restaurant locations within a company.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-oauth-api
+  name: 7shifts OAuth API
+  description: Token issuance for Partner OAuth applications.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-reporting-api
+  name: 7shifts Reporting API
+  description: Sales, labor, and worked-hours reporting.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-reporting-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-roles-api
+  name: 7shifts Roles API
+  description: Job roles within a department.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-sales-api
+  name: 7shifts Sales API
+  description: Sales receipts and POS-integrated sales data.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-sales-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-shifts-api
+  name: 7shifts Shifts API
+  description: Scheduled shifts assigned to users.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Shifts
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-shifts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-time-off-api
+  name: 7shifts Time Off API
+  description: Time off requests and approvals.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Time Off
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-time-off-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-time-punches-api
+  name: 7shifts Time Punches API
+  description: Clock-in and clock-out time tracking records.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Time Punches
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-time-punches-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-users-api
+  name: 7shifts Users API
+  description: Users (employees) scoped to a company.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-wages-api
+  name: 7shifts Wages API
+  description: Hourly and salary wage records for users.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Wages
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-wages-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-webhooks-api
+  name: 7shifts Webhooks API
+  description: Company-level webhook subscriptions.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
   - type: AgenticAccess
     url: agentic-access/7shifts-agentic-access.yml
