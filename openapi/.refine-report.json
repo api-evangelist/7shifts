@@ -1,0 +1,42 @@
+{
+  "provider": "7shifts",
+  "sources": [
+    "7shifts-availability-api-openapi.yml",
+    "7shifts-companies-api-openapi.yml",
+    "7shifts-departments-api-openapi.yml",
+    "7shifts-identity-api-openapi.yml",
+    "7shifts-locations-api-openapi.yml",
+    "7shifts-oauth-api-openapi.yml",
+    "7shifts-reporting-api-openapi.yml",
+    "7shifts-roles-api-openapi.yml",
+    "7shifts-sales-api-openapi.yml",
+    "7shifts-shifts-api-openapi.yml",
+    "7shifts-time-off-api-openapi.yml",
+    "7shifts-time-punches-api-openapi.yml",
+    "7shifts-users-api-openapi.yml",
+    "7shifts-wages-api-openapi.yml",
+    "7shifts-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "7shifts-availability-api-openapi.yml",
+    "7shifts-companies-api-openapi.yml",
+    "7shifts-departments-api-openapi.yml",
+    "7shifts-identity-api-openapi.yml",
+    "7shifts-locations-api-openapi.yml",
+    "7shifts-oauth-api-openapi.yml",
+    "7shifts-reporting-api-openapi.yml",
+    "7shifts-roles-api-openapi.yml",
+    "7shifts-sales-api-openapi.yml",
+    "7shifts-shifts-api-openapi.yml",
+    "7shifts-time-off-api-openapi.yml",
+    "7shifts-time-punches-api-openapi.yml",
+    "7shifts-users-api-openapi.yml",
+    "7shifts-wages-api-openapi.yml",
+    "7shifts-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
