@@ -33,7 +33,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-06-02'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: 7shifts:7shifts-availability-api
   name: 7shifts Availability API
