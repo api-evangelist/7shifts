@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7shifts Availability Wages API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List User Wages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users/:user_id/wages",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "User identifier."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List User Wages"
+        },
+        {
+          "info": {
+            "name": "Create User Wage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users/:user_id/wages",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "User identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create User Wage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

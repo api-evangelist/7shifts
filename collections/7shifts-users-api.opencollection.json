@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7shifts Availability Users API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users",
+            "headers": [
+              {
+                "name": "x-api-version",
+                "value": ""
+              },
+              {
+                "name": "x-company-guid",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "modified_since",
+                "value": "",
+                "type": "query",
+                "description": "Filter by modification date (YYYY-MM-DD)."
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location (mutually exclusive with department_id and role_id)."
+              },
+              {
+                "name": "department_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by department (mutually exclusive with location_id and role_id)."
+              },
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by role (mutually exclusive with location_id and department_id)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "User status filter."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Partial or full employee name filter."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction (e.g. firstname.asc,lastname.desc)."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for the next or previous page."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-500, default 100; 20 for some collections)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Users"
+        },
+        {
+          "info": {
+            "name": "Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create User"
+        },
+        {
+          "info": {
+            "name": "Retrieve User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users/:identifier",
+            "headers": [
+              {
+                "name": "x-api-version",
+                "value": ""
+              },
+              {
+                "name": "x-company-guid",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
+              },
+              {
+                "name": "include_inactive",
+                "value": "",
+                "type": "query",
+                "description": "Include inactive users in the response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve User"
+        },
+        {
+          "info": {
+            "name": "Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.7shifts.com/v2/company/:company_id/users/:identifier",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "User identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update User"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

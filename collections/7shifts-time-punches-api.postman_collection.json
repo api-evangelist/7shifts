@@ -1,0 +1,526 @@
+{
+  "item": [
+    {
+      "id": "69b87b8c-3ebb-40b7-b675-157a09efa68b",
+      "name": "Time Punches",
+      "description": {
+        "content": "Clock-in and clock-out time tracking records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f2b3af9-2c50-4592-8051-455ce6add456",
+          "name": "List Time Punches",
+          "request": {
+            "name": "List Time Punches",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "time_punches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<long>",
+                  "description": "Filter by location."
+                },
+                {
+                  "disabled": false,
+                  "key": "department_id",
+                  "value": "<long>",
+                  "description": "Filter by department."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<long>",
+                  "description": "Filter by user."
+                },
+                {
+                  "disabled": false,
+                  "key": "approved",
+                  "value": "<boolean>",
+                  "description": "Filter by approval status."
+                },
+                {
+                  "disabled": false,
+                  "key": "clocked_in[gte]",
+                  "value": "<dateTime>",
+                  "description": "Filter by clock-in time greater than or equal to (ISO8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "clocked_in[lte]",
+                  "value": "<dateTime>",
+                  "description": "Filter by clock-in time less than or equal to (ISO8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_since",
+                  "value": "<dateTime>",
+                  "description": "Return time punches modified after the specified datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for the next or previous page."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Results per page (1-500, default 100; 20 for some collections)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7e93546-15d8-4366-ad8f-e211cba2e57e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "time_punches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "department_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "approved",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "clocked_in[gte]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "clocked_in[lte]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "modified_since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 9721,\n      \"user_id\": 3110,\n      \"location_id\": 3729,\n      \"department_id\": 2908,\n      \"role_id\": 8567,\n      \"clocked_in\": \"1978-02-21T01:16:34.487Z\",\n      \"clocked_out\": \"1979-05-23T09:04:46.533Z\",\n      \"approved\": true,\n      \"hourly_wage\": 7600,\n      \"tips\": 9756,\n      \"auto_clocked_out\": false,\n      \"deleted\": true,\n      \"breaks\": [\n        {\n          \"id\": 1250,\n          \"in\": \"1996-03-02T06:34:54.836Z\",\n          \"out\": \"1949-02-20T10:48:12.857Z\",\n          \"paid\": true\n        },\n        {\n          \"id\": 8674,\n          \"in\": \"1980-10-15T22:38:22.597Z\",\n          \"out\": \"1977-07-23T17:09:48.199Z\",\n          \"paid\": false\n        }\n      ],\n      \"created\": \"1964-11-10T10:41:38.576Z\",\n      \"modified\": \"1999-10-04T18:30:06.783Z\"\n    },\n    {\n      \"id\": 4147,\n      \"user_id\": 8683,\n      \"location_id\": 4186,\n      \"department_id\": 1938,\n      \"role_id\": 3355,\n      \"clocked_in\": \"1973-02-03T10:56:14.924Z\",\n      \"clocked_out\": \"2021-08-25T14:30:35.917Z\",\n      \"approved\": true,\n      \"hourly_wage\": 9514,\n      \"tips\": 5316,\n      \"auto_clocked_out\": false,\n      \"deleted\": true,\n      \"breaks\": [\n        {\n          \"id\": 9211,\n          \"in\": \"1991-10-11T18:12:24.035Z\",\n          \"out\": \"1992-08-17T02:59:00.789Z\",\n          \"paid\": true\n        },\n        {\n          \"id\": 4639,\n          \"in\": \"1964-02-29T23:18:58.678Z\",\n          \"out\": \"1991-11-23T10:20:43.876Z\",\n          \"paid\": true\n        }\n      ],\n      \"created\": \"2000-11-21T23:10:59.137Z\",\n      \"modified\": \"1988-01-19T08:27:12.779Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 1330\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98b8e6ba-8fde-4d30-9104-1ef2a2d5e4b4",
+          "name": "Create Time Punch",
+          "request": {
+            "name": "Create Time Punch",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "time_punches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"department_id\": \"<long>\",\n  \"role_id\": \"<long>\",\n  \"clocked_in\": \"<dateTime>\",\n  \"clocked_out\": \"<dateTime>\",\n  \"approved\": \"<boolean>\",\n  \"hourly_wage\": \"<integer>\",\n  \"tips\": \"<integer>\",\n  \"auto_clocked_out\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"breaks\": [\n    {\n      \"id\": \"<long>\",\n      \"in\": \"<dateTime>\",\n      \"out\": \"<dateTime>\",\n      \"paid\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"in\": \"<dateTime>\",\n      \"out\": \"<dateTime>\",\n      \"paid\": \"<boolean>\"\n    }\n  ],\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5184f6d2-65d1-4a93-8c7f-939775f817a0",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "time_punches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"department_id\": \"<long>\",\n  \"role_id\": \"<long>\",\n  \"clocked_in\": \"<dateTime>\",\n  \"clocked_out\": \"<dateTime>\",\n  \"approved\": \"<boolean>\",\n  \"hourly_wage\": \"<integer>\",\n  \"tips\": \"<integer>\",\n  \"auto_clocked_out\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"breaks\": [\n    {\n      \"id\": 2455,\n      \"in\": \"1995-04-09T02:45:00.924Z\",\n      \"out\": \"2000-06-20T22:21:00.610Z\",\n      \"paid\": true\n    },\n    {\n      \"id\": 511,\n      \"in\": \"2022-02-22T08:19:41.916Z\",\n      \"out\": \"2002-04-16T20:39:09.811Z\",\n      \"paid\": true\n    }\n  ],\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20f690c-17dc-4047-b9a7-312f440ec86a",
+          "name": "Retrieve Time Punch",
+          "request": {
+            "name": "Retrieve Time Punch",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "time_punches",
+                ":time_punch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "time_punch_id",
+                  "description": "(Required) Time punch identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "062963fb-290c-47da-bce1-8958066e5bfe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "time_punches",
+                    ":time_punch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "time_punch_id",
+                      "description": "(Required) Time punch identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 1707,\n    \"user_id\": 7659,\n    \"location_id\": 4291,\n    \"department_id\": 5987,\n    \"role_id\": 5519,\n    \"clocked_in\": \"1999-10-07T15:15:10.921Z\",\n    \"clocked_out\": \"1985-05-29T22:05:36.155Z\",\n    \"approved\": false,\n    \"hourly_wage\": 2490,\n    \"tips\": 8469,\n    \"auto_clocked_out\": false,\n    \"deleted\": false,\n    \"breaks\": [\n      {\n        \"id\": 4905,\n        \"in\": \"1981-11-28T13:33:02.253Z\",\n        \"out\": \"2007-03-24T20:21:25.441Z\",\n        \"paid\": true\n      },\n      {\n        \"id\": 6167,\n        \"in\": \"2020-08-28T14:01:49.128Z\",\n        \"out\": \"1952-09-17T13:09:13.412Z\",\n        \"paid\": true\n      }\n    ],\n    \"created\": \"1954-07-28T16:30:54.198Z\",\n    \"modified\": \"1957-03-30T22:32:27.861Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d293d54f-0f52-4586-b515-3b60ba7e9b9b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "time_punches",
+                    ":time_punch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "time_punch_id",
+                      "description": "(Required) Time punch identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7shifts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "38f78ff1-6cb2-4940-95d7-371b0370ee2f",
+    "name": "7shifts Availability Time Punches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

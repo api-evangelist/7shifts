@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7shifts Availability Companies API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/companies",
+            "headers": [
+              {
+                "name": "x-api-version",
+                "value": ""
+              },
+              {
+                "name": "x-company-guid",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "modified_since",
+                "value": "",
+                "type": "query",
+                "description": "Return companies modified since the specified date (YYYY-MM-DD)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Companies"
+        },
+        {
+          "info": {
+            "name": "Retrieve Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/companies/:company_id",
+            "headers": [
+              {
+                "name": "x-api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve Company"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

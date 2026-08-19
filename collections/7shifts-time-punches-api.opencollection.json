@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7shifts Availability Time Punches API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time Punches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Time Punches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/company/:company_id/time_punches",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by location."
+              },
+              {
+                "name": "department_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by department."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user."
+              },
+              {
+                "name": "approved",
+                "value": "",
+                "type": "query",
+                "description": "Filter by approval status."
+              },
+              {
+                "name": "clocked_in[gte]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by clock-in time greater than or equal to (ISO8601)."
+              },
+              {
+                "name": "clocked_in[lte]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by clock-in time less than or equal to (ISO8601)."
+              },
+              {
+                "name": "modified_since",
+                "value": "",
+                "type": "query",
+                "description": "Return time punches modified after the specified datetime."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor for the next or previous page."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (1-500, default 100; 20 for some collections)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Time Punches"
+        },
+        {
+          "info": {
+            "name": "Create Time Punch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7shifts.com/v2/company/:company_id/time_punches",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Time Punch"
+        },
+        {
+          "info": {
+            "name": "Retrieve Time Punch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7shifts.com/v2/company/:company_id/time_punches/:time_punch_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier."
+              },
+              {
+                "name": "time_punch_id",
+                "value": "",
+                "type": "path",
+                "description": "Time punch identifier."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve Time Punch"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

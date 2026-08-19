@@ -1,0 +1,773 @@
+{
+  "item": [
+    {
+      "id": "35e95bb3-329d-4522-809d-ccc2ec0c6f42",
+      "name": "Shifts",
+      "description": {
+        "content": "Scheduled shifts assigned to users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ffcde78-6de6-4491-b35c-5c38d62017a1",
+          "name": "List Shifts",
+          "request": {
+            "name": "List Shifts",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "shifts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "location_id",
+                  "value": "<long>",
+                  "description": "Filter by location."
+                },
+                {
+                  "disabled": false,
+                  "key": "department_id",
+                  "value": "<long>",
+                  "description": "Filter by department."
+                },
+                {
+                  "disabled": false,
+                  "key": "role_id",
+                  "value": "<long>",
+                  "description": "Filter by role."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<long>",
+                  "description": "Filter by assigned user."
+                },
+                {
+                  "disabled": false,
+                  "key": "start[gte]",
+                  "value": "<dateTime>",
+                  "description": "Filter by shift start time greater than or equal to (ISO8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start[lte]",
+                  "value": "<dateTime>",
+                  "description": "Filter by shift start time less than or equal to (ISO8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_since",
+                  "value": "<dateTime>",
+                  "description": "Return shifts modified after the specified datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "open",
+                  "value": "<boolean>",
+                  "description": "Filter for unassigned (open) shifts."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_draft",
+                  "value": "<boolean>",
+                  "description": "Include draft shifts."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor for the next or previous page."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Results per page (1-500, default 100; 20 for some collections)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b8ce6e8-c492-48de-9d80-8f0de8135d30",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "location_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "department_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "role_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start[gte]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "start[lte]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "modified_since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "open",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_draft",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 9458,\n      \"user_id\": 9326,\n      \"location_id\": 7620,\n      \"department_id\": 5216,\n      \"role_id\": 1323,\n      \"start\": \"2017-10-03T11:07:48.878Z\",\n      \"end\": \"2025-08-23T20:05:40.113Z\",\n      \"hourly_wage\": 683,\n      \"draft\": false,\n      \"open\": true,\n      \"station\": \"string\",\n      \"attendance_status\": \"sick\",\n      \"breaks\": [\n        {\n          \"id\": 4237,\n          \"in\": \"2019-09-09T00:35:04.508Z\",\n          \"out\": \"1993-06-19T08:28:31.906Z\",\n          \"paid\": true\n        },\n        {\n          \"id\": 4598,\n          \"in\": \"1956-12-05T21:57:49.323Z\",\n          \"out\": \"2022-06-19T00:04:12.797Z\",\n          \"paid\": false\n        }\n      ],\n      \"created\": \"1974-09-11T23:32:35.598Z\",\n      \"modified\": \"2010-08-11T18:48:06.695Z\"\n    },\n    {\n      \"id\": 5212,\n      \"user_id\": 2360,\n      \"location_id\": 7600,\n      \"department_id\": 7469,\n      \"role_id\": 3412,\n      \"start\": \"2012-10-25T05:16:57.880Z\",\n      \"end\": \"1993-07-05T01:47:41.802Z\",\n      \"hourly_wage\": 5426,\n      \"draft\": true,\n      \"open\": true,\n      \"station\": \"string\",\n      \"attendance_status\": \"sick\",\n      \"breaks\": [\n        {\n          \"id\": 6053,\n          \"in\": \"1950-10-29T06:38:45.082Z\",\n          \"out\": \"1980-11-22T12:12:55.217Z\",\n          \"paid\": false\n        },\n        {\n          \"id\": 1838,\n          \"in\": \"1970-10-01T14:12:55.191Z\",\n          \"out\": \"1998-05-20T11:58:30.299Z\",\n          \"paid\": true\n        }\n      ],\n      \"created\": \"1968-05-01T16:37:41.063Z\",\n      \"modified\": \"1991-08-11T00:23:59.650Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 1096\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5434cd03-82e9-482d-b356-ff1dfad29fbc",
+          "name": "Create Shift",
+          "request": {
+            "name": "Create Shift",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "shifts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"department_id\": \"<long>\",\n  \"role_id\": \"<long>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"hourly_wage\": \"<integer>\",\n  \"draft\": \"<boolean>\",\n  \"open\": \"<boolean>\",\n  \"station\": \"<string>\",\n  \"attendance_status\": \"<string>\",\n  \"breaks\": [\n    {\n      \"id\": \"<long>\",\n      \"in\": \"<dateTime>\",\n      \"out\": \"<dateTime>\",\n      \"paid\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"in\": \"<dateTime>\",\n      \"out\": \"<dateTime>\",\n      \"paid\": \"<boolean>\"\n    }\n  ],\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d30fc10a-9471-46b8-9bcb-df3b5a965043",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"department_id\": \"<long>\",\n  \"role_id\": \"<long>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"hourly_wage\": \"<integer>\",\n  \"draft\": \"<boolean>\",\n  \"open\": \"<boolean>\",\n  \"station\": \"<string>\",\n  \"attendance_status\": \"<string>\",\n  \"breaks\": [\n    {\n      \"id\": 8828,\n      \"in\": \"2008-12-21T23:21:59.333Z\",\n      \"out\": \"1953-09-04T23:36:42.615Z\",\n      \"paid\": false\n    },\n    {\n      \"id\": 6871,\n      \"in\": \"2009-07-08T22:35:26.902Z\",\n      \"out\": \"1983-09-05T15:00:00.779Z\",\n      \"paid\": true\n    }\n  ],\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eaaa5bfb-c6ea-4804-b089-0d03abde7940",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"department_id\": \"<long>\",\n  \"role_id\": \"<long>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"hourly_wage\": \"<integer>\",\n  \"draft\": \"<boolean>\",\n  \"open\": \"<boolean>\",\n  \"station\": \"<string>\",\n  \"attendance_status\": \"<string>\",\n  \"breaks\": [\n    {\n      \"id\": 8828,\n      \"in\": \"2008-12-21T23:21:59.333Z\",\n      \"out\": \"1953-09-04T23:36:42.615Z\",\n      \"paid\": false\n    },\n    {\n      \"id\": 6871,\n      \"in\": \"2009-07-08T22:35:26.902Z\",\n      \"out\": \"1983-09-05T15:00:00.779Z\",\n      \"paid\": true\n    }\n  ],\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8db82c6f-f4ae-437b-b704-e91136bf140e",
+          "name": "Retrieve Shift",
+          "request": {
+            "name": "Retrieve Shift",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "shifts",
+                ":shift_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "shift_id",
+                  "description": "(Required) Shift identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1bff0c61-df3f-4bd8-9a6f-22aeec263b08",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts",
+                    ":shift_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shift_id",
+                      "description": "(Required) Shift identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 9473,\n    \"user_id\": 3310,\n    \"location_id\": 2630,\n    \"department_id\": 6391,\n    \"role_id\": 4195,\n    \"start\": \"1993-06-20T21:34:34.712Z\",\n    \"end\": \"1951-06-07T21:29:06.475Z\",\n    \"hourly_wage\": 6058,\n    \"draft\": false,\n    \"open\": true,\n    \"station\": \"string\",\n    \"attendance_status\": \"sick\",\n    \"breaks\": [\n      {\n        \"id\": 4969,\n        \"in\": \"1979-09-18T20:05:14.952Z\",\n        \"out\": \"1951-05-16T19:03:31.224Z\",\n        \"paid\": false\n      },\n      {\n        \"id\": 7146,\n        \"in\": \"2014-06-16T00:49:48.547Z\",\n        \"out\": \"1989-04-14T06:32:25.366Z\",\n        \"paid\": false\n      }\n    ],\n    \"created\": \"1981-06-17T02:20:50.327Z\",\n    \"modified\": \"2023-11-16T00:04:24.603Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c5e82ad-4d26-4f5c-8a10-816a894c3bb2",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts",
+                    ":shift_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shift_id",
+                      "description": "(Required) Shift identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce92e3b1-b5c1-4928-9af0-628dfd08cb10",
+          "name": "Delete Shift",
+          "request": {
+            "name": "Delete Shift",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "company",
+                ":company_id",
+                "shifts",
+                ":shift_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "company_id",
+                  "description": "(Required) Company identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "shift_id",
+                  "description": "(Required) Shift identifier."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1eb99d00-1896-43c6-9dff-027fd6f1465c",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts",
+                    ":shift_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shift_id",
+                      "description": "(Required) Shift identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eda47c98-9ef0-44a9-9994-b8c1750bc25e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "company",
+                    ":company_id",
+                    "shifts",
+                    ":shift_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "company_id",
+                      "description": "(Required) Company identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "shift_id",
+                      "description": "(Required) Shift identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7shifts.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a309c1a-ee4d-4f7b-9b04-b9532ac7bcf4",
+    "name": "7shifts Availability Shifts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
