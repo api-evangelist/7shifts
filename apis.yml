@@ -191,6 +191,8 @@ apis:
   humanURL: https://developers.7shifts.com/reference/introduction
   baseURL: https://api.7shifts.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -401,6 +403,8 @@ apis:
   humanURL: https://developers.7shifts.com/reference/introduction
   baseURL: https://api.7shifts.com/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -461,6 +465,8 @@ apis:
   humanURL: https://developers.7shifts.com/reference/introduction
   baseURL: https://api.7shifts.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
