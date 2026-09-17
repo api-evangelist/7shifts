@@ -197,38 +197,6 @@ apis:
     url: https://developers.7shifts.com/changelog
   - type: SDKs
     url: https://developers.7shifts.com/docs/embed-sdk-configuration
-- aid: 7shifts:7shifts-oauth-api
-  name: 7shifts OAuth API
-  description: Token issuance for Partner OAuth applications.
-  humanURL: https://developers.7shifts.com/reference/introduction
-  baseURL: https://api.7shifts.com/v2
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/7shifts-oauth-api-openapi.yml
-  - type: Documentation
-    url: https://developers.7shifts.com/reference/introduction
-  - type: Authentication
-    url: https://developers.7shifts.com/reference/authentication
-  - type: OAuth Authentication
-    url: https://developers.7shifts.com/docs/oauth-authentication
-  - type: GettingStarted
-    url: https://developers.7shifts.com/docs/getting-started
-  - type: Versioning
-    url: https://developers.7shifts.com/reference/versioning
-  - type: Postman
-    url: https://developers.7shifts.com/reference/postman-collection
-  - type: Webhooks
-    url: https://developers.7shifts.com/reference/webhooks-introduction
-  - type: RateLimits
-    url: https://developers.7shifts.com/reference/versioning
-  - type: ChangeLog
-    url: https://developers.7shifts.com/changelog
-  - type: SDKs
-    url: https://developers.7shifts.com/docs/embed-sdk-configuration
 - aid: 7shifts:7shifts-reporting-api
   name: 7shifts Reporting API
   description: Sales, labor, and worked-hours reporting.
@@ -483,6 +451,36 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/7shifts-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.7shifts.com/reference/introduction
+  - type: Authentication
+    url: https://developers.7shifts.com/reference/authentication
+  - type: OAuth Authentication
+    url: https://developers.7shifts.com/docs/oauth-authentication
+  - type: GettingStarted
+    url: https://developers.7shifts.com/docs/getting-started
+  - type: Versioning
+    url: https://developers.7shifts.com/reference/versioning
+  - type: Postman
+    url: https://developers.7shifts.com/reference/postman-collection
+  - type: Webhooks
+    url: https://developers.7shifts.com/reference/webhooks-introduction
+  - type: RateLimits
+    url: https://developers.7shifts.com/reference/versioning
+  - type: ChangeLog
+    url: https://developers.7shifts.com/changelog
+  - type: SDKs
+    url: https://developers.7shifts.com/docs/embed-sdk-configuration
+- aid: 7shifts:7shifts-oauth-api
+  name: 7shifts O Auth API
+  description: Token issuance for Partner OAuth applications.
+  humanURL: https://developers.7shifts.com/reference/introduction
+  baseURL: https://api.7shifts.com/v2
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/7shifts-oauth-api-openapi.yml
   - type: Documentation
     url: https://developers.7shifts.com/reference/introduction
   - type: Authentication
