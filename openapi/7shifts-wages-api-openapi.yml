@@ -61,23 +61,6 @@ paths:
       security:
       - bearerAuth: []
 components:
-  parameters:
-    UserIdPath:
-      name: user_id
-      in: path
-      required: true
-      description: User identifier.
-      schema:
-        type: integer
-        format: int64
-    CompanyIdPath:
-      name: company_id
-      in: path
-      required: true
-      description: Company identifier.
-      schema:
-        type: integer
-        format: int64
   schemas:
     Wage:
       title: Wage
@@ -110,6 +93,23 @@ components:
         modified:
           type: string
           format: date-time
+  parameters:
+    UserIdPath:
+      name: user_id
+      in: path
+      required: true
+      description: User identifier.
+      schema:
+        type: integer
+        format: int64
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
   securitySchemes:
     bearerAuth:
       type: http

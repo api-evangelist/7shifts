@@ -80,24 +80,6 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    CursorMeta:
-      title: Cursor Meta
-      type: object
-      description: Cursor-based pagination metadata.
-      properties:
-        cursor:
-          type: object
-          properties:
-            current:
-              type: string
-            next:
-              type: string
-              nullable: true
-            prev:
-              type: string
-              nullable: true
-        count:
-          type: integer
     Company:
       title: Company
       type: object
@@ -119,14 +101,25 @@ components:
         modified:
           type: string
           format: date-time
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
   parameters:
-    ApiVersionHeader:
-      name: x-api-version
-      in: header
-      required: false
-      description: 7shifts API version (YYYY-MM-DD).
-      schema:
-        type: string
     CompanyIdPath:
       name: company_id
       in: path
@@ -135,6 +128,13 @@ components:
       schema:
         type: integer
         format: int64
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
+      schema:
+        type: string
     CompanyGuidHeader:
       name: x-company-guid
       in: header

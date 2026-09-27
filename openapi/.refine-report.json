@@ -20,16 +20,13 @@
     "7shifts-wages-api-openapi.yml",
     "7shifts-webhooks-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "7shifts-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "superseded outputs removed: 7shifts-o-auth-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 15 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "7shifts-availability-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -37,7 +34,7 @@
     "7shifts-departments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "7shifts-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "7shifts-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "7shifts-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "7shifts-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "7shifts-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "7shifts-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "7shifts-sales-api-openapi.yml: previously refined output, superseded by openapi/_original/",
