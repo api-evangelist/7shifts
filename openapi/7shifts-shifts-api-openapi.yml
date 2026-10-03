@@ -174,32 +174,6 @@ paths:
       security:
       - bearerAuth: []
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Results per page (1-500, default 100; 20 for some collections).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 100
-    Cursor:
-      name: cursor
-      in: query
-      required: false
-      description: Pagination cursor for the next or previous page.
-      schema:
-        type: string
-    CompanyIdPath:
-      name: company_id
-      in: path
-      required: true
-      description: Company identifier.
-      schema:
-        type: integer
-        format: int64
   schemas:
     Shift:
       title: Shift
@@ -292,6 +266,32 @@ components:
               nullable: true
         count:
           type: integer
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -79,13 +79,6 @@ components:
         minimum: 1
         maximum: 500
         default: 100
-    Cursor:
-      name: cursor
-      in: query
-      required: false
-      description: Pagination cursor for the next or previous page.
-      schema:
-        type: string
     CompanyIdPath:
       name: company_id
       in: path
@@ -94,7 +87,32 @@ components:
       schema:
         type: integer
         format: int64
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
   schemas:
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
     Role:
       title: Role
       type: object
@@ -120,24 +138,6 @@ components:
         modified:
           type: string
           format: date-time
-    CursorMeta:
-      title: Cursor Meta
-      type: object
-      description: Cursor-based pagination metadata.
-      properties:
-        cursor:
-          type: object
-          properties:
-            current:
-              type: string
-            next:
-              type: string
-              nullable: true
-            prev:
-              type: string
-              nullable: true
-        count:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http

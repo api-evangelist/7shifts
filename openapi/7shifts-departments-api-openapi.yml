@@ -70,25 +70,33 @@ paths:
       security:
       - bearerAuth: []
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
   schemas:
-    Department:
-      title: Department
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        location_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        created:
-          type: string
-          format: date-time
-        modified:
-          type: string
-          format: date-time
     CursorMeta:
       title: Cursor Meta
       type: object
@@ -107,32 +115,24 @@ components:
               nullable: true
         count:
           type: integer
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Results per page (1-500, default 100; 20 for some collections).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 100
-    Cursor:
-      name: cursor
-      in: query
-      required: false
-      description: Pagination cursor for the next or previous page.
-      schema:
-        type: string
-    CompanyIdPath:
-      name: company_id
-      in: path
-      required: true
-      description: Company identifier.
-      schema:
-        type: integer
-        format: int64
+    Department:
+      title: Department
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        location_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
   securitySchemes:
     bearerAuth:
       type: http

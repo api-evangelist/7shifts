@@ -79,6 +79,30 @@ paths:
       security:
       - bearerAuth: []
 components:
+  parameters:
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
+      schema:
+        type: string
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    CompanyGuidHeader:
+      name: x-company-guid
+      in: header
+      required: false
+      description: Company GUID.
+      schema:
+        type: string
+        format: uuid
   schemas:
     Company:
       title: Company
@@ -119,30 +143,6 @@ components:
               nullable: true
         count:
           type: integer
-  parameters:
-    CompanyIdPath:
-      name: company_id
-      in: path
-      required: true
-      description: Company identifier.
-      schema:
-        type: integer
-        format: int64
-    ApiVersionHeader:
-      name: x-api-version
-      in: header
-      required: false
-      description: 7shifts API version (YYYY-MM-DD).
-      schema:
-        type: string
-    CompanyGuidHeader:
-      name: x-company-guid
-      in: header
-      required: false
-      description: Company GUID.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
