@@ -1,0 +1,54 @@
+slug: 7shifts
+provider: 7shifts
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Wages
+  spec_file: 7shifts-wages-api-openapi.yml
+  capability_id: BC-300.30
+  capability_id_l1: BC-300
+  capability_name: Compensation & Benefits Management
+  confidence: 0.8
+  evidence: GET /v2/company/{company_id}/users/{user_id}/wages listUserWages 'List User Wages'; POST createUserWage;
+    schema Wage
+  reason: Maintaining per-employee wage rates is compensation administration within human capital management.
+- tag: Time Punches
+  spec_file: 7shifts-time-punches-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.78
+  evidence: 'POST /v2/company/{company_id}/time_punches createTimePunch ''Create Time Punch''; schemas:
+    Break, TimePunch'
+  reason: Employee clock-in/clock-out punch records with breaks are workforce time-and-attendance data,
+    an HR operations/payroll-administration function rather than any industry-specific capability.
+- tag: Shifts
+  spec_file: 7shifts-shifts-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.75
+  evidence: 'POST /v2/company/{company_id}/shifts  createShift; schemas: Shift, Break'
+  reason: Creating, retrieving and deleting employee shifts (with breaks) is employee scheduling — part
+    of the workforce/employee lifecycle under Human Capital Management. No candidate L2 specifically covers
+    shift scheduling, so L2 omitted.
+- tag: Availability
+  spec_file: 7shifts-availability-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.7
+  evidence: GET /v2/company/{company_id}/availability  listAvailabilities  List Availabilities
+  reason: Employee availability records on a restaurant employee scheduling and team management platform
+    are part of the workforce/employee lifecycle, so the L1 Human Capital Management fits; no candidate
+    L2 cleanly covers shift availability/scheduling, so L2 is left null.

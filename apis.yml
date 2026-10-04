@@ -509,6 +509,9 @@ apis:
   - type: SDKs
     url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - type: CapabilityMap
+    url: capabilities/7shifts-capability-edges.yml
+    name: 7shifts Business Capability Map
   - type: AgenticAccess
     url: agentic-access/7shifts-agentic-access.yml
   - type: VulnerabilityDisclosure
