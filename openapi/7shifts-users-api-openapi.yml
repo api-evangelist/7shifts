@@ -183,7 +183,66 @@ paths:
       security:
       - bearerAuth: []
 components:
+  parameters:
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
+      schema:
+        type: string
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Results per page (1-500, default 100; 20 for some collections).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 100
+    CompanyIdPath:
+      name: company_id
+      in: path
+      required: true
+      description: Company identifier.
+      schema:
+        type: integer
+        format: int64
+    CompanyGuidHeader:
+      name: x-company-guid
+      in: header
+      required: false
+      description: Company GUID.
+      schema:
+        type: string
+        format: uuid
   schemas:
+    CursorMeta:
+      title: Cursor Meta
+      type: object
+      description: Cursor-based pagination metadata.
+      properties:
+        cursor:
+          type: object
+          properties:
+            current:
+              type: string
+            next:
+              type: string
+              nullable: true
+            prev:
+              type: string
+              nullable: true
+        count:
+          type: integer
     User:
       title: User
       type: object
@@ -235,65 +294,6 @@ components:
         modified:
           type: string
           format: date-time
-    CursorMeta:
-      title: Cursor Meta
-      type: object
-      description: Cursor-based pagination metadata.
-      properties:
-        cursor:
-          type: object
-          properties:
-            current:
-              type: string
-            next:
-              type: string
-              nullable: true
-            prev:
-              type: string
-              nullable: true
-        count:
-          type: integer
-  parameters:
-    ApiVersionHeader:
-      name: x-api-version
-      in: header
-      required: false
-      description: 7shifts API version (YYYY-MM-DD).
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Results per page (1-500, default 100; 20 for some collections).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 100
-    CompanyIdPath:
-      name: company_id
-      in: path
-      required: true
-      description: Company identifier.
-      schema:
-        type: integer
-        format: int64
-    CompanyGuidHeader:
-      name: x-company-guid
-      in: header
-      required: false
-      description: Company GUID.
-      schema:
-        type: string
-        format: uuid
-    Cursor:
-      name: cursor
-      in: query
-      required: false
-      description: Pagination cursor for the next or previous page.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

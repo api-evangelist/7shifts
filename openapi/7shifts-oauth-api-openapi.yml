@@ -44,18 +44,6 @@ paths:
           description: Unexpected error
 components:
   schemas:
-    OAuthTokenResponse:
-      title: OAuth Token Response
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
     OAuthTokenRequest:
       title: OAuth Token Request
       type: object
@@ -75,6 +63,18 @@ components:
           type: string
       required:
       - grant_type
+    OAuthTokenResponse:
+      title: OAuth Token Response
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
