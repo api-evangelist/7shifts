@@ -47,7 +47,7 @@ tags:
   - Labor
 url: https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-06-02'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: 7shifts:7shifts-availability-api
@@ -509,6 +509,8 @@ apis:
   - type: SDKs
     url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - url: https://www.7shifts.com/blog/
+    type: Blog
   - type: CapabilityMap
     url: capabilities/7shifts-capability-edges.yml
     name: 7shifts Business Capability Map
