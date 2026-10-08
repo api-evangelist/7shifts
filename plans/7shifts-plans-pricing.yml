@@ -141,3 +141,45 @@ plans:
         description: Enhanced support for enterprise customers.
       - name: Full API and webhooks
         description: REST API v2 and company-level webhooks.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - object
+  - seat
+  plans:
+  - name: Comp
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    - seat
+    periods:
+    - month
+  - name: Entrée
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: The Works
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: Gourmet
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
