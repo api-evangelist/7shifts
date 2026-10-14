@@ -1,0 +1,26 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- adp/integrations/adp-integration-edges.yml
+source:
+- adp/integrations/adp-integration-edges.yml
+edges:
+- partner_name: ADP (own)
+  partner: adp
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.adp.com/apps/329562/7shifts-connector-for-run-powered-by-adp
+  mirror_of: adp/integrations/adp-integration-edges.yml
+  apps:
+  - 7shifts Connector for RUN Powered by ADP®
+  - 7shifts Connector for ADP Workforce Now®
+  - 7shifts Connector for ADP Workforce Now® Next Generation
+  listing_count: 3
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: RUN.CompleteHR
