@@ -4,6 +4,7 @@ checked:
 - adp/integrations/adp-integration-edges.yml
 - clover/integrations/clover-integration-edges.yml
 - https://www.7shifts.com/integrations/
+- https://zapier.com/api/v4/apps/
 - olo/integrations/olo-integration-edges.yml
 - toast/integrations/toast-integration-edges.yml
 source:
@@ -995,6 +996,31 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: Labor
+- partner_name: Zapier
+  partner: zapier
+  partner_match: aggregator
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://zapier.com/apps/7shifts/integrations
+  category: null
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: 7shifts
+    matched_domain: 7shifts.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: 7shifts
+    beta: false
+    builder: unknown (not in the directory record)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 marketplace_apps:
 - marketplace: own
   channel: partner-built
