@@ -92,18 +92,26 @@ paths:
       - bearerAuth: []
 components:
   parameters:
-    ApiVersionHeader:
-      name: x-api-version
-      in: header
-      required: false
-      description: 7shifts API version (YYYY-MM-DD).
+    LocationIdPath:
+      name: location_id
+      in: path
+      required: true
+      description: Location identifier.
       schema:
-        type: string
+        type: integer
+        format: int64
     Cursor:
       name: cursor
       in: query
       required: false
       description: Pagination cursor for the next or previous page.
+      schema:
+        type: string
+    ApiVersionHeader:
+      name: x-api-version
+      in: header
+      required: false
+      description: 7shifts API version (YYYY-MM-DD).
       schema:
         type: string
     Limit:
@@ -116,14 +124,6 @@ components:
         minimum: 1
         maximum: 500
         default: 100
-    LocationIdPath:
-      name: location_id
-      in: path
-      required: true
-      description: Location identifier.
-      schema:
-        type: integer
-        format: int64
     CompanyIdPath:
       name: company_id
       in: path

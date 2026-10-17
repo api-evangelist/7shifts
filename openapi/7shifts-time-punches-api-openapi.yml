@@ -189,6 +189,22 @@ components:
         modified:
           type: string
           format: date-time
+    Break:
+      title: Break
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        in:
+          type: string
+          format: date-time
+        out:
+          type: string
+          format: date-time
+          nullable: true
+        paid:
+          type: boolean
     CursorMeta:
       title: Cursor Meta
       type: object
@@ -207,22 +223,6 @@ components:
               nullable: true
         count:
           type: integer
-    Break:
-      title: Break
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        in:
-          type: string
-          format: date-time
-        out:
-          type: string
-          format: date-time
-          nullable: true
-        paid:
-          type: boolean
   parameters:
     Cursor:
       name: cursor
