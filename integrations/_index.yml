@@ -780,7 +780,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: 7shifts-fivetran
   label: Fivetran
@@ -806,5 +806,5 @@
     - connectors/applications/7shifts
     vendor_link: https://www.7shifts.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
