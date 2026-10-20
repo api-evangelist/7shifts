@@ -1,5 +1,10 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
 method: searched
+source:
+- adp/integrations/adp-integration-edges.yml
+- https://www.7shifts.com/integrations/
+- https://zapier.com/apps/7shifts/integrations
+- https://composio.dev/toolkits/7shifts
 checked:
 - adp/integrations/adp-integration-edges.yml
 - clover/integrations/clover-integration-edges.yml
@@ -11,8 +16,80 @@ checked:
 - https://zapier.com/api/v4/apps/
 - olo/integrations/olo-integration-edges.yml
 - toast/integrations/toast-integration-edges.yml
-source:
-- adp/integrations/adp-integration-edges.yml
+- https://composio.dev/toolkits/7shifts
+- https://monid.ai/tools/7shifts
+- https://n8n.io/integrations/7shifts/
+- https://zapier.com/apps/7shifts/integrations
+summary: null
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: 7shifts
+  url: https://www.7shifts.com/integrations/
+  app_count: 61
+  adapter: sweep-restaurant-pos.py:7shifts-pages
+  listed: 61
+- marketplace: zapier
+  channel: ipaas-listing
+  app: 7shifts
+  url: https://zapier.com/apps/7shifts/integrations
+  external_url: https://www.7shifts.com/
+  partner_tier: BRONZE
+  triggers:
+  - key: payroll_period_closed
+    label: Payroll Period Closed
+  - key: scheduled_published
+    label: Scheduled Published
+  - key: time_punch_created
+    label: Time Punch Created
+  - key: time_punch_deleted
+    label: Time Punch Deleted
+  - key: time_punch_edited
+    label: Time Punch Modified
+  - key: user_created
+    label: User Created
+  - key: user_deactivated
+    label: User Deactivated
+  - key: user_modified
+    label: User Modified
+  - key: user_reactivated
+    label: User Reactivated
+  actions: []
+  searches:
+  - key: get_daily_sales
+    label: Get Daily Sales & Labor Report
+  - key: get_hours_and_wages
+    label: Get Hours and Wages Report Detailed
+  - key: get_hours_and_wages_compact
+    label: Get Hours and Wages Report Compact
+  - key: list_departments
+    label: List Departments
+  - key: list_locations
+    label: List Locations
+  - key: list_roles
+    label: List Roles
+  - key: retrieve_shift
+    label: Retrieve Shift
+  - key: retrieve_time_punch
+    label: Retrieve Time Punch
+  - key: retrieve_user
+    label: Retrieve User
+- marketplace: composio
+  channel: agent-gateway
+  app: 7shifts
+  url: https://composio.dev/toolkits/7shifts
+  identity: action-prefix
+  actions:
+  - key: 7SHIFTS_CREATE_DEPARTMENT
+  - key: 7SHIFTS_DELETE_DEPARTMENT
+  - key: 7SHIFTS_GET_DEPARTMENT
+  - key: 7SHIFTS_GET_USER_ASSIGNMENTS
+  - key: 7SHIFTS_LIST_COMPANIES
+  - key: 7SHIFTS_LIST_DEPARTMENTS
+  - key: 7SHIFTS_LIST_LOCATIONS
+  - key: 7SHIFTS_LIST_SHIFTS
+  - key: 7SHIFTS_LIST_USERS
+  - key: 7SHIFTS_UPDATE_DEPARTMENT
 edges:
 - partner_name: ADP (own)
   partner: adp
@@ -1081,11 +1158,365 @@ edges:
   partner_domain: wagepoint.com
   detected_by: sweep-restaurant-pos.py
   detected: '2026-10-14'
-marketplace_apps:
-- marketplace: own
-  channel: partner-built
-  app: 7shifts
-  url: https://www.7shifts.com/integrations/
-  app_count: 61
-  adapter: sweep-restaurant-pos.py:7shifts-pages
-  listed: 61
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: 1st things 1st
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/1st-things-1st
+  direction: third-party
+  category: Productivity
+  partner_url: https://www.1st-things-1st.com/
+- partner_name: Notion
+  partner: notion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/notion
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.notion.so/
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: AEvent
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/aevent
+  direction: third-party
+  category: Sales & CRM
+  partner_url: https://aevent.com/
+- partner_name: The Flybook
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/the-flybook
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://www.theflybook.com/
+- partner_name: Xero
+  partner: xero
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/xero
+  direction: third-party
+  category: Accounting
+  partner_url: https://xero5440.partnerlinks.io/uvwuuwrxyoi8
+- partner_name: BrightHR
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/brighthr
+  direction: third-party
+  category: Human Resources
+  partner_url: https://zapier.com/www.brighthr.com
+- partner_name: BambooHR
+  partner: bamboohr
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/bamboohr
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.bamboohr.com/lp/c-hr-saas-software/d/?utm_source=PT&utm_medium=MKP&utm_campaign=Zapi-TR-FreeTrialR-20181111-01&utm_content=blank&utm_term=blank
+- partner_name: Planning Pod
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/planning-pod
+  direction: third-party
+  category: Event Management
+  partner_url: https://www.planningpod.com/
+- partner_name: Web Success Insights
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/web-success-insights
+  direction: third-party
+  category: Analytics
+  partner_url: https://websuccessinsights.com/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: Plaud
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/plaud
+  direction: third-party
+  category: AI Assistants
+  partner_url: https://www.plaud.ai/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Wix
+  partner: wix
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/wix
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.wix.com/
+- partner_name: Anthropic (Claude)
+  partner: anthropic
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/anthropic-claude
+  direction: third-party
+  category: AI Models
+  partner_url: https://www.anthropic.com/
+- partner_name: Microsoft Teams
+  partner: microsoft-teams
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/microsoft-teams
+  direction: third-party
+  category: Microsoft
+  partner_url: https://products.office.com/en-us/microsoft-teams/group-chat-software
+- partner_name: NetSuite
+  partner: netsuite
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/netsuite
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://netsuite.com/
+- partner_name: Albi
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/albi
+  direction: third-party
+  category: Sales & CRM
+  partner_url: https://albiware.com/
+- partner_name: ReviewTrackers
+  partner: reviewtrackers
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/reviewtrackers
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.reviewtrackers.com/
+- partner_name: App Status by Zapier
+  partner: zapier
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/app-status
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://status.zapier.com/
+- partner_name: Collage HR
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/collage-hr
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://collage.co/
+- partner_name: RocketRez
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/rocketrez
+  direction: third-party
+  category: Sales & CRM
+  partner_url: https://www.rocketrez.com/
+- partner_name: Tweet Hunter
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/7shifts/integrations/tweet-hunter
+  direction: third-party
+  category: Social Media Marketing
+  partner_url: https://tweethunter.io/
+templates:
+- title: Send channel messages in Slack when scheduled publishes happen in 7shifts
+  url: https://zapier.com/apps/7shifts/integrations/slack/1729340/send-channel-messages-in-slack-when-scheduled-publishes-happen-in-7shifts
+  apps:
+  - 7shifts
+  - slack
+- title: Create records in Zapier Tables for every new scheduled publish in 7shifts
+  url: https://zapier.com/apps/7shifts/integrations/zapier-tables/255619272/create-records-in-zapier-tables-for-every-new-scheduled-publish-in-7shifts
+  apps:
+  - 7shifts
+  - zapier-tables
+- title: Send outbound emails with Email by Zapier when users are deactivated in 7shifts
+  url: https://zapier.com/apps/7shifts/integrations/email/255628221/send-outbound-emails-with-email-by-zapier-when-users-are-deactivated-in-7shifts
+  apps:
+  - 7shifts
+  - email
+- title: Trigger 7shifts ae:538419 action with every new or updated row in Google Sheets
+  url: https://zapier.com/apps/7shifts/integrations/google-sheets/255694389/trigger-7shifts-ae538419-action-with-every-new-or-updated-row-in-google-sheets
+  apps:
+  - google-sheets
+  - 7shifts
+- title: Post new 7shifts schedules to Zenzap
+  url: https://zapier.com/apps/7shifts/integrations/zenzap/255697806/post-new-7shifts-schedules-to-zenzap
+  apps:
+  - 7shifts
+  - formatter
+  - zenzap
+- title: Update Google Sheets rows whenever 7shifts punches are modified
+  url: https://zapier.com/apps/7shifts/integrations/google-sheets/255722108/update-google-sheets-rows-whenever-7shifts-punches-are-modified
+  apps:
+  - 7shifts
+  - google-sheets
+- title: Add new 7shifts users to a Google Sheets spreadsheet row
+  url: https://zapier.com/apps/7shifts/integrations/google-sheets/255730563/add-new-7shifts-users-to-a-google-sheets-spreadsheet-row
+  apps:
+  - 7shifts
+  - google-sheets
+template_total: 7
