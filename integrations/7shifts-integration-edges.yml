@@ -14,6 +14,158 @@ checked:
 source:
 - adp/integrations/adp-integration-edges.yml
 edges:
+- partner_name: ADP (own)
+  partner: adp
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.adp.com/apps/329562/7shifts-connector-for-run-powered-by-adp
+  mirror_of: adp/integrations/adp-integration-edges.yml
+  apps:
+  - 7shifts Connector for RUN Powered by ADP®
+  - 7shifts Connector for ADP Workforce Now®
+  - 7shifts Connector for ADP Workforce Now® Next Generation
+  listing_count: 3
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: RUN.CompleteHR
+- partner_name: Clover (own)
+  partner: clover
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.clover.com/appmarket/apps/W0X870C18ZQVA
+  mirror_of: clover/integrations/clover-integration-edges.yml
+  apps:
+  - '7punches: Simple Time Clocking'
+  - Restaurant Scheduling (7shifts)
+  listing_count: 2
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: QUICK_SERVICE_RESTAURANT
+- partner_name: Olo (own)
+  partner: olo
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.olo.com/partners/7shifts
+  mirror_of: olo/integrations/olo-integration-edges.yml
+  apps:
+  - 7Shifts
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Labor Management
+- partner_name: Toast (own)
+  partner: toast
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://pos.toasttab.com/partners/directory/7shifts
+  mirror_of: toast/integrations/toast-integration-edges.yml
+  apps:
+  - 7shifts
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Labor
+- partner_name: Zapier
+  partner: zapier
+  partner_match: aggregator
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://zapier.com/apps/7shifts/integrations
+  category: null
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: 7shifts
+    matched_domain: 7shifts.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: 7shifts
+    beta: false
+    builder: unknown (not in the directory record)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
+- partner_name: Airbyte
+  partner: airbyte
+  partner_match: aggregator
+  type: marketplace
+  marketplace: airbyte-registry
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://docs.airbyte.com/integrations/sources/7shifts
+  category: null
+  contract_reference:
+    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
+    spec_file: null
+    role: elt-connector:airbyte-community
+    registered_name: 7shifts
+    matched_domain: 7shifts.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connectors:
+    - airbyte/source-7shifts
+    support_level:
+    - community
+    release_stage:
+    - alpha
+    in_cloud: true
+    builder: unknown (community connector; contributor not in the record)
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
+- partner_name: Fivetran
+  partner: fivetran
+  partner_match: aggregator
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://fivetran.com/docs/connectors/applications/7shifts
+  category: null
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: 7shifts
+    matched_domain: 7shifts.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/7shifts
+    vendor_link: https://www.7shifts.com/
+    builder: Fivetran
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
 - partner_name: Lightspeed K Series
   app: Lightspeed K Series
   partner: null
@@ -56,7 +208,7 @@ edges:
   direction: provider-built
   evidence: https://www.7shifts.com/integrations/adp-workforce-now/
   category: null
-  partner_domain: adp
+  partner_domain: null
   detected_by: sweep-restaurant-pos.py
   detected: '2026-10-14'
 - partner_name: Adp Workforce Now Canada
@@ -929,158 +1081,6 @@ edges:
   partner_domain: wagepoint.com
   detected_by: sweep-restaurant-pos.py
   detected: '2026-10-14'
-- partner_name: ADP (own)
-  partner: adp
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://apps.adp.com/apps/329562/7shifts-connector-for-run-powered-by-adp
-  mirror_of: adp/integrations/adp-integration-edges.yml
-  apps:
-  - 7shifts Connector for RUN Powered by ADP®
-  - 7shifts Connector for ADP Workforce Now®
-  - 7shifts Connector for ADP Workforce Now® Next Generation
-  listing_count: 3
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: RUN.CompleteHR
-- partner_name: Clover (own)
-  partner: clover
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.clover.com/appmarket/apps/W0X870C18ZQVA
-  mirror_of: clover/integrations/clover-integration-edges.yml
-  apps:
-  - '7punches: Simple Time Clocking'
-  - Restaurant Scheduling (7shifts)
-  listing_count: 2
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: QUICK_SERVICE_RESTAURANT
-- partner_name: Olo (own)
-  partner: olo
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.olo.com/partners/7shifts
-  mirror_of: olo/integrations/olo-integration-edges.yml
-  apps:
-  - 7Shifts
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Labor Management
-- partner_name: Toast (own)
-  partner: toast
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://pos.toasttab.com/partners/directory/7shifts
-  mirror_of: toast/integrations/toast-integration-edges.yml
-  apps:
-  - 7shifts
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Labor
-- partner_name: Zapier
-  partner: zapier
-  partner_match: aggregator
-  type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://zapier.com/apps/7shifts/integrations
-  category: null
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: 7shifts
-    matched_domain: 7shifts.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: 7shifts
-    beta: false
-    builder: unknown (not in the directory record)
-  detected_by: sweep-workflow-automation.py
-  first_seen: '2026-10-15'
-- partner_name: Airbyte
-  partner: airbyte
-  partner_match: aggregator
-  type: marketplace
-  marketplace: airbyte-registry
-  channel: elt-connector
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://docs.airbyte.com/integrations/sources/7shifts
-  category: null
-  contract_reference:
-    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
-    spec_file: null
-    role: elt-connector:airbyte-community
-    registered_name: 7shifts
-    matched_domain: 7shifts.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connectors:
-    - airbyte/source-7shifts
-    support_level:
-    - community
-    release_stage:
-    - alpha
-    in_cloud: true
-    builder: unknown (community connector; contributor not in the record)
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
-- partner_name: Fivetran
-  partner: fivetran
-  partner_match: aggregator
-  type: marketplace
-  marketplace: fivetran-connectors
-  channel: elt-connector
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://fivetran.com/docs/connectors/applications/7shifts
-  category: null
-  contract_reference:
-    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
-    spec_file: null
-    role: elt-connector:fivetran
-    registered_name: 7shifts
-    matched_domain: 7shifts.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connector_paths:
-    - connectors/applications/7shifts
-    vendor_link: https://www.7shifts.com/
-    builder: Fivetran
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
 marketplace_apps:
 - marketplace: own
   channel: partner-built
