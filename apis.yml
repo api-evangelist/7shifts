@@ -509,6 +509,8 @@ apis:
   - type: SDKs
     url: https://developers.7shifts.com/docs/embed-sdk-configuration
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/7shifts/overview
   - url: https://www.7shifts.com/blog/
     type: Blog
   - type: CapabilityMap
