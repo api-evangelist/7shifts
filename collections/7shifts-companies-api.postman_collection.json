@@ -1,104 +1,254 @@
 {
+  "info": {
+    "_postman_id": "55f0fd46-ae16-4eab-a9bf-b109af9bc3f0",
+    "name": "7shifts Companies API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:28.000Z",
+    "updatedAt": "2026-10-22T01:13:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-55f0fd46-ae16-4eab-a9bf-b109af9bc3f0"
+  },
   "item": [
     {
-      "id": "1d421ed1-1d28-4f0f-8552-fc0be4970822",
-      "name": "Companies",
-      "description": {
-        "content": "Company resources for 7shifts accounts.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "0a6a3b7e-0d9a-4000-85f3-de2b5a323b23",
-          "name": "List Companies",
-          "request": {
-            "name": "List Companies",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "companies"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "modified_since",
-                  "value": "<string>",
-                  "description": "Return companies modified since the specified date (YYYY-MM-DD)."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "7shifts API version (YYYY-MM-DD).",
-                "key": "x-api-version",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "Company GUID.",
-                "key": "x-company-guid",
-                "value": "<uuid>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "companies",
+          "item": [
             {
-              "id": "606aaf60-7590-4358-b5a5-3a72af415d4d",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "{company_id}",
+              "item": [
+                {
+                  "name": "Retrieve Company",
+                  "id": "136d82d7-5328-49ee-b758-9257bf537ce5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "7shifts API version (YYYY-MM-DD).",
+                        "key": "x-api-version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/companies/:company_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "companies",
+                        ":company_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ceae602e-beca-48ab-8157-b173d0f85012",
+                          "key": "company_id",
+                          "value": "<long>",
+                          "description": "(Required) Company identifier."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "modified_since",
-                      "value": "<string>"
+                      "id": "8b620a35-48c8-45a5-807d-0cef0b1bbbaf",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "7shifts API version (YYYY-MM-DD).",
+                            "key": "x-api-version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created\": \"<dateTime>\",\n    \"modified\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:13:28.000Z",
+                      "updatedAt": "2026-10-22T01:13:28.000Z",
+                      "uid": "35240-8b620a35-48c8-45a5-807d-0cef0b1bbbaf"
+                    },
+                    {
+                      "id": "bcbf903e-e82c-4adf-8b33-1845ccf8228f",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "7shifts API version (YYYY-MM-DD).",
+                            "key": "x-api-version",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:13:28.000Z",
+                      "updatedAt": "2026-10-22T01:13:28.000Z",
+                      "uid": "35240-bcbf903e-e82c-4adf-8b33-1845ccf8228f"
+                    },
+                    {
+                      "id": "5b7481c7-f7e0-44bb-b540-d663b022196d",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "7shifts API version (YYYY-MM-DD).",
+                            "key": "x-api-version",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/companies/:company_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "companies",
+                            ":company_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "company_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:13:28.000Z",
+                      "updatedAt": "2026-10-22T01:13:28.000Z",
+                      "uid": "35240-5b7481c7-f7e0-44bb-b540-d663b022196d"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-22T01:13:28.000Z",
+                  "updatedAt": "2026-10-22T01:13:28.000Z",
+                  "uid": "35240-136d82d7-5328-49ee-b758-9257bf537ce5"
+                }
+              ],
+              "id": "781b64c3-bd56-4567-8217-3867f008641c",
+              "createdAt": "2026-10-22T01:13:28.000Z",
+              "updatedAt": "2026-10-22T01:13:28.000Z",
+              "uid": "35240-781b64c3-bd56-4567-8217-3867f008641c"
+            },
+            {
+              "name": "List Companies",
+              "id": "3f05b70c-b53c-4943-8d1f-df01649c2ae1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
                 },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
                     "description": "7shifts API version (YYYY-MM-DD).",
                     "key": "x-api-version",
                     "value": "<string>"
                   },
                   {
-                    "disabled": false,
                     "description": "Company GUID.",
                     "key": "x-company-guid",
                     "value": "<uuid>"
@@ -108,442 +258,260 @@
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": 490,\n      \"name\": \"string\",\n      \"country_code\": \"string\",\n      \"timezone\": \"string\",\n      \"active\": false,\n      \"created\": \"1993-07-21T13:55:10.241Z\",\n      \"modified\": \"2004-05-07T18:32:25.024Z\"\n    },\n    {\n      \"id\": 1363,\n      \"name\": \"string\",\n      \"country_code\": \"string\",\n      \"timezone\": \"string\",\n      \"active\": false,\n      \"created\": \"2004-09-28T07:39:17.066Z\",\n      \"modified\": \"1984-05-02T19:26:29.645Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 7847\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8c5aacfb-bb81-4c28-944f-7396d92c01c7",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v2/companies?modified_since=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "companies"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Return companies modified since the specified date (YYYY-MM-DD).",
                       "key": "modified_since",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ]
                 }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fe322a3a-3528-4439-81e9-4f11ae340260",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              },
+              "response": [
+                {
+                  "id": "7ceab5c2-b5de-4761-bf95-4136661d22fc",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "7shifts API version (YYYY-MM-DD).",
+                        "key": "x-api-version",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Company GUID.",
+                        "key": "x-company-guid",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/companies?modified_since=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "companies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Return companies modified since the specified date (YYYY-MM-DD).",
+                          "key": "modified_since",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "modified_since",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"<string>\",\n      \"next\": \"<string>\",\n      \"prev\": \"<string>\"\n    },\n    \"count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:13:28.000Z",
+                  "updatedAt": "2026-10-22T01:13:28.000Z",
+                  "uid": "35240-7ceab5c2-b5de-4761-bf95-4136661d22fc"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bfbd1a15-757e-4edc-93bc-4c07d4c9be30",
-              "name": "Server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "modified_since",
-                      "value": "<string>"
+                  "id": "3465bad8-85fd-4bb6-86d6-c735d422ca18",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "7shifts API version (YYYY-MM-DD).",
+                        "key": "x-api-version",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Company GUID.",
+                        "key": "x-company-guid",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/companies?modified_since=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "companies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Return companies modified since the specified date (YYYY-MM-DD).",
+                          "key": "modified_since",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:28.000Z",
+                  "updatedAt": "2026-10-22T01:13:28.000Z",
+                  "uid": "35240-3465bad8-85fd-4bb6-86d6-c735d422ca18"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "7260c0c7-79d5-4735-8440-209e86ffb178",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "7shifts API version (YYYY-MM-DD).",
+                        "key": "x-api-version",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Company GUID.",
+                        "key": "x-company-guid",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/companies?modified_since=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "companies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Return companies modified since the specified date (YYYY-MM-DD).",
+                          "key": "modified_since",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:28.000Z",
+                  "updatedAt": "2026-10-22T01:13:28.000Z",
+                  "uid": "35240-7260c0c7-79d5-4735-8440-209e86ffb178"
+                },
+                {
+                  "id": "9c52449a-69e5-4618-a092-2fce47ae85d9",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "7shifts API version (YYYY-MM-DD).",
+                        "key": "x-api-version",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Company GUID.",
+                        "key": "x-company-guid",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/companies?modified_since=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "companies"
+                      ],
+                      "query": [
+                        {
+                          "description": "Return companies modified since the specified date (YYYY-MM-DD).",
+                          "key": "modified_since",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:28.000Z",
+                  "updatedAt": "2026-10-22T01:13:28.000Z",
+                  "uid": "35240-9c52449a-69e5-4618-a092-2fce47ae85d9"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:13:28.000Z",
+              "updatedAt": "2026-10-22T01:13:28.000Z",
+              "uid": "35240-3f05b70c-b53c-4943-8d1f-df01649c2ae1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "95f43855-423f-4e03-a8e2-8e5bd69b97f0",
-          "name": "Retrieve Company",
-          "request": {
-            "name": "Retrieve Company",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "companies",
-                ":company_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "7shifts API version (YYYY-MM-DD).",
-                "key": "x-api-version",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "dc2c6178-e419-4435-840d-9be13a715d23",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies",
-                    ":company_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"id\": 3882,\n    \"name\": \"string\",\n    \"country_code\": \"string\",\n    \"timezone\": \"string\",\n    \"active\": false,\n    \"created\": \"2023-08-28T20:04:14.148Z\",\n    \"modified\": \"2000-05-31T14:54:10.882Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bfe9dba9-25a2-482f-8b8f-7dce7d8e03d4",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies",
-                    ":company_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c86128ee-0084-4741-8777-57d50027003b",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "companies",
-                    ":company_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1bfc1a16-73a3-49da-a79b-f06354bbe45a",
+          "createdAt": "2026-10-22T01:13:28.000Z",
+          "updatedAt": "2026-10-22T01:13:28.000Z",
+          "uid": "35240-1bfc1a16-73a3-49da-a79b-f06354bbe45a"
         }
       ],
-      "event": []
+      "id": "4e525e69-8fec-4d29-a19d-ac3a9e66a9aa",
+      "createdAt": "2026-10-22T01:13:28.000Z",
+      "updatedAt": "2026-10-22T01:13:28.000Z",
+      "uid": "35240-4e525e69-8fec-4d29-a19d-ac3a9e66a9aa"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "e65539a5-8d91-46ff-a86d-ae95ec02e07a",
-    "name": "7shifts Availability Companies API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

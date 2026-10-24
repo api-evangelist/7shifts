@@ -1,1176 +1,1126 @@
 {
+  "info": {
+    "_postman_id": "3932c854-582e-4222-912f-cfae07b99879",
+    "name": "7shifts Users API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:32.000Z",
+    "updatedAt": "2026-10-22T01:14:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3932c854-582e-4222-912f-cfae07b99879"
+  },
   "item": [
     {
-      "id": "21e1b8a8-2b88-405d-ba40-2f38918e447c",
-      "name": "Users",
-      "description": {
-        "content": "Users (employees) scoped to a company.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "8f16ba4b-e40f-4154-91bc-640cb310c915",
-          "name": "List Users",
-          "request": {
-            "name": "List Users",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "users"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "modified_since",
-                  "value": "<string>",
-                  "description": "Filter by modification date (YYYY-MM-DD)."
-                },
-                {
-                  "disabled": false,
-                  "key": "location_id",
-                  "value": "<long>",
-                  "description": "Filter by location (mutually exclusive with department_id and role_id)."
-                },
-                {
-                  "disabled": false,
-                  "key": "department_id",
-                  "value": "<long>",
-                  "description": "Filter by department (mutually exclusive with location_id and role_id)."
-                },
-                {
-                  "disabled": false,
-                  "key": "role_id",
-                  "value": "<long>",
-                  "description": "Filter by role (mutually exclusive with location_id and department_id)."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "User status filter."
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Partial or full employee name filter."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort_by",
-                  "value": "<string>",
-                  "description": "Sort field and direction (e.g. firstname.asc,lastname.desc)."
-                },
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "Pagination cursor for the next or previous page."
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Results per page (1-500, default 100; 20 for some collections)."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "7shifts API version (YYYY-MM-DD).",
-                "key": "x-api-version",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "Company GUID.",
-                "key": "x-company-guid",
-                "value": "<uuid>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "company",
+          "item": [
             {
-              "id": "c5829f15-2266-41cf-ad8a-9111cb908931",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "modified_since",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "location_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "department_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "role_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort_by",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{company_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "{identifier}",
+                      "item": [
+                        {
+                          "name": "Retrieve User",
+                          "id": "9b926b08-8b15-49bc-b749-a611b7a1ed4d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "bearer",
+                              "bearer": [
+                                {
+                                  "key": "token",
+                                  "value": "{{bearerToken}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "7shifts API version (YYYY-MM-DD).",
+                                "key": "x-api-version",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Company GUID.",
+                                "key": "x-company-guid",
+                                "value": "<uuid>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier?include_inactive=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users",
+                                ":identifier"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Include inactive users in the response.",
+                                  "key": "include_inactive",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f9658f52-a16f-4d28-bfa5-2e5987dbdfec",
+                                  "key": "company_id",
+                                  "value": "<long>",
+                                  "description": "(Required) Company identifier."
+                                },
+                                {
+                                  "id": "31d7abf9-5ecb-4623-8866-9ed86debd678",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "f26b6257-591a-4858-8333-984a07ab82e1",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "7shifts API version (YYYY-MM-DD).",
+                                    "key": "x-api-version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Company GUID.",
+                                    "key": "x-company-guid",
+                                    "value": "<uuid>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier?include_inactive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include inactive users in the response.",
+                                      "key": "include_inactive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"id\": \"<long>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"mobile_number\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"type\": \"asst_manager\",\n    \"invite_status\": \"missing_contact_info\",\n    \"employee_id\": \"<string>\",\n    \"hourly_wage\": \"<integer>\",\n    \"skill_level\": \"<integer>\",\n    \"created\": \"<dateTime>\",\n    \"modified\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-f26b6257-591a-4858-8333-984a07ab82e1"
+                            },
+                            {
+                              "id": "b12bc8ee-324a-4df8-80bb-f3bc7fd7acef",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "7shifts API version (YYYY-MM-DD).",
+                                    "key": "x-api-version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Company GUID.",
+                                    "key": "x-company-guid",
+                                    "value": "<uuid>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier?include_inactive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include inactive users in the response.",
+                                      "key": "include_inactive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-b12bc8ee-324a-4df8-80bb-f3bc7fd7acef"
+                            },
+                            {
+                              "id": "4a70c1b4-1225-474b-bedd-e5f7adbc6a5a",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "7shifts API version (YYYY-MM-DD).",
+                                    "key": "x-api-version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Company GUID.",
+                                    "key": "x-company-guid",
+                                    "value": "<uuid>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier?include_inactive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include inactive users in the response.",
+                                      "key": "include_inactive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-4a70c1b4-1225-474b-bedd-e5f7adbc6a5a"
+                            },
+                            {
+                              "id": "9d098e7c-659c-4c9e-a3de-d231ab9fd38e",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "7shifts API version (YYYY-MM-DD).",
+                                    "key": "x-api-version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Company GUID.",
+                                    "key": "x-company-guid",
+                                    "value": "<uuid>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier?include_inactive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include inactive users in the response.",
+                                      "key": "include_inactive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-9d098e7c-659c-4c9e-a3de-d231ab9fd38e"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-9b926b08-8b15-49bc-b749-a611b7a1ed4d"
+                        },
+                        {
+                          "name": "Update User",
+                          "id": "0fbee59a-88a7-4278-90b8-04c31209cdb3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "bearer",
+                              "bearer": [
+                                {
+                                  "key": "token",
+                                  "value": "{{bearerToken}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users",
+                                ":identifier"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6be4c48b-754c-42c3-b610-b5f19aff7b0a",
+                                  "key": "company_id",
+                                  "value": "<long>",
+                                  "description": "(Required) Company identifier."
+                                },
+                                {
+                                  "id": "051569d5-bbe6-4182-ae0c-c89bab951c94",
+                                  "key": "identifier",
+                                  "value": "<string>",
+                                  "description": "(Required) User identifier."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "8f069f64-0157-4fc5-95d1-77d37c746bdd",
+                              "name": "Updated",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-8f069f64-0157-4fc5-95d1-77d37c746bdd"
+                            },
+                            {
+                              "id": "b506a0f1-f208-426d-b400-8f628553f42b",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-b506a0f1-f208-426d-b400-8f628553f42b"
+                            },
+                            {
+                              "id": "c5290f8c-343d-444c-ba89-762721cf3a2a",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/users/:identifier",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "users",
+                                    ":identifier"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    },
+                                    {
+                                      "key": "identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:14:33.000Z",
+                              "updatedAt": "2026-10-22T01:14:33.000Z",
+                              "uid": "35240-c5290f8c-343d-444c-ba89-762721cf3a2a"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-0fbee59a-88a7-4278-90b8-04c31209cdb3"
+                        }
+                      ],
+                      "id": "53bf0040-1313-489b-a8f7-8261b4a7dfc4",
+                      "createdAt": "2026-10-22T01:14:32.000Z",
+                      "updatedAt": "2026-10-22T01:14:32.000Z",
+                      "uid": "35240-53bf0040-1313-489b-a8f7-8261b4a7dfc4"
+                    },
+                    {
+                      "name": "List Users",
+                      "id": "7a82c6a3-fbe5-4542-81d5-ca3631b149df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "7shifts API version (YYYY-MM-DD).",
+                            "key": "x-api-version",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Company GUID.",
+                            "key": "x-company-guid",
+                            "value": "<uuid>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/users?modified_since=<string>&location_id=<long>&department_id=<long>&role_id=<long>&status=inactive&name=<string>&sort_by=<string>&cursor=<string>&limit=100",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by modification date (YYYY-MM-DD).",
+                              "key": "modified_since",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by location (mutually exclusive with department_id and role_id).",
+                              "key": "location_id",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Filter by department (mutually exclusive with location_id and role_id).",
+                              "key": "department_id",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Filter by role (mutually exclusive with location_id and department_id).",
+                              "key": "role_id",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "User status filter.",
+                              "key": "status",
+                              "value": "inactive"
+                            },
+                            {
+                              "description": "Partial or full employee name filter.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort field and direction (e.g. firstname.asc,lastname.desc).",
+                              "key": "sort_by",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pagination cursor for the next or previous page.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Results per page (1-500, default 100; 20 for some collections).",
+                              "key": "limit",
+                              "value": "100"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "1ef16bd3-3840-4186-ad84-b796f7b2de3d",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d7545830-47a6-4efb-ba2d-797c8760326d",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "7shifts API version (YYYY-MM-DD).",
+                                "key": "x-api-version",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Company GUID.",
+                                "key": "x-company-guid",
+                                "value": "<uuid>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users?modified_since=<string>&location_id=<long>&department_id=<long>&role_id=<long>&status=inactive&name=<string>&sort_by=<string>&cursor=<string>&limit=100",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by modification date (YYYY-MM-DD).",
+                                  "key": "modified_since",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by location (mutually exclusive with department_id and role_id).",
+                                  "key": "location_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Filter by department (mutually exclusive with location_id and role_id).",
+                                  "key": "department_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Filter by role (mutually exclusive with location_id and department_id).",
+                                  "key": "role_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "User status filter.",
+                                  "key": "status",
+                                  "value": "inactive"
+                                },
+                                {
+                                  "description": "Partial or full employee name filter.",
+                                  "key": "name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Sort field and direction (e.g. firstname.asc,lastname.desc).",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pagination cursor for the next or previous page.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Results per page (1-500, default 100; 20 for some collections).",
+                                  "key": "limit",
+                                  "value": "100"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<long>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"mobile_number\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"type\": \"asst_manager\",\n      \"invite_status\": \"missing_contact_info\",\n      \"employee_id\": \"<string>\",\n      \"hourly_wage\": \"<integer>\",\n      \"skill_level\": \"<integer>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"mobile_number\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"type\": \"employee\",\n      \"invite_status\": \"pending\",\n      \"employee_id\": \"<string>\",\n      \"hourly_wage\": \"<integer>\",\n      \"skill_level\": \"<integer>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"<string>\",\n      \"next\": \"<string>\",\n      \"prev\": \"<string>\"\n    },\n    \"count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-d7545830-47a6-4efb-ba2d-797c8760326d"
+                        },
+                        {
+                          "id": "67e40e8e-fd59-487a-a646-4c33f6c810fb",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "7shifts API version (YYYY-MM-DD).",
+                                "key": "x-api-version",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Company GUID.",
+                                "key": "x-company-guid",
+                                "value": "<uuid>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users?modified_since=<string>&location_id=<long>&department_id=<long>&role_id=<long>&status=inactive&name=<string>&sort_by=<string>&cursor=<string>&limit=100",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by modification date (YYYY-MM-DD).",
+                                  "key": "modified_since",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by location (mutually exclusive with department_id and role_id).",
+                                  "key": "location_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Filter by department (mutually exclusive with location_id and role_id).",
+                                  "key": "department_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Filter by role (mutually exclusive with location_id and department_id).",
+                                  "key": "role_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "User status filter.",
+                                  "key": "status",
+                                  "value": "inactive"
+                                },
+                                {
+                                  "description": "Partial or full employee name filter.",
+                                  "key": "name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Sort field and direction (e.g. firstname.asc,lastname.desc).",
+                                  "key": "sort_by",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pagination cursor for the next or previous page.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Results per page (1-500, default 100; 20 for some collections).",
+                                  "key": "limit",
+                                  "value": "100"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-67e40e8e-fd59-487a-a646-4c33f6c810fb"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:33.000Z",
+                      "updatedAt": "2026-10-22T01:14:33.000Z",
+                      "uid": "35240-7a82c6a3-fbe5-4542-81d5-ca3631b149df"
+                    },
+                    {
+                      "name": "Create User",
+                      "id": "1a6eead2-0d53-43a0-a6d8-3854eafa99c1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bbbe5ff3-ad6d-4f27-b399-bc0c72594fea",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f2be8290-fea2-4a62-a666-75f6d2c78c78",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-f2be8290-fea2-4a62-a666-75f6d2c78c78"
+                        },
+                        {
+                          "id": "6f17d594-5faa-4014-9e7a-880dade731c5",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"employer\",\n  \"invite_status\": \"required\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:33.000Z",
+                          "updatedAt": "2026-10-22T01:14:33.000Z",
+                          "uid": "35240-6f17d594-5faa-4014-9e7a-880dade731c5"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:33.000Z",
+                      "updatedAt": "2026-10-22T01:14:33.000Z",
+                      "uid": "35240-1a6eead2-0d53-43a0-a6d8-3854eafa99c1"
+                    }
+                  ],
+                  "id": "c69dd102-caa1-48cd-b2b0-79699c79e03c",
+                  "createdAt": "2026-10-22T01:14:32.000Z",
+                  "updatedAt": "2026-10-22T01:14:32.000Z",
+                  "uid": "35240-c69dd102-caa1-48cd-b2b0-79699c79e03c"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": 7810,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"3m9FLr@sjQdJHwEfMI.zx\",\n      \"mobile_number\": \"string\",\n      \"active\": true,\n      \"type\": \"employee\",\n      \"invite_status\": \"pending\",\n      \"employee_id\": \"string\",\n      \"hourly_wage\": 5657,\n      \"skill_level\": 6059,\n      \"created\": \"1977-10-22T09:25:35.126Z\",\n      \"modified\": \"1981-02-03T09:13:47.361Z\"\n    },\n    {\n      \"id\": 2376,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"2UYWu@BVAUlNdDKDUhxaAzaCBWdYcF.pm\",\n      \"mobile_number\": \"string\",\n      \"active\": true,\n      \"type\": \"employer\",\n      \"invite_status\": \"missing_contact_info\",\n      \"employee_id\": \"string\",\n      \"hourly_wage\": 6887,\n      \"skill_level\": 2677,\n      \"created\": \"2023-10-08T20:19:55.391Z\",\n      \"modified\": \"1976-04-07T07:08:57.818Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 9066\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d257d37a-2039-45fb-8706-152d9fad9d4a",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "modified_since",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "location_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "department_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "role_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort_by",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "846ccde0-a57c-43a9-b8ff-97e20d03bff2",
-          "name": "Create User",
-          "request": {
-            "name": "Create User",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "users"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "870933d7-26e5-4c85-a76c-27f84383813a",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3271bd11-4705-4ed7-8538-954ca1d28f9d",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4b951f1d-6cdd-4b68-bc21-1999e7cb5c9c",
-          "name": "Retrieve User",
-          "request": {
-            "name": "Retrieve User",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "users",
-                ":identifier"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "include_inactive",
-                  "value": "<boolean>",
-                  "description": "Include inactive users in the response."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "identifier",
-                  "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "7shifts API version (YYYY-MM-DD).",
-                "key": "x-api-version",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "Company GUID.",
-                "key": "x-company-guid",
-                "value": "<uuid>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "e9070569-0d9b-4bfa-8aaa-650f357e8600",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_inactive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"id\": 5550,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"FoeRG3RVxl@SVvEexixnATwoo.knii\",\n    \"mobile_number\": \"string\",\n    \"active\": false,\n    \"type\": \"employee\",\n    \"invite_status\": \"pending\",\n    \"employee_id\": \"string\",\n    \"hourly_wage\": 2045,\n    \"skill_level\": 664,\n    \"created\": \"2013-07-09T17:23:00.250Z\",\n    \"modified\": \"1976-06-14T20:43:50.512Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ac2867d3-e6c8-4aba-886d-5ac8f13e784f",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_inactive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4181532a-70cf-4a5c-ba46-b6686d131fc2",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_inactive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "84b24fdf-5b9d-45e3-8292-b3fac29793f3",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_inactive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier. Accepts either a 7shifts user ID or a punch ID with the prefix \"punch:\"."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "7shifts API version (YYYY-MM-DD).",
-                    "key": "x-api-version",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "Company GUID.",
-                    "key": "x-company-guid",
-                    "value": "<uuid>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f548984c-4ec0-4107-b3c1-efe496239efa",
-          "name": "Update User",
-          "request": {
-            "name": "Update User",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "users",
-                ":identifier"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "identifier",
-                  "description": "(Required) User identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8dbd7550-f54e-46e6-ab5c-bdafde5ec43c",
-              "name": "Updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "33971d13-5faa-460c-ab83-46a7cfa9f771",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bdddb4f9-ae71-4f72-ab9a-95e37be86e60",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "users",
-                    ":identifier"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "identifier",
-                      "description": "(Required) User identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"mobile_number\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"invite_status\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"hourly_wage\": \"<integer>\",\n  \"skill_level\": \"<integer>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "4480fb87-e429-4556-87c3-001059f19bb5",
+              "createdAt": "2026-10-22T01:14:32.000Z",
+              "updatedAt": "2026-10-22T01:14:32.000Z",
+              "uid": "35240-4480fb87-e429-4556-87c3-001059f19bb5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6f5c88e1-5c4c-4a4a-bbd7-ba125e7f40c2",
+          "createdAt": "2026-10-22T01:14:32.000Z",
+          "updatedAt": "2026-10-22T01:14:32.000Z",
+          "uid": "35240-6f5c88e1-5c4c-4a4a-bbd7-ba125e7f40c2"
         }
       ],
-      "event": []
+      "id": "ab252fc1-5c20-45bb-a4c2-d48bce00af0a",
+      "createdAt": "2026-10-22T01:14:32.000Z",
+      "updatedAt": "2026-10-22T01:14:32.000Z",
+      "uid": "35240-ab252fc1-5c20-45bb-a4c2-d48bce00af0a"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "057b0b9b-52f4-4300-bc62-482ca07baa35",
-    "name": "7shifts Availability Users API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

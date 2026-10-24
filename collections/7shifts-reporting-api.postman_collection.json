@@ -1,161 +1,188 @@
 {
+  "info": {
+    "_postman_id": "a3fe0067-6dd3-4d9b-81b8-8a2e5299b29d",
+    "name": "7shifts Reporting API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:54.000Z",
+    "updatedAt": "2026-10-22T01:13:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3fe0067-6dd3-4d9b-81b8-8a2e5299b29d"
+  },
   "item": [
     {
-      "id": "d557fc15-bf9b-4e2a-b64f-098c3f1f6128",
-      "name": "Reporting",
-      "description": {
-        "content": "Sales, labor, and worked-hours reporting.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "a4a0f018-ca4a-478f-af06-fd4e4883d2b9",
-          "name": "Retrieve Daily Sales And Labor",
-          "request": {
-            "name": "Retrieve Daily Sales And Labor",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "reports",
-                "daily_sales_and_labor"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "location_id",
-                  "value": "<long>",
-                  "description": "Filter by location."
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<string>",
-                  "description": "Start date (YYYY-MM-DD)."
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<string>",
-                  "description": "End date (YYYY-MM-DD)."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "company",
+          "item": [
             {
-              "id": "b958873d-d0c0-4ca8-8e9f-05c6737c91d7",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "reports",
-                    "daily_sales_and_labor"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "location_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{company_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "reports",
+                  "item": [
+                    {
+                      "name": "daily_sales_and_labor",
+                      "item": [
+                        {
+                          "name": "Retrieve Daily Sales And Labor",
+                          "id": "07523c5b-65f4-4158-a669-7b6e0b004b01",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "bearer",
+                              "bearer": [
+                                {
+                                  "key": "token",
+                                  "value": "{{bearerToken}}",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/reports/daily_sales_and_labor?location_id=<long>&start_date=<string>&end_date=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "reports",
+                                "daily_sales_and_labor"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by location.",
+                                  "key": "location_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Start date (YYYY-MM-DD).",
+                                  "key": "start_date",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "End date (YYYY-MM-DD).",
+                                  "key": "end_date",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d778a6f1-9361-46a3-b407-d71e3ece147d",
+                                  "key": "company_id",
+                                  "value": "<long>",
+                                  "description": "(Required) Company identifier."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dc669d01-e062-4ad8-b9ba-1fd0b8102bff",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/reports/daily_sales_and_labor?location_id=<long>&start_date=<string>&end_date=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "reports",
+                                    "daily_sales_and_labor"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter by location.",
+                                      "key": "location_id",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Start date (YYYY-MM-DD).",
+                                      "key": "start_date",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "End date (YYYY-MM-DD).",
+                                      "key": "end_date",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "company_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:13:54.000Z",
+                              "updatedAt": "2026-10-22T01:13:54.000Z",
+                              "uid": "35240-dc669d01-e062-4ad8-b9ba-1fd0b8102bff"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:13:54.000Z",
+                          "updatedAt": "2026-10-22T01:13:54.000Z",
+                          "uid": "35240-07523c5b-65f4-4158-a669-7b6e0b004b01"
+                        }
+                      ],
+                      "id": "e2623288-66b8-4f27-9de9-9154c22a23ca",
+                      "createdAt": "2026-10-22T01:13:54.000Z",
+                      "updatedAt": "2026-10-22T01:13:54.000Z",
+                      "uid": "35240-e2623288-66b8-4f27-9de9-9154c22a23ca"
+                    }
+                  ],
+                  "id": "445559a4-e9b0-4467-849f-35fdd73b2558",
+                  "createdAt": "2026-10-22T01:13:54.000Z",
+                  "updatedAt": "2026-10-22T01:13:54.000Z",
+                  "uid": "35240-445559a4-e9b0-4467-849f-35fdd73b2558"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "814a5601-4236-4ddb-a364-85ce754799b7",
+              "createdAt": "2026-10-22T01:13:54.000Z",
+              "updatedAt": "2026-10-22T01:13:54.000Z",
+              "uid": "35240-814a5601-4236-4ddb-a364-85ce754799b7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "62a5a6f7-7aff-49c0-83e2-b7cfc4c60dbb",
+          "createdAt": "2026-10-22T01:13:54.000Z",
+          "updatedAt": "2026-10-22T01:13:54.000Z",
+          "uid": "35240-62a5a6f7-7aff-49c0-83e2-b7cfc4c60dbb"
         }
       ],
-      "event": []
+      "id": "30159fb5-eef1-4701-9a89-848162715368",
+      "createdAt": "2026-10-22T01:13:54.000Z",
+      "updatedAt": "2026-10-22T01:13:54.000Z",
+      "uid": "35240-30159fb5-eef1-4701-9a89-848162715368"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "4aefe3b5-dc27-4944-b53e-ba089c0d8de3",
-    "name": "7shifts Availability Reporting API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

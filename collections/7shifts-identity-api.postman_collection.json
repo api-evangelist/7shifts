@@ -1,147 +1,131 @@
 {
+  "info": {
+    "_postman_id": "d0dc7630-f9bc-44f6-b4dc-7e87706bb346",
+    "name": "7shifts Identity API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:41.000Z",
+    "updatedAt": "2026-10-22T01:13:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d0dc7630-f9bc-44f6-b4dc-7e87706bb346"
+  },
   "item": [
     {
-      "id": "fd4b66df-5170-498d-b150-f0bd3014f95e",
-      "name": "Identity",
-      "description": {
-        "content": "Identity introspection for the authenticated token.",
-        "type": "text/plain"
-      },
+      "name": "whoami",
       "item": [
         {
-          "id": "338c6476-96da-4272-a6cb-890a0b6e0e35",
           "name": "Retrieve Identity",
+          "id": "9fff0cb8-aeb3-4652-9b17-9fbb5d1294cb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Retrieve Identity",
-            "description": {
-              "content": "Returns the identity associated with the authenticated access token.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "whoami"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{bearerToken}}"
+                  "value": "{{bearerToken}}",
+                  "type": "string"
                 }
               ]
-            }
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/whoami",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "whoami"
+              ]
+            },
+            "description": "Returns the identity associated with the authenticated access token."
           },
           "response": [
             {
-              "id": "8af92b8a-43d2-484e-b538-243d5354f180",
+              "id": "40444909-c0a4-4240-9da0-88543876ebe0",
               "name": "OK",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "whoami"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/whoami",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "whoami"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:13:42.000Z",
+              "updatedAt": "2026-10-22T01:13:42.000Z",
+              "uid": "35240-40444909-c0a4-4240-9da0-88543876ebe0"
             },
             {
-              "id": "0a83e62d-229d-4832-a9e7-f07ad87faca1",
+              "id": "249ed478-ce41-4a94-98c1-8b7a22e5a58d",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "whoami"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/whoami",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "whoami"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:13:42.000Z",
+              "updatedAt": "2026-10-22T01:13:42.000Z",
+              "uid": "35240-249ed478-ce41-4a94-98c1-8b7a22e5a58d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:13:42.000Z",
+          "updatedAt": "2026-10-22T01:13:42.000Z",
+          "uid": "35240-9fff0cb8-aeb3-4652-9b17-9fbb5d1294cb"
         }
       ],
-      "event": []
+      "id": "fbc91a59-ed04-4e6e-96e6-37cb9f20b264",
+      "createdAt": "2026-10-22T01:13:42.000Z",
+      "updatedAt": "2026-10-22T01:13:42.000Z",
+      "uid": "35240-fbc91a59-ed04-4e6e-96e6-37cb9f20b264"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "85e7665d-f706-4f5c-91fc-c42c9912c730",
-    "name": "7shifts Availability Identity API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

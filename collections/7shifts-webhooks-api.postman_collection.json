@@ -1,255 +1,273 @@
 {
+  "info": {
+    "_postman_id": "a5bb59b2-354f-448b-b76b-c89f205e44ef",
+    "name": "7shifts Webhooks API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:40.000Z",
+    "updatedAt": "2026-10-22T01:14:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a5bb59b2-354f-448b-b76b-c89f205e44ef"
+  },
   "item": [
     {
-      "id": "32daa817-f3b0-438f-8a7e-4e48fb03f3f1",
-      "name": "Webhooks",
-      "description": {
-        "content": "Company-level webhook subscriptions.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "12ac3f61-1aab-4045-9581-7b41a90a06a1",
-          "name": "List Webhooks",
-          "request": {
-            "name": "List Webhooks",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "webhooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "company",
+          "item": [
             {
-              "id": "ac1994ba-6a54-4f83-ba95-175fb28a8504",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "webhooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{company_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "webhooks",
+                  "item": [
+                    {
+                      "name": "List Webhooks",
+                      "id": "52ceebdf-b569-4aa5-bf8f-44d09d7239bd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "id": "92905ace-c492-4244-b463-0ddcd8d3c483",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a4560294-9491-41f6-8425-d7828cb33d48",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<long>\",\n      \"webhook_url\": \"<uri>\",\n      \"event_type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"webhook_url\": \"<uri>\",\n      \"event_type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:14:41.000Z",
+                          "updatedAt": "2026-10-22T01:14:41.000Z",
+                          "uid": "35240-a4560294-9491-41f6-8425-d7828cb33d48"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:41.000Z",
+                      "updatedAt": "2026-10-22T01:14:41.000Z",
+                      "uid": "35240-52ceebdf-b569-4aa5-bf8f-44d09d7239bd"
+                    },
+                    {
+                      "name": "Create Webhook",
+                      "id": "b6ea3850-68d1-4e0d-bba9-f9f2fc06b080",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"webhook_url\": \"<uri>\",\n  \"event_type\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/webhooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "webhooks"
+                          ],
+                          "variable": [
+                            {
+                              "id": "58b474a7-920a-4b32-bf55-9b3df8d71a5d",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "164ef525-c294-4853-b780-3d8e78791937",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"webhook_url\": \"<uri>\",\n  \"event_type\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/webhooks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "webhooks"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:41.000Z",
+                          "updatedAt": "2026-10-22T01:14:41.000Z",
+                          "uid": "35240-164ef525-c294-4853-b780-3d8e78791937"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:41.000Z",
+                      "updatedAt": "2026-10-22T01:14:41.000Z",
+                      "uid": "35240-b6ea3850-68d1-4e0d-bba9-f9f2fc06b080"
+                    }
+                  ],
+                  "id": "ea030b1d-5b51-4a3d-8338-fc39f1d6d25e",
+                  "createdAt": "2026-10-22T01:14:41.000Z",
+                  "updatedAt": "2026-10-22T01:14:41.000Z",
+                  "uid": "35240-ea030b1d-5b51-4a3d-8338-fc39f1d6d25e"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": 1569,\n      \"webhook_url\": \"https://VspZGIwqXwti.srIuUuNX.i8HtUrdgm9iz9-pOu4nTtQj6VaD2SHQTHyThiuCZ-xTs2tSdExizCXXYhfPD0AR\",\n      \"event_type\": \"string\",\n      \"active\": false,\n      \"created\": \"1994-02-01T09:19:21.498Z\",\n      \"modified\": \"1969-06-06T15:47:47.992Z\"\n    },\n    {\n      \"id\": 5056,\n      \"webhook_url\": \"http://HP.bzZuTNmFl,f+ly6JNKJ.Zro-osWa8JnXwlJnnRTC3LI6Taheqnge2XtZjOgC8\",\n      \"event_type\": \"string\",\n      \"active\": false,\n      \"created\": \"1988-09-01T20:59:02.049Z\",\n      \"modified\": \"1971-05-08T01:34:25.382Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "d232965b-5dab-4d97-9c2d-b418ed3af4f2",
+              "createdAt": "2026-10-22T01:14:41.000Z",
+              "updatedAt": "2026-10-22T01:14:41.000Z",
+              "uid": "35240-d232965b-5dab-4d97-9c2d-b418ed3af4f2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2693a949-f372-43de-9053-047ca4544fb7",
-          "name": "Create Webhook",
-          "request": {
-            "name": "Create Webhook",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "webhooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"webhook_url\": \"<uri>\",\n  \"event_type\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e092a41a-a2b3-4f24-87c0-400c43174734",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "webhooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"webhook_url\": \"<uri>\",\n  \"event_type\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b73ab427-fd9f-40b4-a86e-b429297fe99a",
+          "createdAt": "2026-10-22T01:14:41.000Z",
+          "updatedAt": "2026-10-22T01:14:41.000Z",
+          "uid": "35240-b73ab427-fd9f-40b4-a86e-b429297fe99a"
         }
       ],
-      "event": []
+      "id": "20a8ab2b-7f5f-42b7-a8cf-4c55b1bfdbfa",
+      "createdAt": "2026-10-22T01:14:41.000Z",
+      "updatedAt": "2026-10-22T01:14:41.000Z",
+      "uid": "35240-20a8ab2b-7f5f-42b7-a8cf-4c55b1bfdbfa"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "9c05b205-d516-49c2-9fa4-2ac9c5abdd8f",
-    "name": "7shifts Availability Webhooks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

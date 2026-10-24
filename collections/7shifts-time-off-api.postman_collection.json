@@ -1,469 +1,481 @@
 {
+  "info": {
+    "_postman_id": "540bf69b-9cb4-4e93-bab3-95126eee3219",
+    "name": "7shifts Time Off API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:19.000Z",
+    "updatedAt": "2026-10-22T01:14:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-540bf69b-9cb4-4e93-bab3-95126eee3219"
+  },
   "item": [
     {
-      "id": "9d017e0c-7976-4bd2-a4c1-c14fa9e8ba78",
-      "name": "Time Off",
-      "description": {
-        "content": "Time off requests and approvals.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "5abb9d55-462a-4986-9ee5-4d73128d6589",
-          "name": "List Time Off",
-          "request": {
-            "name": "List Time Off",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "time_off"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "user_id",
-                  "value": "<long>",
-                  "description": "Filter by user."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by request status."
-                },
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "Pagination cursor for the next or previous page."
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Results per page (1-500, default 100; 20 for some collections)."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "company",
+          "item": [
             {
-              "id": "4561cc78-52bd-4ada-ba76-077545aa95e2",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "time_off"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{company_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "time_off",
+                  "item": [
+                    {
+                      "name": "{time_off_id}",
+                      "item": [
+                        {
+                          "name": "approve",
+                          "item": [
+                            {
+                              "name": "Approve Time Off Request",
+                              "id": "1ab72268-7091-4070-8196-7a86c2cb6ebf",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "bearer",
+                                  "bearer": [
+                                    {
+                                      "key": "token",
+                                      "value": "{{bearerToken}}",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/company/:company_id/time_off/:time_off_id/approve",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "company",
+                                    ":company_id",
+                                    "time_off",
+                                    ":time_off_id",
+                                    "approve"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "ad49bbae-5707-4837-8084-87787a356451",
+                                      "key": "company_id",
+                                      "value": "<long>",
+                                      "description": "(Required) Company identifier."
+                                    },
+                                    {
+                                      "id": "8cadf5ce-f750-425e-8f08-3817f1e3be44",
+                                      "key": "time_off_id",
+                                      "value": "<long>",
+                                      "description": "(Required) Time off request identifier."
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "0a42e6bd-f961-4fe7-8cd1-06fcd2d54a0f",
+                                  "name": "Approved",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/company/:company_id/time_off/:time_off_id/approve",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "company",
+                                        ":company_id",
+                                        "time_off",
+                                        ":time_off_id",
+                                        "approve"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "company_id"
+                                        },
+                                        {
+                                          "key": "time_off_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:14:20.000Z",
+                                  "updatedAt": "2026-10-22T01:14:20.000Z",
+                                  "uid": "35240-0a42e6bd-f961-4fe7-8cd1-06fcd2d54a0f"
+                                },
+                                {
+                                  "id": "7a414c37-2762-480d-9536-50e82db6ceff",
+                                  "name": "Not found",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/company/:company_id/time_off/:time_off_id/approve",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "company",
+                                        ":company_id",
+                                        "time_off",
+                                        ":time_off_id",
+                                        "approve"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "company_id"
+                                        },
+                                        {
+                                          "key": "time_off_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:14:20.000Z",
+                                  "updatedAt": "2026-10-22T01:14:20.000Z",
+                                  "uid": "35240-7a414c37-2762-480d-9536-50e82db6ceff"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:14:20.000Z",
+                              "updatedAt": "2026-10-22T01:14:20.000Z",
+                              "uid": "35240-1ab72268-7091-4070-8196-7a86c2cb6ebf"
+                            }
+                          ],
+                          "id": "c97d81be-2425-4108-bc42-63919a041fe7",
+                          "createdAt": "2026-10-22T01:14:20.000Z",
+                          "updatedAt": "2026-10-22T01:14:20.000Z",
+                          "uid": "35240-c97d81be-2425-4108-bc42-63919a041fe7"
+                        }
+                      ],
+                      "id": "5e992347-d031-4916-8223-791071d9cdff",
+                      "createdAt": "2026-10-22T01:14:20.000Z",
+                      "updatedAt": "2026-10-22T01:14:20.000Z",
+                      "uid": "35240-5e992347-d031-4916-8223-791071d9cdff"
+                    },
+                    {
+                      "name": "List Time Off",
+                      "id": "a31dac4c-7e07-4723-977e-257db154dd56",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/time_off?user_id=<long>&status=pending&cursor=<string>&limit=100",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "time_off"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by user.",
+                              "key": "user_id",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Filter by request status.",
+                              "key": "status",
+                              "value": "pending"
+                            },
+                            {
+                              "description": "Pagination cursor for the next or previous page.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Results per page (1-500, default 100; 20 for some collections).",
+                              "key": "limit",
+                              "value": "100"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "acbfdb7d-baee-44a7-9b04-8b34a18206e5",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1888dd8a-de00-48eb-b634-1922bb571d06",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/time_off?user_id=<long>&status=pending&cursor=<string>&limit=100",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "time_off"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by user.",
+                                  "key": "user_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Filter by request status.",
+                                  "key": "status",
+                                  "value": "pending"
+                                },
+                                {
+                                  "description": "Pagination cursor for the next or previous page.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Results per page (1-500, default 100; 20 for some collections).",
+                                  "key": "limit",
+                                  "value": "100"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<long>\",\n      \"user_id\": \"<long>\",\n      \"status\": \"declined\",\n      \"from_date\": \"<date>\",\n      \"to_date\": \"<date>\",\n      \"partial\": \"<boolean>\",\n      \"category\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"user_id\": \"<long>\",\n      \"status\": \"approved\",\n      \"from_date\": \"<date>\",\n      \"to_date\": \"<date>\",\n      \"partial\": \"<boolean>\",\n      \"category\": \"<string>\",\n      \"comments\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"<string>\",\n      \"next\": \"<string>\",\n      \"prev\": \"<string>\"\n    },\n    \"count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:14:20.000Z",
+                          "updatedAt": "2026-10-22T01:14:20.000Z",
+                          "uid": "35240-1888dd8a-de00-48eb-b634-1922bb571d06"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:20.000Z",
+                      "updatedAt": "2026-10-22T01:14:20.000Z",
+                      "uid": "35240-a31dac4c-7e07-4723-977e-257db154dd56"
+                    },
+                    {
+                      "name": "Create Time Off",
+                      "id": "2864ba18-596b-4c6c-8529-34bf095adf9e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"status\": \"approved\",\n  \"from_date\": \"<date>\",\n  \"to_date\": \"<date>\",\n  \"partial\": \"<boolean>\",\n  \"category\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/time_off",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "time_off"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a8828017-e771-4ab2-a2be-006a3399c1a7",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "06463584-7966-465b-a013-3517d7aa4cb4",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"status\": \"approved\",\n  \"from_date\": \"<date>\",\n  \"to_date\": \"<date>\",\n  \"partial\": \"<boolean>\",\n  \"category\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/time_off",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "time_off"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:20.000Z",
+                          "updatedAt": "2026-10-22T01:14:20.000Z",
+                          "uid": "35240-06463584-7966-465b-a013-3517d7aa4cb4"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:20.000Z",
+                      "updatedAt": "2026-10-22T01:14:20.000Z",
+                      "uid": "35240-2864ba18-596b-4c6c-8529-34bf095adf9e"
+                    }
+                  ],
+                  "id": "44cfe83b-7b88-4ff3-bbe0-1a322b125306",
+                  "createdAt": "2026-10-22T01:14:20.000Z",
+                  "updatedAt": "2026-10-22T01:14:20.000Z",
+                  "uid": "35240-44cfe83b-7b88-4ff3-bbe0-1a322b125306"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": 1257,\n      \"user_id\": 9829,\n      \"status\": \"declined\",\n      \"from_date\": \"1960-04-17\",\n      \"to_date\": \"1990-03-28\",\n      \"partial\": false,\n      \"category\": \"string\",\n      \"comments\": \"string\",\n      \"created\": \"1953-01-30T18:49:43.947Z\",\n      \"modified\": \"1956-06-05T09:43:05.371Z\"\n    },\n    {\n      \"id\": 5758,\n      \"user_id\": 4104,\n      \"status\": \"pending\",\n      \"from_date\": \"1982-02-06\",\n      \"to_date\": \"2009-03-05\",\n      \"partial\": true,\n      \"category\": \"string\",\n      \"comments\": \"string\",\n      \"created\": \"1981-09-08T23:36:35.188Z\",\n      \"modified\": \"1958-11-22T19:23:21.810Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 4800\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "6cf3fcb5-eb3f-495e-a885-8bd379123738",
+              "createdAt": "2026-10-22T01:14:20.000Z",
+              "updatedAt": "2026-10-22T01:14:20.000Z",
+              "uid": "35240-6cf3fcb5-eb3f-495e-a885-8bd379123738"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fc96e37d-b9c7-468a-bd09-15d8c96e75a5",
-          "name": "Create Time Off",
-          "request": {
-            "name": "Create Time Off",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "time_off"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"status\": \"<string>\",\n  \"from_date\": \"<date>\",\n  \"to_date\": \"<date>\",\n  \"partial\": \"<boolean>\",\n  \"category\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "51218a1d-6f87-4008-8459-5bc9c4f33853",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "time_off"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"user_id\": \"<long>\",\n  \"status\": \"<string>\",\n  \"from_date\": \"<date>\",\n  \"to_date\": \"<date>\",\n  \"partial\": \"<boolean>\",\n  \"category\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2ec47e5a-5a5f-4cd1-ae3e-5a02247bdfa2",
-          "name": "Approve Time Off Request",
-          "request": {
-            "name": "Approve Time Off Request",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "time_off",
-                ":time_off_id",
-                "approve"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "time_off_id",
-                  "description": "(Required) Time off request identifier."
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "bdad261e-f936-4056-9275-2369bedb5f98",
-              "name": "Approved",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "time_off",
-                    ":time_off_id",
-                    "approve"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "time_off_id",
-                      "description": "(Required) Time off request identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3f187669-9190-496a-b5c4-421ba3055b92",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "time_off",
-                    ":time_off_id",
-                    "approve"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "time_off_id",
-                      "description": "(Required) Time off request identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "30b403ed-a3af-44f8-be93-6036897a2d12",
+          "createdAt": "2026-10-22T01:14:20.000Z",
+          "updatedAt": "2026-10-22T01:14:20.000Z",
+          "uid": "35240-30b403ed-a3af-44f8-be93-6036897a2d12"
         }
       ],
-      "event": []
+      "id": "2f50d356-8f13-4659-8163-7b9d9d19d4f6",
+      "createdAt": "2026-10-22T01:14:20.000Z",
+      "updatedAt": "2026-10-22T01:14:20.000Z",
+      "uid": "35240-2f50d356-8f13-4659-8163-7b9d9d19d4f6"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "6e69c332-7a7a-4777-8bfe-fdcdfdb0cb14",
-    "name": "7shifts Availability Time Off API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

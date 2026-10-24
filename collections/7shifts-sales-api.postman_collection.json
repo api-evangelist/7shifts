@@ -1,287 +1,307 @@
 {
+  "info": {
+    "_postman_id": "09198070-d2f7-48b3-93d3-2ad93b587761",
+    "name": "7shifts Sales API",
+    "description": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform.\n\nContact Support:\n Name: 7shifts Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:04.000Z",
+    "updatedAt": "2026-10-22T01:14:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-09198070-d2f7-48b3-93d3-2ad93b587761"
+  },
   "item": [
     {
-      "id": "03f33dc4-a7fd-4a18-9996-bf557b7e02d8",
-      "name": "Sales",
-      "description": {
-        "content": "Sales receipts and POS-integrated sales data.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "f5f205c7-96f2-428f-b163-59f46b83c943",
-          "name": "List Receipts",
-          "request": {
-            "name": "List Receipts",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "receipts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "location_id",
-                  "value": "<long>",
-                  "description": "Filter by location."
-                },
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "Pagination cursor for the next or previous page."
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Results per page (1-500, default 100; 20 for some collections)."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "company",
+          "item": [
             {
-              "id": "6cd5c3c9-dbfd-47d2-8693-396c486d8e56",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "receipts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "location_id",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "cursor",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{company_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "receipts",
+                  "item": [
+                    {
+                      "name": "List Receipts",
+                      "id": "5608ba32-447d-4791-b90f-4ae9f13596a4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/receipts?location_id=<long>&cursor=<string>&limit=100",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "receipts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by location.",
+                              "key": "location_id",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Pagination cursor for the next or previous page.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Results per page (1-500, default 100; 20 for some collections).",
+                              "key": "limit",
+                              "value": "100"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "cd8e6c10-1bd4-4e39-8e55-e1b55c71329e",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1951e6fe-2a0f-4034-a15b-0a7ab1d80fc2",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/receipts?location_id=<long>&cursor=<string>&limit=100",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "receipts"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by location.",
+                                  "key": "location_id",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Pagination cursor for the next or previous page.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Results per page (1-500, default 100; 20 for some collections).",
+                                  "key": "limit",
+                                  "value": "100"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<long>\",\n      \"location_id\": \"<long>\",\n      \"external_id\": \"<string>\",\n      \"receipt_date\": \"<dateTime>\",\n      \"total\": \"<integer>\",\n      \"revenue_center\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"location_id\": \"<long>\",\n      \"external_id\": \"<string>\",\n      \"receipt_date\": \"<dateTime>\",\n      \"total\": \"<integer>\",\n      \"revenue_center\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"modified\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"<string>\",\n      \"next\": \"<string>\",\n      \"prev\": \"<string>\"\n    },\n    \"count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:14:04.000Z",
+                          "updatedAt": "2026-10-22T01:14:04.000Z",
+                          "uid": "35240-1951e6fe-2a0f-4034-a15b-0a7ab1d80fc2"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:04.000Z",
+                      "updatedAt": "2026-10-22T01:14:04.000Z",
+                      "uid": "35240-5608ba32-447d-4791-b90f-4ae9f13596a4"
+                    },
+                    {
+                      "name": "Create Receipt",
+                      "id": "5de14ecf-02c1-4231-8ca7-75d9ee3ec53e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"external_id\": \"<string>\",\n  \"receipt_date\": \"<dateTime>\",\n  \"total\": \"<integer>\",\n  \"revenue_center\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/company/:company_id/receipts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "company",
+                            ":company_id",
+                            "receipts"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8188f73a-bbd3-4936-9916-df800b6f521b",
+                              "key": "company_id",
+                              "value": "<long>",
+                              "description": "(Required) Company identifier."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "5be72848-4bb2-4b14-a6a7-0dfb4a7a6cd6",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"external_id\": \"<string>\",\n  \"receipt_date\": \"<dateTime>\",\n  \"total\": \"<integer>\",\n  \"revenue_center\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/company/:company_id/receipts",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "company",
+                                ":company_id",
+                                "receipts"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "company_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:14:04.000Z",
+                          "updatedAt": "2026-10-22T01:14:04.000Z",
+                          "uid": "35240-5be72848-4bb2-4b14-a6a7-0dfb4a7a6cd6"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:14:04.000Z",
+                      "updatedAt": "2026-10-22T01:14:04.000Z",
+                      "uid": "35240-5de14ecf-02c1-4231-8ca7-75d9ee3ec53e"
+                    }
+                  ],
+                  "id": "598c89f6-5a59-425f-8a6c-f2be350b13a0",
+                  "createdAt": "2026-10-22T01:14:04.000Z",
+                  "updatedAt": "2026-10-22T01:14:04.000Z",
+                  "uid": "35240-598c89f6-5a59-425f-8a6c-f2be350b13a0"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": 7553,\n      \"location_id\": 1676,\n      \"external_id\": \"string\",\n      \"receipt_date\": \"1978-08-13T12:56:36.643Z\",\n      \"total\": 6284,\n      \"revenue_center\": \"string\",\n      \"created\": \"2006-05-13T04:30:50.952Z\",\n      \"modified\": \"2012-08-22T15:46:17.325Z\"\n    },\n    {\n      \"id\": 9569,\n      \"location_id\": 3548,\n      \"external_id\": \"string\",\n      \"receipt_date\": \"1984-12-26T02:59:07.537Z\",\n      \"total\": 2493,\n      \"revenue_center\": \"string\",\n      \"created\": \"1997-04-11T16:32:15.512Z\",\n      \"modified\": \"1963-03-31T11:58:52.569Z\"\n    }\n  ],\n  \"meta\": {\n    \"cursor\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"prev\": \"string\"\n    },\n    \"count\": 2758\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "75745182-07a5-4096-a322-6e20b7007a50",
+              "createdAt": "2026-10-22T01:14:04.000Z",
+              "updatedAt": "2026-10-22T01:14:04.000Z",
+              "uid": "35240-75745182-07a5-4096-a322-6e20b7007a50"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7f7d50fd-90fb-4a85-84e5-92c150406187",
-          "name": "Create Receipt",
-          "request": {
-            "name": "Create Receipt",
-            "description": {},
-            "url": {
-              "path": [
-                "v2",
-                "company",
-                ":company_id",
-                "receipts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "company_id",
-                  "description": "(Required) Company identifier."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"external_id\": \"<string>\",\n  \"receipt_date\": \"<dateTime>\",\n  \"total\": \"<integer>\",\n  \"revenue_center\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e98dc542-f827-4ef5-a56d-963c3f8e0b52",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "company",
-                    ":company_id",
-                    "receipts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "company_id",
-                      "description": "(Required) Company identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"location_id\": \"<long>\",\n  \"external_id\": \"<string>\",\n  \"receipt_date\": \"<dateTime>\",\n  \"total\": \"<integer>\",\n  \"revenue_center\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "87ddcd07-d7a3-47c0-b18d-2d73f87b4ded",
+          "createdAt": "2026-10-22T01:14:04.000Z",
+          "updatedAt": "2026-10-22T01:14:04.000Z",
+          "uid": "35240-87ddcd07-d7a3-47c0-b18d-2d73f87b4ded"
         }
       ],
-      "event": []
+      "id": "ad2a0afa-5569-486d-867a-32d70c631fc0",
+      "createdAt": "2026-10-22T01:14:04.000Z",
+      "updatedAt": "2026-10-22T01:14:04.000Z",
+      "uid": "35240-ad2a0afa-5569-486d-867a-32d70c631fc0"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.7shifts.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.7shifts.com"
     }
-  ],
-  "info": {
-    "_postman_id": "fe42122e-39be-4d7b-9b0e-5f6beca462c6",
-    "name": "7shifts Availability Sales API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "7shifts is a restaurant employee scheduling, time-tracking, and team management platform. The 7shifts API v2 is a REST API for managing companies, locations, departments, roles, users (employees), schedules, shifts, time punches, wages, time off, availability, sales receipts, forecasts, tasks, tip pools, and webhooks. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations. Endpoints documented here were confirmed from the 7shifts developer reference (developers.7shifts.com) and its llms.txt index. Most resources are scoped to a company via the /v2/company/{company_id} path prefix. Collection endpoints use cursor-based pagination via the cursor and limit query parameters. Date-based API versions are selected with the x-api-version header (YYYY-MM-DD).\n\nContact Support:\n Name: 7shifts Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
