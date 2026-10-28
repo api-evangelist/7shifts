@@ -1,4 +1,4 @@
-# 7shifts (7shifts)
+# 7shifts
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,89 +66,224 @@
 
 7shifts is a restaurant employee scheduling, time-tracking, and team management platform that helps restaurant operators forecast labor, build schedules, manage shift trades, run payroll integrations, and communicate with hourly staff. The platform integrates with major POS systems for sales data and labor forecasting and supports multi-location operations across quick-service, full-service, and franchise concepts. The 7shifts API v2 is a REST API authenticated via long-lived access tokens (Bearer) for internal use or OAuth 2.0 client credentials for technology partners, exposing employees, schedules, shifts, time punches, departments, locations, and wages.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/apis.yml)
+**Areas:** Restaurant · Scheduling · Workforce Management · Employee Scheduling · Time Tracking · HRIS · Labor
 
-## Scope
+## 7shifts on APIs.io
 
-- **Type:** Index
+Everything profiled for 7shifts is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/7shifts/](https://apis.io/providers/7shifts/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (15)
 
-- Restaurant
-- Scheduling
-- Workforce Management
-- Employee Scheduling
-- Time Tracking
-- HRIS
-- Labor
+- [7shifts Availability API](https://apis.io/apis/7shifts/7shifts-availability-api/) — Employee availability records.
+- [7shifts Companies API](https://apis.io/apis/7shifts/7shifts-companies-api/) — Company resources for 7shifts accounts.
+- [7shifts Departments API](https://apis.io/apis/7shifts/7shifts-departments-api/) — Departments within a location.
+- [7shifts Identity API](https://apis.io/apis/7shifts/7shifts-identity-api/) — Identity introspection for the authenticated token.
+- [7shifts Locations API](https://apis.io/apis/7shifts/7shifts-locations-api/) — Physical restaurant locations within a company.
+- [7shifts Reporting API](https://apis.io/apis/7shifts/7shifts-reporting-api/) — Sales, labor, and worked-hours reporting.
+- [7shifts Roles API](https://apis.io/apis/7shifts/7shifts-roles-api/) — Job roles within a department.
+- [7shifts Sales API](https://apis.io/apis/7shifts/7shifts-sales-api/) — Sales receipts and POS-integrated sales data.
+- [7shifts Shifts API](https://apis.io/apis/7shifts/7shifts-shifts-api/) — Scheduled shifts assigned to users.
+- [7shifts Time Off API](https://apis.io/apis/7shifts/7shifts-time-off-api/) — Time off requests and approvals.
+- [7shifts Time Punches API](https://apis.io/apis/7shifts/7shifts-time-punches-api/) — Clock-in and clock-out time tracking records.
+- [7shifts Users API](https://apis.io/apis/7shifts/7shifts-users-api/) — Users (employees) scoped to a company.
+- [7shifts Wages API](https://apis.io/apis/7shifts/7shifts-wages-api/) — Hourly and salary wage records for users.
+- [7shifts Webhooks API](https://apis.io/apis/7shifts/7shifts-webhooks-api/) — Company-level webhook subscriptions.
+- [7shifts O Auth API](https://apis.io/apis/7shifts/7shifts-oauth-api/) — Token issuance for Partner OAuth applications.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-06-02
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### 7shifts REST API v2
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API v2 for managing companies, locations, departments, roles, employees, schedules, shifts, time punches, wages, and time-off requests in 7shifts. Authentication uses Bearer access tokens for internal access or OAuth 2.0 client credentials for partner integrations.
+- [7Shifts Agentic Access](https://apis.io/agentic-access/7shifts/7shifts-agentic-access/)
 
-- **Human URL:** [https://developers.7shifts.com/reference/introduction](https://developers.7shifts.com/reference/introduction)
-- **Base URL:** `https://api.7shifts.com/v2`
+#### JSON Schema (12)
 
-#### Tags
+The data models the API reads and writes.
 
-- Employees
-- Schedules
-- Shifts
-- Time Tracking
-- Locations
-- Wages
-- Time Off
-- Availability
-- Sales
-- Forecasting
-- Tasks
-- Tip Pool
-- Webhooks
-- Reporting
+- [Availability](https://apis.io/schemas/7shifts/7shifts-availability/)
+- [Company](https://apis.io/schemas/7shifts/7shifts-company/)
+- [Department](https://apis.io/schemas/7shifts/7shifts-department/)
+- [Location](https://apis.io/schemas/7shifts/7shifts-location/)
+- [Receipt](https://apis.io/schemas/7shifts/7shifts-receipt/)
+- [Role](https://apis.io/schemas/7shifts/7shifts-role/)
+- [Shift](https://apis.io/schemas/7shifts/7shifts-shift/)
+- [Time Off](https://apis.io/schemas/7shifts/7shifts-timeoff/)
+- [Time Punch](https://apis.io/schemas/7shifts/7shifts-timepunch/)
+- [User](https://apis.io/schemas/7shifts/7shifts-user/)
+- [Wage](https://apis.io/schemas/7shifts/7shifts-wage/)
+- [Webhook](https://apis.io/schemas/7shifts/7shifts-webhook/)
 
-#### Properties
+#### JSON Structure (12)
 
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/7shifts/refs/heads/main/openapi/7shifts-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://developers.7shifts.com/reference/introduction)
-- [Authentication](https://developers.7shifts.com/reference/authentication)
-- [O Auth  Authentication](https://developers.7shifts.com/docs/oauth-authentication)
-- [Getting Started](https://developers.7shifts.com/docs/getting-started)
-- [Versioning](https://developers.7shifts.com/reference/versioning)
-- [Postman](https://developers.7shifts.com/reference/postman-collection) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Webhooks](https://developers.7shifts.com/reference/webhooks-introduction)
-- [Rate Limits](https://developers.7shifts.com/reference/versioning)
-- [Changelog](https://developers.7shifts.com/changelog)
-- [SDK](https://developers.7shifts.com/docs/embed-sdk-configuration)
-- [Postman Collection](collections/7shifts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/7shifts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [7Shifts Availability Structure](https://apis.io/json-structure/7shifts/7shifts-availability-structure/)
+- [7Shifts Company Structure](https://apis.io/json-structure/7shifts/7shifts-company-structure/)
+- [7Shifts Department Structure](https://apis.io/json-structure/7shifts/7shifts-department-structure/)
+- [7Shifts Location Structure](https://apis.io/json-structure/7shifts/7shifts-location-structure/)
+- [7Shifts Receipt Structure](https://apis.io/json-structure/7shifts/7shifts-receipt-structure/)
+- [7Shifts Role Structure](https://apis.io/json-structure/7shifts/7shifts-role-structure/)
+- [7Shifts Shift Structure](https://apis.io/json-structure/7shifts/7shifts-shift-structure/)
+- [7Shifts Timeoff Structure](https://apis.io/json-structure/7shifts/7shifts-timeoff-structure/)
+- [7Shifts Timepunch Structure](https://apis.io/json-structure/7shifts/7shifts-timepunch-structure/)
+- [7Shifts User Structure](https://apis.io/json-structure/7shifts/7shifts-user-structure/)
+- [7Shifts Wage Structure](https://apis.io/json-structure/7shifts/7shifts-wage-structure/)
+- [7Shifts Webhook Structure](https://apis.io/json-structure/7shifts/7shifts-webhook-structure/)
 
-- [GitHub Organization](https://github.com/7shifts)
-- [LinkedIn](https://www.linkedin.com/company/7shifts)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [7Shifts Context](https://apis.io/jsonld/7shifts/7shifts-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [7Shifts Vocabulary](https://apis.io/vocabularies/7shifts/7shifts-vocabulary/)
+
+#### Examples (12)
+
+Example requests and responses.
+
+- [7Shifts Availability Example](https://apis.io/examples/7shifts/7shifts-availability-example/)
+- [7Shifts Company Example](https://apis.io/examples/7shifts/7shifts-company-example/)
+- [7Shifts Department Example](https://apis.io/examples/7shifts/7shifts-department-example/)
+- [7Shifts Location Example](https://apis.io/examples/7shifts/7shifts-location-example/)
+- [7Shifts Receipt Example](https://apis.io/examples/7shifts/7shifts-receipt-example/)
+- [7Shifts Role Example](https://apis.io/examples/7shifts/7shifts-role-example/)
+- [7Shifts Shift Example](https://apis.io/examples/7shifts/7shifts-shift-example/)
+- [7Shifts Timeoff Example](https://apis.io/examples/7shifts/7shifts-timeoff-example/)
+- [7Shifts Timepunch Example](https://apis.io/examples/7shifts/7shifts-timepunch-example/)
+- [7Shifts User Example](https://apis.io/examples/7shifts/7shifts-user-example/)
+- [7Shifts Wage Example](https://apis.io/examples/7shifts/7shifts-wage-example/)
+- [7Shifts Webhook Example](https://apis.io/examples/7shifts/7shifts-webhook-example/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [7shifts API](https://apis.io/collections/7shifts/open-7shifts/)
+- [7shifts Availability API](https://apis.io/collections/7shifts/open-7shifts-availability-api/)
+- [7shifts Availability Companies API](https://apis.io/collections/7shifts/open-7shifts-companies-api/)
+- [7shifts Availability Departments API](https://apis.io/collections/7shifts/open-7shifts-departments-api/)
+- [7shifts Availability Identity API](https://apis.io/collections/7shifts/open-7shifts-identity-api/)
+- [7shifts Availability Locations API](https://apis.io/collections/7shifts/open-7shifts-locations-api/)
+- [7shifts Availability OAuth API](https://apis.io/collections/7shifts/open-7shifts-oauth-api/)
+- [7shifts Availability Reporting API](https://apis.io/collections/7shifts/open-7shifts-reporting-api/)
+- [7shifts Availability Roles API](https://apis.io/collections/7shifts/open-7shifts-roles-api/)
+- [7shifts Availability Sales API](https://apis.io/collections/7shifts/open-7shifts-sales-api/)
+- [7shifts Availability Shifts API](https://apis.io/collections/7shifts/open-7shifts-shifts-api/)
+- [7shifts Availability Time Off API](https://apis.io/collections/7shifts/open-7shifts-time-off-api/)
+- [7shifts Availability Time Punches API](https://apis.io/collections/7shifts/open-7shifts-time-punches-api/)
+- [7shifts Availability Users API](https://apis.io/collections/7shifts/open-7shifts-users-api/)
+- [7shifts Availability Wages API](https://apis.io/collections/7shifts/open-7shifts-wages-api/)
+- [7shifts Availability Webhooks API](https://apis.io/collections/7shifts/open-7shifts-webhooks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [7shifts — jsonschema rules](https://apis.io/rules/7shifts/7shifts-jsonschema-spectral-rules/)
+- [7shifts API Rules](https://apis.io/rules/7shifts/7shifts-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [7Shifts Authentication](https://apis.io/security/7shifts/7shifts-authentication/)
+- [7Shifts Domain Security](https://apis.io/security/7shifts/7shifts-domain-security/)
+- [7Shifts Vulnerability Disclosure](https://apis.io/security/7shifts/7shifts-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [7Shifts Scopes](https://apis.io/scopes/7shifts/7shifts-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [7Shifts Plans Pricing](https://apis.io/plans/7shifts/7shifts-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [7Shifts Rate Limits](https://apis.io/rate-limits/7shifts/7shifts-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [7Shifts Finops](https://apis.io/finops/7shifts/7shifts-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.7shifts.com)
 - [Documentation](https://developers.7shifts.com/)
-- [API Reference](https://developers.7shifts.com/reference/introduction)
+- [API reference](https://developers.7shifts.com/reference/introduction)
 - [Pricing](https://www.7shifts.com/pricing)
-- [Sign Up](https://app.7shifts.com/signup)
-- [Login](https://app.7shifts.com/login)
 - [Support](https://support.7shifts.com/)
-- [L L Ms Txt](https://developers.7shifts.com/llms.txt)
-- [Rules](rules/7shifts-spectral-rules.yml)
-- [Vocabulary](vocabulary/7shifts-vocabulary.yml)
-- [JSON-LD](json-ld/7shifts-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Plans](plans/7shifts-plans-pricing.yml)
-- [Rate Limits](rate-limits/7shifts-rate-limits.yml)
-- [Fin Ops](finops/7shifts-finops.yml)
+- [Blog](https://www.7shifts.com/blog/)
+- [GitHub](https://github.com/7shifts)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 41.4** — developing · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 27.6 |
+| Developer ergonomics | 36.9 |
+| Access clarity | 14.5 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 32.4** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/7shifts/](https://apis.io/providers/7shifts/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 7shifts: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/7shifts/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
